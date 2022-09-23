@@ -5,6 +5,15 @@
 <mapper namespace="com.fall.robok.mapper.UserMapper">
     <!-- public User getAllUser(); -->
     <select id="getAllUser" resultType="com.fall.robok.model.User">
-        select * from t_user
+        select *
+        from t_user
+    </select>
+    <!-- Integer userSignUp(String code,String nickName) -->
+    <insert id="userSignUp">
+
+    </insert>
+    <!-- Integer userSignIn(String code,String nickName) -->
+    <select id="userSignIn" resultType="int">
+
     </select>
 </mapper>
