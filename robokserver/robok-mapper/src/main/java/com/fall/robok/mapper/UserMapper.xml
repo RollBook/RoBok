@@ -5,15 +5,17 @@
 <mapper namespace="com.fall.robok.mapper.UserMapper">
     <!-- public User getAllUser(); -->
     <select id="getAllUser" resultType="com.fall.robok.model.User">
-        select *
-        from t_user
+        select * from t_user
     </select>
-    <!-- Integer userSignUp(String code,String nickName) -->
+    <!-- Integer userSignUp(@Param("openId") String openId, @Param("nickName") String nickName, @Param("createdTime") String createdTime) -->
     <insert id="userSignUp">
-
+        insert into t_user (open_id, nick_name, created_time, phone, email)
+        values (#{openId}, #{nickName}, #{createdTime}, null, null)
     </insert>
-    <!-- Integer userSignIn(String code,String nickName) -->
-    <select id="userSignIn" resultType="int">
-
+    <!-- Integer userIsExist(@Param("openId") String openId) -->
+    <select id="userIsExist" resultType="int">
+        select 1
+        from t_user
+        where open_id = #{openId}
     </select>
 </mapper>

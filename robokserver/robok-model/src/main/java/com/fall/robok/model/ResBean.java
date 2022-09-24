@@ -31,6 +31,10 @@ public class ResBean {
         return new ResBean(200, msg, obj);
     }
 
+    public static ResBean badRequest(int status ,String msg) {
+        return new ResBean(status, msg, null);
+    }
+
     public static ResBean badRequest(String msg) {
         return new ResBean(400, msg, null);
     }

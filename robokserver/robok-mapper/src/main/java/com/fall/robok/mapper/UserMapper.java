@@ -11,8 +11,9 @@ import java.util.List;
  * @author FAll
  * @date 2022/9/22 14:05
  */
-@Repository
+
 @Mapper
+@Repository
 public interface UserMapper {
 
     /**
@@ -25,23 +26,26 @@ public interface UserMapper {
     List<User> getAllUser();
 
     /**
-     * @param code
-     * @param nickName
+     * @param openId
      * @author FAll
-     * @description 新用户注册
+     * @description 查询是否存在该用户
      * @return: java.lang.Integer
-     * @date 2022/9/23 14:29
+     * @date 2022/9/24 10:43
      */
-    Integer userSignUp(@Param("code") String code, @Param("nickName") String nickName);
+    Integer userIsExist(@Param("openId") String openId);
 
     /**
-     * @param code
-     * @param nickName
      * @author FAll
-     * @description 用户登录
+     * @description 新用户注册
+     * @param openId
+     * @param nickName
+     * @param createdTime
      * @return: java.lang.Integer
-     * @date 2022/9/23 14:29
+     * @date 2022/9/24 12:29
      */
-    Integer userSignIn(@Param("code") String code, @Param("nickName") String nickName);
+    Integer userSignUp(@Param("openId") String openId, @Param("nickName") String nickName, @Param("createdTime") String createdTime);
+
+
+
 
 }

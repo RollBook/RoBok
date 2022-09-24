@@ -7,23 +7,27 @@ import lombok.ToString;
 
 /**
  * @author FAll
- * @date 2022/9/22 13:59
+ * @date 2022/9/24 15:12
  */
 
 @Data
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Img {
 
-    private String openId;
+    String indexSwiper0;
 
-    private String nickName;
+    String indexSwiper1;
 
-    private String createdTime;
+    String indexSwiper2;
 
-    private String phone;
+    String indexSwiper3;
 
-    private String email;
+    String indexSwiper4;
+
+    String indexSwiper5;
+
+    String indexSwiper6;
 
 }
