@@ -9,7 +9,7 @@
     <!-- List<Img> getAllIndexSwiper() -->
     <select id="getAllIndexSwiper" resultType="com.fall.robok.model.Img">
         select
-            <include refid="IndexSwiperColumn"/>
+        <include refid="IndexSwiperColumn"/>
         from t_img_index
     </select>
 </mapper>

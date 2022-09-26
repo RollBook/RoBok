@@ -1,9 +1,11 @@
-package com.fall.robok;
+package com.fall.robok.service;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.fall.robok.Config.WxConfig;
 import com.fall.robok.mapper.UserMapper;
 import com.fall.robok.model.User;
+import com.fall.robok.task.WXTask;
 import com.fall.robok.util.SHA256Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -11,6 +13,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -47,12 +50,12 @@ public class UserService {
     }
 
     /**
-     * @author FAll
-     * @description 用户登录&用户注册
      * @param code
      * @param nickName
+     * @author FAll
+     * @description 用户登录&用户注册
      * @return: java.util.Map
-     * @date 2022/9/9/23 14:50
+     * @date 2022/9/23 14:50
      */
     public Map SignInAndSignUp(String code, String nickName) throws Exception {
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + wxConfig.appID + "&secret=" + wxConfig.appSecret + "&js_code=" + code + "&grant_type=authorization_code";
@@ -93,17 +96,17 @@ public class UserService {
     }
 
     /**
-     * @author FAll
-     * @description 检查用户登录信息是否过期
      * @param openId
      * @param sessionKey
+     * @author FAll
+     * @description 检查用户登录信息是否过期
      * @return: java.lang.Boolean
      * @date 2022/9/24 15:21
      */
     public Boolean isLogin(String openId, String sessionKey) {
 
         ValueOperations<String, String> stringValueOperations = stringRedisTemplate.opsForValue();
-        if(openId == null){
+        if (openId == null) {
             return null;
         }
         String session = stringValueOperations.get(openId);
@@ -118,6 +121,48 @@ public class UserService {
         }
 
         return isLogin;
+    }
+
+    /**
+     * @param code
+     * @param openId
+     * @author FAll
+     * @description 获取用户手机号
+     * @return: java.lang.String
+     * @date 2022/9/25 18:12
+     */
+    public String getPhoneNum(String code, String openId) {
+        String url = "https://api.weixin.qq.com/wxa/business/getuserphonenumber?access_token=" + WXTask.accessToken;
+
+        HttpHeaders requestHeaders = new HttpHeaders();
+        requestHeaders.setContentType(MediaType.parseMediaType("application/json; charset=UTF-8"));
+        requestHeaders.set("Connection", "close");
+        requestHeaders.add("Accept", MediaType.APPLICATION_JSON.toString());
+
+        JSONObject requestMap = new JSONObject();
+        requestMap.put("code", code);
+        HttpEntity<JSONObject> entity = new HttpEntity<>(requestMap, requestHeaders);
+        JSONObject res = new RestTemplate().postForObject(url, entity, JSONObject.class);
+
+        if ((Integer) res.get("errcode") != 0) {
+            return null;
+        }
+        Map<String, String> phoneInfo = (Map<String, String>) res.get("phone_info");
+        String phone = "+"
+                + phoneInfo.get("countryCode")
+                + " "
+                + phoneInfo.get("purePhoneNumber");
+        if (userMapper.updateByOpenId(new User(
+                openId,
+                null,
+                null,
+                phone,
+                null)) == 0) {
+            return null;
+        }
+
+        return phone;
+
     }
 
 }

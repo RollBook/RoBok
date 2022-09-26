@@ -18,4 +18,20 @@
         from t_user
         where open_id = #{openId}
     </select>
+    <!-- Integer updateByOpenId(User user) -->
+    <update id="updateByOpenId">
+        update t_user
+        <set>
+            <if test="nickName != null">
+                nick_name = #{nickName},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+        </set>
+        where open_id = #{openId}
+    </update>
 </mapper>

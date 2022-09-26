@@ -1,4 +1,4 @@
-package com.fall.robok;
+package com.fall.robok.service;
 
 import com.alibaba.fastjson.JSON;
 import com.fall.robok.mapper.IndexImgMapper;
@@ -6,6 +6,7 @@ import com.fall.robok.model.Img;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 /**
@@ -20,9 +21,9 @@ public class RollBookService {
     IndexImgMapper indexImgMapper;
 
     /**
-     * @author FAll
-     * @description 获取所有首页轮播图
      * @param
+     * @author FAll
+     * @description 获取首页轮播图
      * @return: java.util.ArrayList<java.lang.String>
      * @date 2022/9/24 15:45
      */
