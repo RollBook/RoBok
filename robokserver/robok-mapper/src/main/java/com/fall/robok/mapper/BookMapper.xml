@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fall.robok.mapper.BookMapper">
+    <!-- Integer addBook(Book book) -->
+    <insert id="addBook">
+        insert into t_book
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bookId != null">
+                book_id,
+            </if>
+            <if test="openId != null">
+                open_id,
+            </if>
+            <if test="bookName != null">
+                book_name,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="pressId != null">
+                press_id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="audit != null">
+                audit,
+            </if>
+            <if test="tagId != null">
+                tag_id,
+            </if>
+            <if test="url1 != null">
+                url1,
+            </if>
+            <if test="url2 != null">
+                url2,
+            </if>
+            <if test="url3 != null">
+                url3,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="timestamp != null">
+                timestamp,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bookId != null">
+                #{bookId},
+            </if>
+            <if test="openId != null">
+                #{openId},
+            </if>
+            <if test="bookName != null">
+                #{bookName},
+            </if>
+            <if test="price != null">
+                #{price},
+            </if>
+            <if test="pressId != null">
+                #{pressId},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="audit != null">
+                #{audit},
+            </if>
+            <if test="tagId != null">
+                #{tagId},
+            </if>
+            <if test="url1 != null">
+                #{url1},
+            </if>
+            <if test="url2 != null">
+                #{url2},
+            </if>
+            <if test="url3 != null">
+                #{url3},
+            </if>
+            <if test="description != null">
+                #{description},
+            </if>
+            <if test="timestamp != null">
+                #{timestamp},
+            </if>
+        </trim>
+    </insert>
+</mapper>
