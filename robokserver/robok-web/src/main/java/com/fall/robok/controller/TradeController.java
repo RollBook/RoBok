@@ -49,10 +49,25 @@ public class TradeController {
     }
 
 
-    public ResBean setImg(@RequestPart("user") String user, @RequestPart("files") MultipartFile[] photo){
+    /**
+     * @author FAll
+     * @description 保存书本图片，生成并存储url
+     * @param openid
+     * @param timeStamp
+     * @param rank
+     * @param photo
+     * @return: com.fall.robok.model.ResBean
+     * @date 2022/9/27 14:19
+     */
+    @PostMapping("set_img")
+    public ResBean setImg(@RequestPart("openid") String openid,@RequestPart("timeStamp") String timeStamp,
+                          @RequestPart("rank") String rank,@RequestPart("files") MultipartFile[] photo){
 
+        Boolean ret = tradeService.setImg(openid,timeStamp,rank,photo);
+        if(!ret){
+            return ResBean.badRequest("Bad request");
+        }
         return ResBean.ok("ok");
     }
-    // tradeService.addBook(photo, "1");
 
 }

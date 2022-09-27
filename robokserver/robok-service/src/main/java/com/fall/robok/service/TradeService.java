@@ -40,4 +40,16 @@ public class TradeService {
         }
         return true;
     }
+
+    /**
+     * @author FAll
+     * @description 保存书本图片，生成url
+     * @param photo
+     * @return: java.lang.String
+     * @date 2022/9/27 14:28
+     */
+    public String setImg(MultipartFile[] photo){
+        // MultipartFileUpload.uploadFile()
+        // return true;
+    }
 }
