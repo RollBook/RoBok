@@ -2,7 +2,6 @@ import com.fall.robok.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.annotation.Resource;
 
 /**
  * @author FAll
@@ -13,7 +12,9 @@ public class test {
     UserMapper mapper;
 
     @Test
-    public void test(){
-        System.out.println(mapper);
+    public void test(){}
+
+    public static void main(String[] args) {
+
     }
 }

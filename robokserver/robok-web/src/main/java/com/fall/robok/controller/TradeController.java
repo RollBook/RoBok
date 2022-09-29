@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
 
@@ -50,21 +52,21 @@ public class TradeController {
 
 
     /**
-     * @author FAll
-     * @description 保存书本图片，生成并存储url
      * @param openid
      * @param timeStamp
      * @param rank
      * @param photo
+     * @author FAll
+     * @description 保存书本图片，生成并存储url
      * @return: com.fall.robok.model.ResBean
      * @date 2022/9/27 14:19
      */
     @PostMapping("set_img")
-    public ResBean setImg(@RequestPart("openid") String openid,@RequestPart("timeStamp") String timeStamp,
-                          @RequestPart("rank") String rank,@RequestPart("files") MultipartFile[] photo){
+    public ResBean setImg(@RequestPart("openid") String openid, @RequestPart("timeStamp") String timeStamp,
+                          @RequestPart("rank") String rank, @RequestPart("files") MultipartFile[] photo) {
+        Boolean ret = tradeService.setImg(openid, timeStamp, rank, photo);
 
-        Boolean ret = tradeService.setImg(openid,timeStamp,rank,photo);
-        if(!ret){
+        if (!ret) {
             return ResBean.badRequest("Bad request");
         }
         return ResBean.ok("ok");

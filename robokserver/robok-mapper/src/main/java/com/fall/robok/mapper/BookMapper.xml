@@ -89,4 +89,47 @@
             </if>
         </trim>
     </insert>
+    <!-- Integer updateBook(Book book) -->
+    <update id="updateBook">
+        update t_book
+        <set>
+            <if test="openId != null">
+                open_id = #{openId},
+            </if>
+            <if test="bookName != null">
+                book_name = #{bookName},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="pressId != null">
+                press_id = #{pressId},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="audit != null">
+                audit = #{audit},
+            </if>
+            <if test="tagId != null">
+                tag_id = #{tagId},
+            </if>
+            <if test="url1 != null">
+                url1 = #{url1},
+            </if>
+            <if test="url2 != null">
+                url2 = #{url2},
+            </if>
+            <if test="url3 != null">
+                url3 = #{url3},
+            </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
+            <if test="timestamp != null">
+                timestamp = #{timestamp}
+            </if>
+        </set>
+        where open_id = #{openId} and timestamp = #{timestamp}
+    </update>
 </mapper>

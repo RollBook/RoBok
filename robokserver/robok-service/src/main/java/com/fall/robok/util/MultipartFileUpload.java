@@ -1,28 +1,43 @@
 package com.fall.robok.util;
 
+import com.fall.robok.Config.ServerConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * @author FAll
  * @date 2022/9/25 21:19
  */
+@Component
 public class MultipartFileUpload {
 
-    public static Boolean uploadFile(String[] fileNames, MultipartFile[] files) {
+    @Autowired
+    ServerConfig serverConfig;
+
+    public String[] uploadFile(String[] fileNames, MultipartFile[] files) {
+        String destination = serverConfig.getPath();
+        String urls[] = new String[fileNames.length];
         for (int i = 0; i < files.length; i++) {
             try {
-                files[i].transferTo(new File("C:\\Users\\94031\\Desktop\\img\\"
-                        + fileNames[i]
-                        + ".jpg"));
+                String wholeFileName = fileNames[i] + ".jpg";
+
+                byte[] bytes = files[i].getBytes();
+                OutputStream out = Files.newOutputStream(Paths.get(destination + wholeFileName));
+                out.write(bytes);
+                out.close();
+
+                urls[i] = wholeFileName;
             } catch (IOException e) {
                 e.printStackTrace();
-                return false;
+                return null;
             }
         }
-        return true;
+        return urls;
     }
 
 }

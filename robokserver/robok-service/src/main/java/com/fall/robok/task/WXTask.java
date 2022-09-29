@@ -36,8 +36,8 @@ public class WXTask {
     @Scheduled(cron = "0 0 0/2 * * ?")
     public void getAcessToken() {
         String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=" +
-                "client_credential&appid=" + wxConfig.appID +
-                "&secret=" + wxConfig.appSecret;
+                "client_credential&appid=" + wxConfig.getAppID() +
+                "&secret=" + wxConfig.getAppSecret();
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.set("Connection", "close");
         HttpEntity requestEntity = new HttpEntity(requestHeaders);

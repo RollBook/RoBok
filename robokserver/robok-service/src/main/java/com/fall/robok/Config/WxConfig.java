@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class WxConfig {
 
 
-    public String appSecret;
+    private String appSecret;
 
-    public String appID;
+    private String appID;
 }

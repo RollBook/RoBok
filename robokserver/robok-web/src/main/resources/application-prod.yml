@@ -1,0 +1,34 @@
+# 生产环境配置 ----- linux
+spring:
+  servlet:
+    multipart:
+      location: /img
+  # redis配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123RollBook
+  # 数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 123RollBook
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/robok?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false
+server:
+  port: 8899
+  compression:
+    enabled: true
+  servlet:
+    context-path: /api
+# mybatis配置
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+# 微信小程序相关配置
+wx-app: {
+  app-secret: f259a9d4f7fbf17f4ac96a058e8d0de7,
+  appID: wx5260f83aed33c580
+}
+# 上传文件夹路径
+my-path: img/

@@ -58,7 +58,7 @@ public class UserService {
      * @date 2022/9/23 14:50
      */
     public Map SignInAndSignUp(String code, String nickName) throws Exception {
-        String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + wxConfig.appID + "&secret=" + wxConfig.appSecret + "&js_code=" + code + "&grant_type=authorization_code";
+        String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + wxConfig.getAppID() + "&secret=" + wxConfig.getAppSecret() + "&js_code=" + code + "&grant_type=authorization_code";
 
         // 发送token到微信服务器，兑换session
         RestTemplate template = new RestTemplate();

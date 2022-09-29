@@ -1,6 +1,7 @@
 package com.fall.robok.config;
 
 import com.alibaba.fastjson.JSON;
+import com.fall.robok.Config.ServerConfig;
 import com.fall.robok.service.UserService;
 import com.fall.robok.model.ResBean;
 import lombok.extern.slf4j.Slf4j;
@@ -29,22 +30,36 @@ public class RobokFilter implements Filter {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    ServerConfig serverConfig;
+
+    private Boolean isDev = false;
+
     private static final Set<String> ALLOWED_PATHS = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
             "/user/login",
             "/user/check_login",
             "/rollbook/get_index_swiper"
-            )));
+    )));
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        log.info("[ {} ] Created......", this.getClass().getSimpleName());
+        if (serverConfig.getEnvironment().equals("dev")) {
+            isDev = true;
+        }
+        log.info("========> 过滤器创建成功");
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException, IOException {
         HttpServletRequest req = (HttpServletRequest) request;
         String path = req.getRequestURI().substring(req.getContextPath().length()).replaceAll("[/]+$", "");
-        boolean allowedPath = ALLOWED_PATHS.contains(path);
+
+        boolean allowedPath= ALLOWED_PATHS.contains(path);
+        if(isDev){
+            allowedPath = allowedPath||path.contains(".jpg");
+        }
+
         if (allowedPath) {
             chain.doFilter(request, response);
         } else {
@@ -67,7 +82,7 @@ public class RobokFilter implements Filter {
 
     @Override
     public void destroy() {
-        log.info("[ {} ] Destroyed......", this.getClass().getSimpleName());
+        log.info("========> 过滤器销毁成功");
     }
 
     /**
