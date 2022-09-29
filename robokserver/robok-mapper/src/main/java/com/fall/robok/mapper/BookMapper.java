@@ -23,9 +23,9 @@ public interface BookMapper {
     Integer addBook(Book book);
 
     /**
+     * @param book
      * @author FAll
      * @description 修改书本信息
-     * @param book
      * @return: java.lang.Integer
      * @date 2022/9/29 20:11
      */

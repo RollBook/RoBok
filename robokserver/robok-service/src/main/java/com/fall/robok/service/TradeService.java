@@ -43,7 +43,6 @@ public class TradeService {
         return true;
     }
 
-
     /**
      * @param openid
      * @param timestamp
