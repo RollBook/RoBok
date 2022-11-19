@@ -1,7 +1,7 @@
 package com.fall.robok.task;
 
 import com.alibaba.fastjson.JSON;
-import com.fall.robok.Config.WxConfig;
+import com.fall.robok.config.WxConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

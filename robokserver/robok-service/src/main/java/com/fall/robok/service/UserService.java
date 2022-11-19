@@ -2,7 +2,7 @@ package com.fall.robok.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.fall.robok.Config.WxConfig;
+import com.fall.robok.config.WxConfig;
 import com.fall.robok.mapper.UserMapper;
 import com.fall.robok.model.User;
 import com.fall.robok.task.WXTask;
@@ -119,6 +119,7 @@ public class UserService {
         } else { // 恶意请求
             isLogin = null;
         }
+
 
         return isLogin;
     }

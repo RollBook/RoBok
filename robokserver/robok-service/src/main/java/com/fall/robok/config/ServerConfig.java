@@ -1,4 +1,4 @@
-package com.fall.robok.Config;
+package com.fall.robok.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,11 +35,11 @@ public class ServerConfig {
         File pfile = new File(path);
         if (!pfile.exists()) {
             // 不存在时,创建文件夹
-            log.warn("========> 未创建上传文件夹,开始创建......");
+            log.warn("未创建上传文件夹,开始创建......");
             pfile.mkdirs();
-            log.info("========> 上传文件夹创建成功");
+            log.info("上传文件夹创建成功");
         } else {
-            log.info("========> 上传文件夹加载完成");
+            log.info("上传文件夹加载完成");
         }
     }
 

@@ -1,6 +1,6 @@
 package com.fall.robok.util;
 
-import com.fall.robok.Config.ServerConfig;
+import com.fall.robok.config.ServerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;

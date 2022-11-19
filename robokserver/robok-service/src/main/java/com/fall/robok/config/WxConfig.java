@@ -1,4 +1,4 @@
-package com.fall.robok.Config;
+package com.fall.robok.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,8 +17,8 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "wx-app")
 public class WxConfig {
 
-
     private String appSecret;
 
     private String appID;
+
 }
