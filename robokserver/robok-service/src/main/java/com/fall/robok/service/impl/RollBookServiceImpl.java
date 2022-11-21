@@ -1,12 +1,12 @@
-package com.fall.robok.service;
+package com.fall.robok.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.fall.robok.mapper.IndexImgMapper;
 import com.fall.robok.model.Img;
+import com.fall.robok.service.IRollBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 /**
@@ -15,10 +15,10 @@ import java.util.ArrayList;
  */
 
 @Service
-public class RollBookService {
+public class RollBookServiceImpl implements IRollBookService {
 
     @Autowired
-    IndexImgMapper indexImgMapper;
+    private IndexImgMapper indexImgMapper;
 
     /**
      * @param
@@ -27,6 +27,7 @@ public class RollBookService {
      * @return: java.util.ArrayList<java.lang.String>
      * @date 2022/9/24 15:45
      */
+    @Override
     public ArrayList<String> getAllIndexSwiper() {
         ArrayList<String> ret = new ArrayList<>();
         for (Img img : indexImgMapper.getAllIndexSwiper()) {

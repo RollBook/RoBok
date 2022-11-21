@@ -1,8 +1,9 @@
-package com.fall.robok.service;
+package com.fall.robok.service.impl;
 
 import com.fall.robok.config.ServerConfig;
 import com.fall.robok.mapper.BookMapper;
 import com.fall.robok.model.Book;
+import com.fall.robok.service.ITradeService;
 import com.fall.robok.util.MultipartFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,16 +16,16 @@ import org.springframework.web.multipart.MultipartFile;
  */
 
 @Service
-public class TradeService {
+public class TradeServiceImpl implements ITradeService {
 
     @Autowired
-    BookMapper bookMapper;
+    private BookMapper bookMapper;
 
     @Autowired
-    MultipartFileUpload multipartFileUpload;
+    private MultipartFileUpload multipartFileUpload;
 
     @Autowired
-    ServerConfig serverConfig;
+    private ServerConfig serverConfig;
 
     /**
      * @param book
@@ -33,6 +34,7 @@ public class TradeService {
      * @return: java.lang.Boolean
      * @date 2022/9/26 22:52
      */
+    @Override
     public Boolean addBook(Book book) {
         Integer ret = bookMapper.addBook(book);
         if (ret == 0) {
@@ -51,6 +53,7 @@ public class TradeService {
      * @return: java.lang.String
      * @date 2022/9/27 14:45
      */
+    @Override
     public Boolean setImg(String openid, String timestamp, String rank, MultipartFile[] photo) {
 
         String[] names = {openid + timestamp + rank};

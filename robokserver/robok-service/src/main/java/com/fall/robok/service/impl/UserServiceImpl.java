@@ -1,10 +1,11 @@
-package com.fall.robok.service;
+package com.fall.robok.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.fall.robok.config.WxConfig;
 import com.fall.robok.mapper.UserMapper;
 import com.fall.robok.model.User;
+import com.fall.robok.service.IUserService;
 import com.fall.robok.task.WXTask;
 import com.fall.robok.util.SHA256Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +28,16 @@ import java.util.concurrent.TimeUnit;
  * @date 2022/9/22 23:47
  */
 @Service
-public class UserService {
+public class UserServiceImpl implements IUserService {
 
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Autowired
-    WxConfig wxConfig;
+    private WxConfig wxConfig;
 
     @Autowired
-    StringRedisTemplate stringRedisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
 
     /**
      * @param
@@ -45,6 +46,7 @@ public class UserService {
      * @return: java.util.List<com.fall.robok.model.User>
      * @date 2022/9/23 12:50
      */
+    @Override
     public List<User> getAllUser() {
         return userMapper.getAllUser();
     }
@@ -57,6 +59,7 @@ public class UserService {
      * @return: java.util.Map
      * @date 2022/9/23 14:50
      */
+    @Override
     public Map SignInAndSignUp(String code, String nickName) throws Exception {
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + wxConfig.getAppID() + "&secret=" + wxConfig.getAppSecret() + "&js_code=" + code + "&grant_type=authorization_code";
 
@@ -71,14 +74,14 @@ public class UserService {
             return null;
         }
 
-        // TODO: 根据response查询用户是否存在
+        // 根据response查询用户是否存在
         String openId = (String) ret.get("openid");
         String session = (String) ret.get("session_key");
         HashMap<String, String> returnMap = new HashMap<>();
         Integer isUserExist = userMapper.userIsExist(openId);
 
-        // TODO: 如果用户存在, 直接更新session存入redis，并为用户发放新的session_key(SHA256)
-        //       如果不存在，先走注册流程，再更新session
+        /*  如果用户存在, 直接更新session存入redis，并为用户发放新的session_key(SHA256)
+            如果不存在，先走注册流程，再更新session */
 
         if (isUserExist == null) {  // 注册
             String createdTime = String.valueOf(System.currentTimeMillis());
@@ -103,6 +106,7 @@ public class UserService {
      * @return: java.lang.Boolean
      * @date 2022/9/24 15:21
      */
+    @Override
     public Boolean isLogin(String openId, String sessionKey) {
 
         ValueOperations<String, String> stringValueOperations = stringRedisTemplate.opsForValue();
@@ -132,6 +136,7 @@ public class UserService {
      * @return: java.lang.String
      * @date 2022/9/25 18:12
      */
+    @Override
     public String getPhoneNum(String code, String openId) {
         String url = "https://api.weixin.qq.com/wxa/business/getuserphonenumber?access_token=" + WXTask.accessToken;
 

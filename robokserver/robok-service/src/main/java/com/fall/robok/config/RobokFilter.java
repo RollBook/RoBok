@@ -1,7 +1,7 @@
 package com.fall.robok.config;
 
 import com.alibaba.fastjson.JSON;
-import com.fall.robok.service.UserService;
+import com.fall.robok.service.impl.UserServiceImpl;
 import com.fall.robok.model.ResBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ import java.util.Set;
 public class RobokFilter implements Filter {
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
 
     @Autowired
     ServerConfig serverConfig;
