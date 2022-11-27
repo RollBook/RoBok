@@ -42,6 +42,7 @@ public class TradeServiceImpl implements ITradeService {
         }
         return true;
     }
+    // 连接点 切入点 通知(增强逻辑) 切面
 
     /**
      * @param openid

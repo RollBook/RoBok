@@ -1,8 +1,6 @@
 package com.fall.robok.config;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -14,10 +12,8 @@ import java.io.File;
  * @author FAll
  * @date 2022/9/29 15:25
  */
-@Data
+@Getter
 @Slf4j
-@NoArgsConstructor
-@AllArgsConstructor
 @Component
 public class ServerConfig {
 
