@@ -1,4 +1,4 @@
-package com.fall.robok.util;
+package com.fall.robok.util.encrypt;
 
 import org.apache.commons.codec.binary.Hex;
 

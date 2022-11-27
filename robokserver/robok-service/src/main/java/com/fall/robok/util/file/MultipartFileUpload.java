@@ -1,4 +1,4 @@
-package com.fall.robok.util;
+package com.fall.robok.util.file;
 
 import com.fall.robok.config.ServerConfig;
 import org.springframework.beans.factory.annotation.Autowired;

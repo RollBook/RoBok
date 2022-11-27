@@ -23,7 +23,6 @@ import java.util.Set;
  */
 
 @WebFilter(urlPatterns = {"/user/*", "/trade/*"}, filterName = "RobokFilter")
-@Order(Integer.MAX_VALUE)
 @Slf4j
 public class RobokFilter implements Filter {
 

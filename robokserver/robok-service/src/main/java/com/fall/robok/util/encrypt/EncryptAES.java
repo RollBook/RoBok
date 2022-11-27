@@ -1,4 +1,4 @@
-package com.fall.robok.util;
+package com.fall.robok.util.encrypt;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;

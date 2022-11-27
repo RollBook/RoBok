@@ -7,7 +7,7 @@ import com.fall.robok.mapper.UserMapper;
 import com.fall.robok.model.User;
 import com.fall.robok.service.IUserService;
 import com.fall.robok.task.WXTask;
-import com.fall.robok.util.SHA256Encrypt;
+import com.fall.robok.util.encrypt.SHA256Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;

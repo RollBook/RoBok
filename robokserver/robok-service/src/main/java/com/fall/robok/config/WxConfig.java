@@ -12,8 +12,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @ConfigurationProperties(prefix = "wx-app")
 public class WxConfig {
 
