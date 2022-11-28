@@ -3,6 +3,7 @@ package com.fall.robok.mapper;
 import com.fall.robok.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public interface UserMapper {
      * @return: java.lang.Integer
      * @date 2022/9/24 10:43
      */
+    @Select("select * from `t_user`")
     Integer userIsExist(@Param("openId") String openId);
 
     /**

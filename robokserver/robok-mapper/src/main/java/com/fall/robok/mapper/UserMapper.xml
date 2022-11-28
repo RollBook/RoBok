@@ -3,10 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fall.robok.mapper.UserMapper">
-    <!-- public User getAllUser(); -->
-    <select id="getAllUser" resultType="com.fall.robok.model.User">
-        select * from t_user
-    </select>
     <!-- Integer userSignUp(@Param("openId") String openId, @Param("nickName") String nickName, @Param("createdTime") String createdTime) -->
     <insert id="userSignUp">
         insert into t_user (open_id, nick_name, created_time, phone, email)

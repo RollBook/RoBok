@@ -3,13 +3,5 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fall.robok.mapper.IndexImgMapper">
-    <sql id="IndexSwiperColumn">
-        `index_swiper0`, `index_swiper1`, `index_swiper2`, `index_swiper3`, `index_swiper4`, `index_swiper5`, `index_swiper6`
-    </sql>
-    <!-- List<Img> getAllIndexSwiper() -->
-    <select id="getAllIndexSwiper" resultType="com.fall.robok.model.Img">
-        select
-        <include refid="IndexSwiperColumn"/>
-        from t_img_index
-    </select>
+
 </mapper>
