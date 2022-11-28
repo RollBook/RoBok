@@ -2,10 +2,9 @@ package com.fall.robok.config;
 
 import com.alibaba.fastjson.JSON;
 import com.fall.robok.service.impl.UserServiceImpl;
-import com.fall.robok.model.ResBean;
+import com.fall.robok.util.bean.ResBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

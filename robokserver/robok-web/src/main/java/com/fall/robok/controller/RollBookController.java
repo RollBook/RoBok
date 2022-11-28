@@ -1,12 +1,9 @@
 package com.fall.robok.controller;
 
-import com.fall.robok.service.RollBookService;
-import com.fall.robok.model.ResBean;
+import com.fall.robok.service.impl.RollBookServiceImpl;
+import com.fall.robok.util.bean.ResBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import java.io.File;
-import java.io.IOException;
 
 
 /**
@@ -19,13 +16,13 @@ import java.io.IOException;
 public class RollBookController {
 
     @Autowired
-    RollBookService rollBookService;
+    RollBookServiceImpl rollBookService;
 
     /**
      * @author FAll
      * @description 获取首页轮播图
      * @param
-     * @return: com.fall.robok.model.ResBean
+     * @return: com.fall.robok.util.bean.ResBean
      * @date 2022/9/24 15:45
      */
     @GetMapping("/get_index_swiper")

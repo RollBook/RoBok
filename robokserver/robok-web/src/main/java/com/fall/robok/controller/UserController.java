@@ -1,8 +1,8 @@
 package com.fall.robok.controller;
 
-import com.fall.robok.Config.WxConfig;
-import com.fall.robok.service.UserService;
-import com.fall.robok.model.ResBean;
+import com.fall.robok.config.WxConfig;
+import com.fall.robok.service.impl.UserServiceImpl;
+import com.fall.robok.util.bean.ResBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +19,7 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
 
     @Autowired
     WxConfig config;
@@ -34,7 +34,7 @@ public class UserController {
      * @description 用户登录&用户注册
      * @param code
      * @param nickName
-     * @return: com.fall.robok.model.ResBean
+     * @return: com.fall.robok.util.bean.ResBean
      * @date 2022/9/23 14:50
      */
     @PostMapping("/login")
@@ -54,7 +54,7 @@ public class UserController {
      * @description 检查用户登录信息是否过期
      * @param openId
      * @param sessionKey
-     * @return: com.fall.robok.model.ResBean
+     * @return: com.fall.robok.util.bean.ResBean
      * @date 2022/9/24 15:21
      */
     @GetMapping("/check_login")
@@ -77,7 +77,7 @@ public class UserController {
      * @description 获取用户手机号
      * @param code
      * @param openId
-     * @return: com.fall.robok.model.ResBean
+     * @return: com.fall.robok.util.bean.ResBean
      * @date 2022/9/25 18:12
      */
     @PostMapping("/code2phone_num")

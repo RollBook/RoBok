@@ -1,14 +1,12 @@
 package com.fall.robok.controller;
 
 import com.fall.robok.model.Book;
-import com.fall.robok.model.ResBean;
-import com.fall.robok.service.TradeService;
+import com.fall.robok.service.impl.TradeServiceImpl;
+import com.fall.robok.util.bean.ResBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
 
@@ -22,7 +20,7 @@ import java.util.UUID;
 public class TradeController {
 
     @Autowired
-    TradeService tradeService;
+    TradeServiceImpl tradeService;
 
     /**
      * @param bookName
@@ -33,7 +31,7 @@ public class TradeController {
      * @param bookInfo
      * @author FAll
      * @description 添加书本
-     * @return: com.fall.robok.model.ResBean
+     * @return: com.fall.robok.util.bean.ResBean
      * @date 2022/9/26 22:46
      */
     @PostMapping("/add_book")
@@ -58,7 +56,7 @@ public class TradeController {
      * @param photo
      * @author FAll
      * @description 保存书本图片，生成并存储url
-     * @return: com.fall.robok.model.ResBean
+     * @return: com.fall.robok.util.bean.ResBean
      * @date 2022/9/27 14:19
      */
     @PostMapping("set_img")

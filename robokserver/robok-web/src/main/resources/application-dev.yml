@@ -28,3 +28,10 @@ wx-app: {
 }
 # 上传文件夹路径
 my-path: .\\robokserver\\robok-web\\src\\main\\resources\\static\\
+logging:
+  file:
+    name: server.log
+  logback:
+    rollingpolicy:
+      max-file-size: 20MB
+      file-name-pattern: server.%d{yyyy-MM-dd}.%i.log

@@ -1,4 +1,4 @@
-package com.fall.robok.model;
+package com.fall.robok.util.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +17,7 @@ public class ResBean {
 
     private String msg;
 
-    private Object obj;
+    private Object data;
 
     public static ResBean build() {
         return new ResBean();

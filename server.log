@@ -1,0 +1,75 @@
+2022-11-28 17:02:24.151  INFO 60832 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 60832 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
+2022-11-28 17:02:24.153  INFO 60832 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
+2022-11-28 17:02:24.204  INFO 60832 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-28 17:02:24.205  INFO 60832 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-28 17:02:24.784  INFO 60832 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-28 17:02:24.785  INFO 60832 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-11-28 17:02:24.804  INFO 60832 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2022-11-28 17:02:25.277  INFO 60832 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2022-11-28 17:02:25.284  INFO 60832 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-28 17:02:25.285  INFO 60832 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-28 17:02:25.383  INFO 60832 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2022-11-28 17:02:25.383  INFO 60832 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1178 ms
+2022-11-28 17:02:25.828  INFO 60832 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
+2022-11-28 17:02:25.849  INFO 60832 --- [restartedMain] com.fall.robok.config.RobokFilter        : 过滤器创建成功
+2022-11-28 17:02:27.290  INFO 60832 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-28 17:02:27.357  INFO 60832 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
+2022-11-28 17:02:27.371  INFO 60832 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 3.743 seconds (JVM running for 4.643)
+2022-11-28 17:02:44.570  INFO 60832 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : 过滤器销毁成功
+2022-11-28 17:02:44.590  INFO 60832 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
+2022-11-28 17:02:47.602  INFO 41860 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 41860 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
+2022-11-28 17:02:47.603  INFO 41860 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
+2022-11-28 17:02:47.643  INFO 41860 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-28 17:02:47.643  INFO 41860 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-28 17:02:48.092  INFO 41860 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-28 17:02:48.094  INFO 41860 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-11-28 17:02:48.112  INFO 41860 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2022-11-28 17:02:48.529  INFO 41860 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2022-11-28 17:02:48.535  INFO 41860 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-28 17:02:48.535  INFO 41860 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-28 17:02:48.615  INFO 41860 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2022-11-28 17:02:48.616  INFO 41860 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 972 ms
+2022-11-28 17:02:49.001  INFO 41860 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
+2022-11-28 17:02:49.020  INFO 41860 --- [restartedMain] com.fall.robok.config.RobokFilter        : 过滤器创建成功
+2022-11-28 17:02:49.788  INFO 41860 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-28 17:02:49.814  INFO 41860 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
+2022-11-28 17:02:49.823  INFO 41860 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.54 seconds (JVM running for 3.419)
+2022-11-28 17:02:52.966  INFO 41860 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : 过滤器销毁成功
+2022-11-28 17:02:52.984  INFO 41860 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
+2022-11-28 17:15:41.302  INFO 24540 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 24540 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
+2022-11-28 17:15:41.303  INFO 24540 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
+2022-11-28 17:15:41.347  INFO 24540 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-28 17:15:41.348  INFO 24540 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-28 17:15:41.919  INFO 24540 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-28 17:15:41.922  INFO 24540 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-11-28 17:15:41.944  INFO 24540 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2022-11-28 17:15:42.405  INFO 24540 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2022-11-28 17:15:42.412  INFO 24540 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-28 17:15:42.412  INFO 24540 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-28 17:15:42.501  INFO 24540 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2022-11-28 17:15:42.501  INFO 24540 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1153 ms
+2022-11-28 17:15:42.571 ERROR 24540 --- [restartedMain] o.s.b.web.embedded.tomcat.TomcatStarter  : Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'robokFilter': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userServiceImpl': Unsatisfied dependency expressed through field 'userMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userMapper' defined in file [D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-mapper\target\classes\com\fall\robok\mapper\UserMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionFactory' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Generic.class]: Unsatisfied dependency expressed through method 'dataSource' parameter 0; nested exception is org.springframework.boot.context.properties.ConfigurationPropertiesBindException: Error creating bean with name 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties': Could not bind properties to 'DataSourceProperties' : prefix=spring.datasource, ignoreInvalidFields=false, ignoreUnknownFields=true; nested exception is org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'spring.datasource.type' to java.lang.Class<javax.sql.DataSource>
+2022-11-28 17:15:42.585  INFO 24540 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-28 17:15:42.591  WARN 24540 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+2022-11-28 17:15:42.597  INFO 24540 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-11-28 17:15:42.613 ERROR 24540 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'spring.datasource.type' to java.lang.Class<javax.sql.DataSource>:
+
+    Property: spring.datasource.type
+    Value: "com.alibaba.druid.pool.DruidDataSource"
+    Origin: class path resource [application-dev.yml] - 9:11
+    Reason: failed to convert java.lang.String to java.lang.Class<javax.sql.DataSource> (caused by java.lang.ClassNotFoundException: com.alibaba.druid.pool.DruidDataSource)
+
+Action:
+
+Update your application's configuration
+

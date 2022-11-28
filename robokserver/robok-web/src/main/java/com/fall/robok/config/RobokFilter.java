@@ -1,13 +1,11 @@
 package com.fall.robok.config;
 
 import com.alibaba.fastjson.JSON;
-import com.fall.robok.Config.ServerConfig;
-import com.fall.robok.service.UserService;
-import com.fall.robok.model.ResBean;
+import com.fall.robok.service.impl.UserServiceImpl;
+import com.fall.robok.util.bean.ResBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +27,7 @@ import java.util.Set;
 public class RobokFilter implements Filter {
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
 
     @Autowired
     ServerConfig serverConfig;
@@ -47,7 +45,7 @@ public class RobokFilter implements Filter {
         if (serverConfig.getEnvironment().equals("dev")) {
             isDev = true;
         }
-        log.info("========> 过滤器创建成功");
+        log.info("过滤器创建成功");
     }
 
     @Override
@@ -82,7 +80,7 @@ public class RobokFilter implements Filter {
 
     @Override
     public void destroy() {
-        log.info("========> 过滤器销毁成功");
+        log.info("过滤器销毁成功");
     }
 
     /**
