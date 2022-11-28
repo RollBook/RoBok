@@ -73,3 +73,22 @@ Action:
 
 Update your application's configuration
 
+2022-11-28 17:16:26.630  INFO 44220 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 44220 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
+2022-11-28 17:16:26.631  INFO 44220 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
+2022-11-28 17:16:26.673  INFO 44220 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-28 17:16:26.674  INFO 44220 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-28 17:16:27.158  INFO 44220 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-28 17:16:27.160  INFO 44220 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-11-28 17:16:27.182  INFO 44220 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2022-11-28 17:16:27.662  INFO 44220 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2022-11-28 17:16:27.670  INFO 44220 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-28 17:16:27.670  INFO 44220 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-28 17:16:27.754  INFO 44220 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2022-11-28 17:16:27.754  INFO 44220 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1080 ms
+2022-11-28 17:16:28.193  INFO 44220 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
+2022-11-28 17:16:28.216  INFO 44220 --- [restartedMain] com.fall.robok.config.RobokFilter        : 过滤器创建成功
+2022-11-28 17:16:29.071  INFO 44220 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-11-28 17:16:29.103  INFO 44220 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
+2022-11-28 17:16:29.111  INFO 44220 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.895 seconds (JVM running for 3.882)
+2022-11-28 17:18:20.732  INFO 44220 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : 过滤器销毁成功
+2022-11-28 17:18:20.767  INFO 44220 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
