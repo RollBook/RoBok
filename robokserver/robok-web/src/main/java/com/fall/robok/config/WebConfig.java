@@ -31,7 +31,6 @@ public class WebConfig implements WebMvcConfigurer {
                 .build();
     }
 
-
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("罗伯克接口文档")
@@ -40,6 +39,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .version("1.0")
                 .build();
     }
-
 
 }

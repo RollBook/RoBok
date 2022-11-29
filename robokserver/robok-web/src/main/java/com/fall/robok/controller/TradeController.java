@@ -5,9 +5,12 @@ import com.fall.robok.service.impl.TradeServiceImpl;
 import com.fall.robok.util.bean.ResBean;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 
@@ -16,6 +19,7 @@ import java.util.UUID;
  * @date 2022/9/25 20:25
  */
 
+@Validated
 @RestController
 @RequestMapping("/trade")
 public class TradeController {
@@ -37,9 +41,12 @@ public class TradeController {
      */
     @ApiOperation("创建书本:添加书本第一步")
     @PostMapping("/add_book")
-    public ResBean addBook(@RequestParam("bookName") String bookName, @RequestParam("openid") String openid
-            , @RequestParam("bookStatus") String bookStatus, @RequestParam("timeStamp") String timeStamp
-            , @RequestParam("bookPrice") Double bookPrice, @RequestParam("bookInfo") String bookInfo) {
+    public ResBean addBook(@NotEmpty(message = "书本名不能为空") @RequestParam("bookName") String bookName,
+                           @NotEmpty(message = "openid不能为空") @RequestParam("openid") String openid,
+                           @NotEmpty(message = "状态信息不能为空") @RequestParam("bookStatus") String bookStatus,
+                           @NotEmpty(message = "创建时间不能为空") @RequestParam("timeStamp") String timeStamp,
+                           @NotNull(message = "价格不能为空") @RequestParam("bookPrice") Double bookPrice,
+                           @RequestParam("bookInfo") String bookInfo) {
 
         Boolean ret = tradeService.addBook(new Book(UUID.randomUUID().toString(), openid,
                 bookName, bookPrice, null, bookStatus, 0,
