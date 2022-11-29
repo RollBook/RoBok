@@ -5,7 +5,7 @@ import com.fall.robok.service.impl.UserServiceImpl;
 import com.fall.robok.util.bean.ResBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -21,11 +21,9 @@ import java.util.Set;
  * @date 2022/9/23 19:22
  */
 
-@Component
-@WebFilter(urlPatterns = "/admin/*", filterName = "RobokFilter")
+@WebFilter(urlPatterns = {"/user/*"}, filterName = "RobokFilter")
 @Slf4j
 public class RobokFilter implements Filter {
-
     @Autowired
     UserServiceImpl userService;
 
@@ -36,8 +34,7 @@ public class RobokFilter implements Filter {
 
     private static final Set<String> ALLOWED_PATHS = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
             "/user/login",
-            "/user/check_login",
-            "/rollbook/get_index_swiper"
+            "/user/check_login"
     )));
 
     @Override
@@ -45,7 +42,7 @@ public class RobokFilter implements Filter {
         if (serverConfig.getEnvironment().equals("dev")) {
             isDev = true;
         }
-        log.info("过滤器创建成功");
+        log.info("Filter created");
     }
 
     @Override
@@ -53,9 +50,9 @@ public class RobokFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         String path = req.getRequestURI().substring(req.getContextPath().length()).replaceAll("[/]+$", "");
 
-        boolean allowedPath= ALLOWED_PATHS.contains(path);
-        if(isDev){
-            allowedPath = allowedPath||path.contains(".jpg");
+        boolean allowedPath = ALLOWED_PATHS.contains(path);
+        if (isDev) {
+            allowedPath = allowedPath || path.contains(".jpg");
         }
 
         if (allowedPath) {
@@ -80,7 +77,7 @@ public class RobokFilter implements Filter {
 
     @Override
     public void destroy() {
-        log.info("过滤器销毁成功");
+        log.info("Filter destroyed");
     }
 
     /**

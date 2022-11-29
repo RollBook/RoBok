@@ -15,6 +15,11 @@ spring:
     password: 123RollBook
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/robok?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false
+  # swagger-ui启动配置
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+# 服务配置
 server:
   port: 8899
   compression:
@@ -32,3 +37,11 @@ wx-app: {
 }
 # 上传文件夹路径
 my-path: img/
+# 生产环境关闭swagger
+springfox:
+  documentation:
+    # 总开关（同时设置auto-startup=false，否则/v3/api-docs等接口仍能继续访问）
+    enabled: false
+    auto-startup: false
+    swagger-ui:
+      enabled: false

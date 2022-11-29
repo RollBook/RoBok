@@ -24,6 +24,7 @@ public interface UserMapper {
      * @return: java.util.List<com.fall.robok.model.User>
      * @date 2022/9/23 12:59
      */
+    @Select("select * from `t_user`")
     List<User> getAllUser();
 
     /**
@@ -33,7 +34,6 @@ public interface UserMapper {
      * @return: java.lang.Integer
      * @date 2022/9/24 10:43
      */
-    @Select("select * from `t_user`")
     Integer userIsExist(@Param("openId") String openId);
 
     /**

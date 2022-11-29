@@ -10,6 +10,10 @@ spring:
     username: root
     password: root
     url: jdbc:mysql://localhost:3306/robok?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+  # swagger-ui启动配置
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
 # 服务配置
 server:
   port: 8899
