@@ -10,8 +10,11 @@ spring:
     username: root
     password: root
     url: jdbc:mysql://localhost:3306/robok?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-  # swagger-ui启动配置
+  # MVC配置
   mvc:
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: /static/**
+    # swagger-ui启动配置
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
 # 服务配置

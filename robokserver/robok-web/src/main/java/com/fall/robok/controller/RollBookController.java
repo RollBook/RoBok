@@ -29,6 +29,8 @@ public class RollBookController {
     @ApiOperation("获取小程序首页轮播图")
     @GetMapping("/get_index_swiper")
     public ResBean getIndexSwiper() {
+
+        int a = 1/0;
         return ResBean.ok("ok", rollBookService.getAllIndexSwiper());
     }
 

@@ -70,8 +70,10 @@ public class TradeController {
      */
     @ApiOperation("保存书本图片，生成并存储url:添加书本第二步")
     @PostMapping("set_img")
-    public ResBean setImg(@RequestPart("openid") String openid, @RequestPart("timeStamp") String timeStamp,
-                          @RequestPart("rank") String rank, @RequestPart("files") MultipartFile[] photo) {
+    public ResBean setImg(@NotEmpty(message = "openid不能为空") @RequestPart("openid") String openid,
+                          @NotEmpty(message = "时间不能为空") @RequestPart("timeStamp") String timeStamp,
+                          @NotEmpty(message = "顺序不能为空") @RequestPart("rank") String rank,
+                          @NotNull(message = "图片不能为空") @RequestPart("files") MultipartFile[] photo) {
         Boolean ret = tradeService.setImg(openid, timeStamp, rank, photo);
 
         if (!ret) {

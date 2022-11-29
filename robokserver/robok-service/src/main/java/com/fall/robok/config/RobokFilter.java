@@ -5,10 +5,14 @@ import com.fall.robok.service.impl.UserServiceImpl;
 import com.fall.robok.util.bean.ResBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -30,6 +34,10 @@ public class RobokFilter implements Filter {
 
     @Autowired
     ServerConfig serverConfig;
+
+    @Autowired
+    @Qualifier("handlerExceptionResolver")
+    private HandlerExceptionResolver resolver;
 
     private Boolean isDev = false;
 
@@ -55,7 +63,6 @@ public class RobokFilter implements Filter {
         if (isDev) {
             allowedPath = allowedPath || path.contains(".jpg");
         }
-
         if (allowedPath) {
             chain.doFilter(request, response);
         } else {
@@ -71,9 +78,7 @@ public class RobokFilter implements Filter {
             } else {
                 returnJson(response, JSON.toJSONString(ResBean.badRequest(401, "登录信息已失效,请重新登录")));
             }
-
         }
-
     }
 
     @Override

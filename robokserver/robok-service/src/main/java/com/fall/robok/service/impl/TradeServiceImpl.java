@@ -64,7 +64,7 @@ public class TradeServiceImpl implements ITradeService {
         }
         String retUrl = url[0];
         if (serverConfig.getEnvironment().equals("dev")) {
-            retUrl = ("http://localhost:" + serverConfig.getPort() + "/api/") + url[0];
+            retUrl = ("http://localhost:" + serverConfig.getPort() + "/api/static/") + url[0];
         }
         Book book = new Book();
         book.setOpenId(openid);
