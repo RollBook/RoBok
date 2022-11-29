@@ -18,7 +18,6 @@ spring:
   # MVC配置
   mvc:
     throw-exception-if-no-handler-found: true
-    static-path-pattern: /static/**
     # swagger-ui启动配置
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER

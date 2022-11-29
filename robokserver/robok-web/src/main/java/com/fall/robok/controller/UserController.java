@@ -44,8 +44,8 @@ public class UserController {
      */
     @ApiOperation("用户登录&用户注册")
     @PostMapping("/login")
-    public ResBean userLogin(@NotEmpty(message = "调用凭证不能为空") String code,
-                             @NotEmpty(message = "昵称不能为空") String nickName) throws Exception {
+    public ResBean userLogin(@NotEmpty String code,
+                             @NotEmpty String nickName) throws Exception {
         Map ret = userService.SignInAndSignUp(code, nickName);
         ResBean res = null;
         if (ret == null) {
@@ -66,8 +66,8 @@ public class UserController {
      */
     @ApiOperation("检查用户登录信息是否过期")
     @GetMapping("/check_login")
-    public ResBean checkLogin(@NotEmpty(message = "openid不能为空") @RequestParam("openid") String openId,
-                              @NotEmpty(message = "key不能为空") @RequestParam("session_key") String sessionKey) {
+    public ResBean checkLogin(@NotEmpty @RequestParam("openid") String openId,
+                              @NotEmpty @RequestParam("session_key") String sessionKey) {
         Object ret = userService.isLogin(openId, sessionKey);
         if (ret == null) {
             return ResBean.badRequest("badRequest");
@@ -91,8 +91,8 @@ public class UserController {
      */
     @ApiOperation("获取用户手机号")
     @PostMapping("/code2phone_num")
-    public ResBean getPhoneNum(@NotEmpty(message = "调用凭证不能为空") @RequestParam("code") String code,
-                               @NotEmpty(message = "openid不能为空") @RequestParam("openid") String openId) {
+    public ResBean getPhoneNum(@NotEmpty @RequestParam("code") String code,
+                               @NotEmpty @RequestParam("openid") String openId) {
         Object phoneNum = userService.getPhoneNum(code, openId);
         if (phoneNum == null) {
             return ResBean.badRequest("badRequest");
