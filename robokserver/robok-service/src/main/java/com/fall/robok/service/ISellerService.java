@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @author FAll
  * @date 2022/11/21 10:27
  */
-public interface ITradeService {
+public interface ISellerService {
 
     /**
      * @param book

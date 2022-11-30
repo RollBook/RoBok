@@ -28,10 +28,10 @@ public class RollBookServiceImpl implements IRollBookService {
      * @date 2022/9/24 15:45
      */
     @Override
-    public ArrayList<String> getAllIndexSwiper() {
-        ArrayList<String> ret = new ArrayList<>();
+    public ArrayList<Img> getAllIndexSwiper() {
+        ArrayList<Img> ret = new ArrayList<>();
         for (Img img : indexImgMapper.getAllIndexSwiper()) {
-            ret.add(JSON.toJSONString(img));
+            ret.add(img);
         }
         return ret;
     }

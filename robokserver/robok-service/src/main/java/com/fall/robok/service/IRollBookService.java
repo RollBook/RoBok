@@ -1,5 +1,7 @@
 package com.fall.robok.service;
 
+import com.fall.robok.model.Img;
+
 import java.util.ArrayList;
 
 /**
@@ -14,5 +16,5 @@ public interface IRollBookService {
      * @return: java.util.ArrayList<java.lang.String>
      * @date 2022/11/21 10:29
      */
-    ArrayList<String> getAllIndexSwiper();
+    ArrayList<Img> getAllIndexSwiper();
 }

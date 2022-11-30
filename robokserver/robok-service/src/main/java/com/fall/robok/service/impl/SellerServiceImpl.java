@@ -3,7 +3,7 @@ package com.fall.robok.service.impl;
 import com.fall.robok.config.ServerConfig;
 import com.fall.robok.mapper.BookMapper;
 import com.fall.robok.model.Book;
-import com.fall.robok.service.ITradeService;
+import com.fall.robok.service.ISellerService;
 import com.fall.robok.util.file.MultipartFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 
 @Service
-public class TradeServiceImpl implements ITradeService {
+public class SellerServiceImpl implements ISellerService {
 
     @Autowired
     private BookMapper bookMapper;
