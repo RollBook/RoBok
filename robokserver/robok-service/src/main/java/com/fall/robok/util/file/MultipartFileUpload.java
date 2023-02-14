@@ -16,12 +16,16 @@ import java.nio.file.Paths;
 @Component
 public class MultipartFileUpload {
 
+    private final ServerConfig serverConfig;
+
     @Autowired
-    ServerConfig serverConfig;
+    public MultipartFileUpload(ServerConfig serverConfig) {
+        this.serverConfig = serverConfig;
+    }
 
     public String[] uploadFile(String[] fileNames, MultipartFile[] files) {
         String destination = serverConfig.getPath();
-        String urls[] = new String[fileNames.length];
+        String[] urls = new String[fileNames.length];
         for (int i = 0; i < files.length; i++) {
             try {
                 String wholeFileName = fileNames[i] + ".jpg";

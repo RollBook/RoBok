@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 public interface BookMapper {
 
     /**
-     * @param book
+     * @param book 书本
      * @author FAll
      * @description 添加书本
      * @return: java.lang.Integer
@@ -23,7 +23,7 @@ public interface BookMapper {
     Integer addBook(Book book);
 
     /**
-     * @param book
+     * @param book 书本
      * @author FAll
      * @description 修改书本信息
      * @return: java.lang.Integer

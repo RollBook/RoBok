@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     /**
-     * @param e
-     * @param response
+     * @param e 异常
+     * @param response http响应
      * @author FAll
      * @description 请求参数缺失
      * @return: com.fall.robok.util.bean.ResBean
@@ -36,8 +36,8 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * @param e
-     * @param response
+     * @param e 异常
+     * @param response http响应
      * @author FAll
      * @description 请求参数类型不匹配
      * @return: com.fall.robok.util.bean.ResBean
@@ -51,8 +51,8 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * @param e
-     * @param response
+     * @param e 异常
+     * @param response http响应
      * @author FAll
      * @description 参数校验错误
      * @return: com.fall.robok.util.bean.ResBean
@@ -67,7 +67,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * @param e
+     * @param e 异常
      * @author FAll
      * @description 请求地址不存在 (已弃用)
      * @return: com.fall.robok.util.bean.ResBean
@@ -81,8 +81,8 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * @param e
-     * @param response
+     * @param e 异常
+     * @param response http响应
      * @author FAll
      * @description 请求方式错误
      * @return: com.fall.robok.util.bean.ResBean
@@ -96,8 +96,8 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * @param e
-     * @param response
+     * @param e 异常
+     * @param response http响应
      * @author FAll
      * @description 兜底捕获其它异常
      * @return: com.fall.robok.util.bean.ResBean

@@ -1,7 +1,8 @@
 package com.fall.robok.task;
 
-import com.alibaba.fastjson.JSON;
 import com.fall.robok.config.WxConfig;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,13 +23,19 @@ import java.util.Map;
 @Component
 public class WXTask {
 
+    private final WxConfig wxConfig;
+
+    private final ObjectMapper mapper;
+
     @Autowired
-    WxConfig wxConfig;
+    public WXTask(WxConfig wxConfig,ObjectMapper mapper){
+        this.wxConfig = wxConfig;
+        this.mapper=mapper;
+    }
 
     public static String accessToken;
 
     /**
-     * @param
      * @author FAll
      * @description 获取微信官方下发的AccessToken, 每两小时更新一次
      * @date 2022/9/25 17:30
@@ -40,10 +48,15 @@ public class WXTask {
                 "&secret=" + wxConfig.getAppSecret();
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.set("Connection", "close");
-        HttpEntity requestEntity = new HttpEntity(requestHeaders);
+        HttpEntity<HttpHeaders> requestEntity = new HttpEntity<>(requestHeaders);
         HttpEntity<String> response = new RestTemplate().exchange(url, HttpMethod.GET, requestEntity, String.class);
 
-        Map ret = (Map) JSON.parseObject(response.getBody());
+        HashMap ret = null;
+        try {
+            ret = mapper.readValue(response.getBody(), HashMap.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
         accessToken = (String) ret.get("access_token");
 
     }

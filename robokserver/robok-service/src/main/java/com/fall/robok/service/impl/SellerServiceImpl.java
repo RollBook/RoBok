@@ -28,7 +28,7 @@ public class SellerServiceImpl implements ISellerService {
     private ServerConfig serverConfig;
 
     /**
-     * @param book
+     * @param book 书本
      * @author FAll
      * @description 添加书本
      * @return: java.lang.Boolean
@@ -42,13 +42,12 @@ public class SellerServiceImpl implements ISellerService {
         }
         return true;
     }
-    // 连接点 切入点 通知(增强逻辑) 切面
 
     /**
-     * @param openid
-     * @param timestamp
-     * @param rank
-     * @param photo
+     * @param openid openid
+     * @param timestamp 13位时间戳
+     * @param rank 图片排序
+     * @param photo 图片
      * @author FAll
      * @description 保存书本图片，生成url
      * @return: java.lang.String

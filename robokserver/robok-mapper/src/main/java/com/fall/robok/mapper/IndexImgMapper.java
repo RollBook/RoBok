@@ -19,7 +19,6 @@ public interface IndexImgMapper {
     /**
      * @author FAll
      * @description 获取主页所有轮播图
-     * @param
      * @return: java.util.List<com.fall.robok.model.Img>
      * @date 2022/9/24 15:20
      */

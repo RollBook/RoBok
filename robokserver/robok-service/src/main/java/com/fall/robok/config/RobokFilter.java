@@ -1,18 +1,16 @@
 package com.fall.robok.config;
 
-import com.alibaba.fastjson.JSON;
 import com.fall.robok.service.impl.UserServiceImpl;
 import com.fall.robok.util.bean.ResBean;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -24,20 +22,27 @@ import java.util.Set;
  * @author FAll
  * @date 2022/9/23 19:22
  */
-
-@WebFilter(urlPatterns = {"/user/*", "/trade/*"}, filterName = "RobokFilter")
 @Slf4j
+@WebFilter(urlPatterns = {"/user/*", "/trade/*"}, filterName = "RobokFilter")
 public class RobokFilter implements Filter {
 
-    @Autowired
-    UserServiceImpl userService;
+    private final UserServiceImpl userService;
 
-    @Autowired
-    ServerConfig serverConfig;
+    private final ServerConfig serverConfig;
 
-    @Autowired
     @Qualifier("handlerExceptionResolver")
-    private HandlerExceptionResolver resolver;
+    private final HandlerExceptionResolver resolver;
+
+    private final ObjectMapper mapper;
+
+    @Autowired
+    public RobokFilter(UserServiceImpl userService,ServerConfig serverConfig,
+                       HandlerExceptionResolver resolver,ObjectMapper mapper){
+        this.userService = userService;
+        this.serverConfig = serverConfig;
+        this.mapper=mapper;
+        this.resolver = resolver;
+    }
 
     private Boolean isDev = false;
 
@@ -55,7 +60,7 @@ public class RobokFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException, IOException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest req = (HttpServletRequest) request;
         String path = req.getRequestURI().substring(req.getContextPath().length()).replaceAll("[/]+$", "");
 
@@ -69,14 +74,14 @@ public class RobokFilter implements Filter {
             // redis校验session
             Object ret = userService.isLogin(req.getHeader("openid"), req.getHeader("session_key"));
             if (ret == null) {
-                returnJson(response, JSON.toJSONString(ResBean.badRequest(401, "登录信息已失效,请重新登录")));
+                returnJson(response, mapper.writeValueAsString(ResBean.badRequest(401, "登录信息已失效,请重新登录")));
                 return;
             }
             boolean isLogin = (boolean) ret;
             if (isLogin) {
                 chain.doFilter(request, response);
             } else {
-                returnJson(response, JSON.toJSONString(ResBean.badRequest(401, "登录信息已失效,请重新登录")));
+                returnJson(response, mapper.writeValueAsString(ResBean.badRequest(401, "登录信息已失效,请重新登录")));
             }
         }
     }

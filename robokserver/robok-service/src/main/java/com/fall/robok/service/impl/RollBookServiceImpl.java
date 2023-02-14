@@ -1,6 +1,5 @@
 package com.fall.robok.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.fall.robok.mapper.IndexImgMapper;
 import com.fall.robok.model.Img;
 import com.fall.robok.service.IRollBookService;
@@ -17,8 +16,12 @@ import java.util.ArrayList;
 @Service
 public class RollBookServiceImpl implements IRollBookService {
 
+    private final IndexImgMapper indexImgMapper;
+
     @Autowired
-    private IndexImgMapper indexImgMapper;
+    public RollBookServiceImpl(IndexImgMapper indexImgMapper){
+        this.indexImgMapper = indexImgMapper;
+    }
 
     /**
      * @param
@@ -29,11 +32,7 @@ public class RollBookServiceImpl implements IRollBookService {
      */
     @Override
     public ArrayList<Img> getAllIndexSwiper() {
-        ArrayList<Img> ret = new ArrayList<>();
-        for (Img img : indexImgMapper.getAllIndexSwiper()) {
-            ret.add(img);
-        }
-        return ret;
+        return new ArrayList<>(indexImgMapper.getAllIndexSwiper());
     }
 
 }
