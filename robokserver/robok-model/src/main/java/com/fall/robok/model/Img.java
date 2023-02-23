@@ -1,9 +1,12 @@
 package com.fall.robok.model;
 
+import com.sun.xml.internal.ws.developer.Serialization;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * @author FAll
@@ -14,7 +17,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Img {
+public class Img implements Serializable {
 
     String indexSwiper0;
 

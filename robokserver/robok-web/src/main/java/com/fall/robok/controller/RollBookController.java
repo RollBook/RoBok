@@ -24,7 +24,7 @@ public class RollBookController {
     RollBookServiceImpl rollBookService;
 
     /**
-     * @param response
+     * @param response http响应
      * @author FAll
      * @description 获取首页轮播图
      * @return: com.fall.robok.util.bean.ResBean
@@ -36,6 +36,5 @@ public class RollBookController {
         response.setStatus(200);
         return ResBean.ok("ok", rollBookService.getAllIndexSwiper());
     }
-
 
 }

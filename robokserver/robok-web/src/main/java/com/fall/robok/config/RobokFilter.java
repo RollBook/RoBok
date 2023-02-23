@@ -1,8 +1,8 @@
 package com.fall.robok.config;
 
-import com.alibaba.fastjson.JSON;
 import com.fall.robok.service.impl.UserServiceImpl;
 import com.fall.robok.util.bean.ResBean;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,14 +21,21 @@ import java.util.Set;
  * @date 2022/9/23 19:22
  */
 
-@WebFilter(urlPatterns = {"/user/*"}, filterName = "RobokFilter")
+@WebFilter(urlPatterns = {"/user/*", "/trade/*"}, filterName = "RobokFilter")
 @Slf4j
 public class RobokFilter implements Filter {
-    @Autowired
-    UserServiceImpl userService;
+    private final UserServiceImpl userService;
+
+    private final ServerConfig serverConfig;
+
+    private final ObjectMapper mapper;
 
     @Autowired
-    ServerConfig serverConfig;
+    public RobokFilter(UserServiceImpl userService,ServerConfig serverConfig,ObjectMapper mapper){
+        this.userService=userService;
+        this.serverConfig=serverConfig;
+        this.mapper=mapper;
+    }
 
     private Boolean isDev = false;
 
@@ -58,17 +65,17 @@ public class RobokFilter implements Filter {
         if (allowedPath) {
             chain.doFilter(request, response);
         } else {
-            // TODO: redis校验session
+            // redis校验session
             Object ret = userService.isLogin(req.getHeader("openid"), req.getHeader("session_key"));
             if (ret == null) {
-                returnJson(response, JSON.toJSONString(ResBean.badRequest(401, "登录信息已失效,请重新登录")));
+                returnJson(response, mapper.writeValueAsString(ResBean.badRequest(401, "登录信息已失效,请重新登录")));
                 return;
             }
             boolean isLogin = (boolean) ret;
             if (isLogin) {
                 chain.doFilter(request, response);
             } else {
-                returnJson(response, JSON.toJSONString(ResBean.badRequest(401, "登录信息已失效,请重新登录")));
+                returnJson(response, mapper.writeValueAsString(ResBean.badRequest(401, "登录信息已失效,请重新登录")));
             }
 
         }
@@ -81,25 +88,20 @@ public class RobokFilter implements Filter {
     }
 
     /**
-     * @param response
-     * @param json
+     * @param response http响应
+     * @param json Json数据
      * @author FAll
      * @description 拦截器内响应
      * @date 2022/9/24 14:15
      */
     private void returnJson(ServletResponse response, String json) {
-        PrintWriter writer = null;
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
-        try {
-            writer = response.getWriter();
+        try (PrintWriter writer = response.getWriter()) {
             writer.print(json);
 
         } catch (IOException e) {
             log.error("response error", e);
-        } finally {
-            if (writer != null)
-                writer.close();
         }
     }
 
