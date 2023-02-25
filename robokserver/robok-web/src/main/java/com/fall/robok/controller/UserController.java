@@ -4,9 +4,11 @@ import com.fall.robok.service.impl.UserServiceImpl;
 import com.fall.robok.util.bean.ResBean;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotEmpty;
 import java.util.HashMap;
 
@@ -15,7 +17,6 @@ import java.util.HashMap;
  * @author FAll
  * @date 2022/9/22 21:59
  */
-
 @Validated
 @RestController
 @RequestMapping("/user")
@@ -44,11 +45,12 @@ public class UserController {
      */
     @ApiOperation("用户登录&用户注册")
     @PostMapping("/login")
-    public ResBean userLogin(@NotEmpty String code,
-                             @NotEmpty String nickName) throws Exception {
+    public ResBean userLogin(@NotEmpty String code, @Nullable String nickName,
+                             HttpServletResponse response) throws Exception {
         HashMap<String, String> ret = userService.SignInAndSignUp(code, nickName);
         ResBean res;
         if (ret == null) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             res = ResBean.badRequest("badRequest");
         } else {
             res = ResBean.ok("ok", ret);
@@ -67,7 +69,8 @@ public class UserController {
     @ApiOperation("检查用户登录信息是否过期")
     @GetMapping("/check_login")
     public ResBean checkLogin(@NotEmpty @RequestParam("openid") String openId,
-                              @NotEmpty @RequestParam("session_key") String sessionKey) {
+                              @NotEmpty @RequestParam("session_key") String sessionKey,
+                              HttpServletResponse response) {
         Object ret = userService.isLogin(openId, sessionKey);
         if (ret == null) {
             return ResBean.badRequest("badRequest");
@@ -76,7 +79,8 @@ public class UserController {
         if (isLogin) {
             return ResBean.ok("ok");
         } else {
-            return ResBean.badRequest(401, "Unauthorized");
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return ResBean.unauthorized("Unauthorized");
         }
 
     }
@@ -98,7 +102,7 @@ public class UserController {
             return ResBean.badRequest("badRequest");
         }
 
-        return ResBean.ok("200", phoneNum);
+        return ResBean.ok("ok", phoneNum);
     }
 
 }

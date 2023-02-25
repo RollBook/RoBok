@@ -25,6 +25,6 @@ public interface IndexImgMapper {
     @Select("SELECT `index_swiper0`, `index_swiper1`," +
             " `index_swiper2`, `index_swiper3`, " +
             "`index_swiper4`, `index_swiper5`, `index_swiper6` FROM `t_img_index`")
-    List<Img> getAllIndexSwiper();
+    Img getAllIndexSwiper();
 
 }

@@ -35,27 +35,27 @@ public class RollBookServiceImpl implements IRollBookService {
      * @date 2022/9/24 15:45
      */
     @Override
-    public ArrayList<Img> getAllIndexSwiper() {
+    public ArrayList<String> getAllIndexSwiper() {
         ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
-        ArrayList<Img> imgs = new ArrayList<>();
+        ArrayList<String> imgs = new ArrayList<>();
 
         // 尝试从redis缓存中获取轮播图url
         Object objects = valueOperations.get("img");
         if (objects instanceof ArrayList<?>) {
             ArrayList<?> arrayList = (ArrayList<?>) objects;
             for (Object o : arrayList) {
-                if (o instanceof Img) {
-                    imgs.add((Img) o);
+                if (o instanceof String) {
+                    imgs.add((String) o);
                 }
             }
         } else {
             // 如果没有命中缓存，则从数据库中获取
-            imgs.addAll(indexImgMapper.getAllIndexSwiper());
+            Img allIndexSwiper = indexImgMapper.getAllIndexSwiper();
+            imgs = allIndexSwiper.getImgs();
 
             // 获取到轮播图url后存入缓存中
             valueOperations.set("img", imgs);
         }
-
         return imgs;
     }
 

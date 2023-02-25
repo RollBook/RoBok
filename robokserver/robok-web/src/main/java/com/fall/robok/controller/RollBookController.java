@@ -4,9 +4,8 @@ import com.fall.robok.service.impl.RollBookServiceImpl;
 import com.fall.robok.util.bean.ResBean;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2022/9/24 14:37
  */
 
+@Validated
 @RestController
 @RequestMapping("/rollbook")
 public class RollBookController {

@@ -116,21 +116,19 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public Boolean isLogin(String openId, String sessionKey) {
-
-        ValueOperations<String, String> stringValueOperations = stringRedisTemplate.opsForValue();
         if (openId == null) {
             return null;
         }
+
+        ValueOperations<String, String> stringValueOperations = stringRedisTemplate.opsForValue();
+
         String session = stringValueOperations.get(openId);
 
-        Boolean isLogin = null;
-        if (session == null) { // 已过期或未注册
-            isLogin = false;
-        } else if (SHA256Encrypt.getSHA256Str(session).equals(sessionKey)) { // 尚未过期
-            isLogin = true;
+        if(session == null) {
+            return false;
+        } else {
+            return SHA256Encrypt.getSHA256Str(session).equals(sessionKey);
         }
-
-        return isLogin;
     }
 
     /**

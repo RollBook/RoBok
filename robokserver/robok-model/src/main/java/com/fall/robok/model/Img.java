@@ -1,12 +1,12 @@
 package com.fall.robok.model;
 
-import com.sun.xml.internal.ws.developer.Serialization;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * @author FAll
@@ -18,6 +18,9 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Img implements Serializable {
+
+    // 序列化版本ID
+    private static final long serialVersionUID = 8841433872811285796L;
 
     String indexSwiper0;
 
@@ -32,5 +35,16 @@ public class Img implements Serializable {
     String indexSwiper5;
 
     String indexSwiper6;
+
+    public ArrayList<String> getImgs() {
+        ArrayList<String> imgs = new ArrayList<>();
+        imgs.add(indexSwiper0);
+        imgs.add(indexSwiper1);
+        imgs.add(indexSwiper2);
+        imgs.add(indexSwiper3);
+        imgs.add(indexSwiper4);
+        imgs.add(indexSwiper5);
+        return imgs;
+    }
 
 }
