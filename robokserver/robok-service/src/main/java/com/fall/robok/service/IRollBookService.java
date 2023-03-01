@@ -16,5 +16,5 @@ public interface IRollBookService {
      * @return: java.util.ArrayList<java.lang.String>
      * @date 2022/11/21 10:29
      */
-    ArrayList<Img> getAllIndexSwiper();
+    ArrayList<String> getAllIndexSwiper();
 }

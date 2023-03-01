@@ -1,692 +1,152 @@
-2022-11-30 12:15:03.140  INFO 45504 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 45504 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 12:15:03.145  INFO 45504 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 12:15:03.211  INFO 45504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 12:15:03.211  INFO 45504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 12:15:04.005  INFO 45504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 12:15:04.007  INFO 45504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 12:15:04.026  INFO 45504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
-2022-11-30 12:15:04.494  INFO 45504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 12:15:04.501  INFO 45504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 12:15:04.501  INFO 45504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 12:15:04.603  INFO 45504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 12:15:04.603  INFO 45504 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1392 ms
-2022-11-30 12:15:05.019  INFO 45504 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 12:15:05.044  INFO 45504 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 12:15:05.783  INFO 45504 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 12:15:05.883  INFO 45504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 12:15:06.065  INFO 45504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 12:15:06.066  INFO 45504 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 12:15:06.079  INFO 45504 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 12:15:06.100  INFO 45504 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 12:15:06.212  INFO 45504 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 3.407 seconds (JVM running for 4.427)
-2022-11-30 12:15:25.703  INFO 45504 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 12:15:25.704  INFO 45504 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 12:15:25.705  INFO 45504 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 12:15:34.526  INFO 45504 --- [http-nio-8899-exec-9] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-11-30 12:19:36.193  INFO 45504 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 12:19:36.211  INFO 45504 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-30 12:19:36.213  INFO 45504 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2022-11-30 12:19:41.793  INFO 66224 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 66224 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 12:19:41.794  INFO 66224 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 12:19:41.837  INFO 66224 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 12:19:41.838  INFO 66224 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 12:19:42.466  INFO 66224 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 12:19:42.467  INFO 66224 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 12:19:42.482  INFO 66224 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
-2022-11-30 12:19:42.865  INFO 66224 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 12:19:42.871  INFO 66224 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 12:19:42.871  INFO 66224 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 12:19:42.955  INFO 66224 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 12:19:42.955  INFO 66224 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1117 ms
-2022-11-30 12:19:43.298  INFO 66224 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 12:19:43.319  INFO 66224 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 12:19:44.001  INFO 66224 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 12:19:44.105  INFO 66224 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 12:19:44.261  INFO 66224 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 12:19:44.262  INFO 66224 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 12:19:44.273  INFO 66224 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 12:19:44.294  INFO 66224 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 12:19:44.421  INFO 66224 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.926 seconds (JVM running for 3.782)
-2022-11-30 12:19:48.640  INFO 66224 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 12:19:48.640  INFO 66224 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 12:19:48.641  INFO 66224 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 12:19:48.697  INFO 66224 --- [http-nio-8899-exec-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-11-30 12:22:45.900  INFO 66224 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 12:22:45.917  INFO 66224 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-30 12:22:45.919  INFO 66224 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2022-11-30 12:22:49.965  INFO 76208 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 76208 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 12:22:49.966  INFO 76208 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 12:22:50.003  INFO 76208 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 12:22:50.003  INFO 76208 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 12:22:50.642  INFO 76208 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 12:22:50.643  INFO 76208 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 12:22:50.659  INFO 76208 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
-2022-11-30 12:22:51.046  INFO 76208 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 12:22:51.052  INFO 76208 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 12:22:51.052  INFO 76208 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 12:22:51.133  INFO 76208 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 12:22:51.133  INFO 76208 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1130 ms
-2022-11-30 12:22:51.473  INFO 76208 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 12:22:51.493  INFO 76208 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 12:22:52.134  INFO 76208 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 12:22:52.224  INFO 76208 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 12:22:52.381  INFO 76208 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 12:22:52.382  INFO 76208 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 12:22:52.393  INFO 76208 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 12:22:52.414  INFO 76208 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 12:22:52.528  INFO 76208 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.86 seconds (JVM running for 3.709)
-2022-11-30 12:22:55.776  INFO 76208 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 12:22:55.776  INFO 76208 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 12:22:55.777  INFO 76208 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 12:22:55.831  INFO 76208 --- [http-nio-8899-exec-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-11-30 12:24:02.907  INFO 76208 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 12:24:02.927  INFO 76208 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-30 12:24:02.929  INFO 76208 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2022-11-30 12:24:06.985  INFO 72732 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 72732 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 12:24:06.986  INFO 72732 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 12:24:07.027  INFO 72732 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 12:24:07.027  INFO 72732 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 12:24:07.697  INFO 72732 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 12:24:07.698  INFO 72732 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 12:24:07.714  INFO 72732 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
-2022-11-30 12:24:08.110  INFO 72732 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 12:24:08.115  INFO 72732 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 12:24:08.115  INFO 72732 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 12:24:08.200  INFO 72732 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 12:24:08.200  INFO 72732 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1173 ms
-2022-11-30 12:24:08.544  INFO 72732 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 12:24:08.565  INFO 72732 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 12:24:09.256  INFO 72732 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 12:24:09.351  INFO 72732 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 12:24:09.508  INFO 72732 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 12:24:09.508  INFO 72732 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 12:24:09.519  INFO 72732 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 12:24:09.538  INFO 72732 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 12:24:09.648  INFO 72732 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.964 seconds (JVM running for 3.803)
-2022-11-30 12:24:13.673  INFO 72732 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 12:24:13.673  INFO 72732 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 12:24:13.674  INFO 72732 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 12:24:13.743  INFO 72732 --- [http-nio-8899-exec-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-11-30 12:24:41.469  INFO 72732 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 12:24:41.486  INFO 72732 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-30 12:24:41.488  INFO 72732 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2022-11-30 12:24:45.477  INFO 74780 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 74780 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 12:24:45.477  INFO 74780 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 12:24:45.514  INFO 74780 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 12:24:45.515  INFO 74780 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 12:24:46.161  INFO 74780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 12:24:46.162  INFO 74780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 12:24:46.180  INFO 74780 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
-2022-11-30 12:24:46.585  INFO 74780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 12:24:46.590  INFO 74780 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 12:24:46.591  INFO 74780 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 12:24:46.678  INFO 74780 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 12:24:46.678  INFO 74780 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1163 ms
-2022-11-30 12:24:47.035  INFO 74780 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 12:24:47.055  INFO 74780 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 12:24:47.701  INFO 74780 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 12:24:47.797  INFO 74780 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 12:24:47.953  INFO 74780 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 12:24:47.954  INFO 74780 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 12:24:47.966  INFO 74780 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 12:24:47.985  INFO 74780 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 12:24:48.097  INFO 74780 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.912 seconds (JVM running for 3.744)
-2022-11-30 12:24:50.416  INFO 74780 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 12:24:50.416  INFO 74780 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 12:24:50.417  INFO 74780 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 12:24:50.477  INFO 74780 --- [http-nio-8899-exec-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-11-30 12:25:42.014  INFO 74780 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 12:25:42.031  INFO 74780 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-30 12:25:42.033  INFO 74780 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2022-11-30 12:25:46.274  INFO 73916 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 73916 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 12:25:46.275  INFO 73916 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 12:25:46.316  INFO 73916 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 12:25:46.316  INFO 73916 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 12:25:46.981  INFO 73916 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 12:25:46.982  INFO 73916 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 12:25:46.998  INFO 73916 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
-2022-11-30 12:25:47.385  INFO 73916 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 12:25:47.391  INFO 73916 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 12:25:47.391  INFO 73916 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 12:25:47.472  INFO 73916 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 12:25:47.472  INFO 73916 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1155 ms
-2022-11-30 12:25:47.819  INFO 73916 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 12:25:47.840  INFO 73916 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 12:25:48.484  INFO 73916 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 12:25:48.574  INFO 73916 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 12:25:48.727  INFO 73916 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 12:25:48.727  INFO 73916 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 12:25:48.738  INFO 73916 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 12:25:48.757  INFO 73916 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 12:25:48.871  INFO 73916 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.891 seconds (JVM running for 3.74)
-2022-11-30 12:25:52.230  INFO 73916 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 12:25:52.230  INFO 73916 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 12:25:52.231  INFO 73916 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 12:25:52.291  INFO 73916 --- [http-nio-8899-exec-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-11-30 12:27:13.030  INFO 73916 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 12:27:13.048  INFO 73916 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-30 12:27:13.049  INFO 73916 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2022-11-30 12:27:18.418  INFO 29816 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 29816 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 12:27:18.419  INFO 29816 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 12:27:18.456  INFO 29816 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 12:27:18.456  INFO 29816 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 12:27:19.116  INFO 29816 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 12:27:19.117  INFO 29816 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 12:27:19.132  INFO 29816 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
-2022-11-30 12:27:19.533  INFO 29816 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 12:27:19.538  INFO 29816 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 12:27:19.538  INFO 29816 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 12:27:19.616  INFO 29816 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 12:27:19.616  INFO 29816 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1159 ms
-2022-11-30 12:27:19.982  INFO 29816 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 12:27:20.004  INFO 29816 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 12:27:20.735  INFO 29816 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 12:27:20.827  INFO 29816 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 12:27:20.978  INFO 29816 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 12:27:20.979  INFO 29816 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 12:27:20.990  INFO 29816 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 12:27:21.009  INFO 29816 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 12:27:21.119  INFO 29816 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.99 seconds (JVM running for 3.855)
-2022-11-30 12:27:23.242  INFO 29816 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 12:27:23.242  INFO 29816 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 12:27:23.243  INFO 29816 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 12:27:23.296  INFO 29816 --- [http-nio-8899-exec-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-11-30 12:34:16.724  INFO 29816 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 12:34:16.742  INFO 29816 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-30 12:34:16.743  INFO 29816 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2022-11-30 12:34:22.035  INFO 47008 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 47008 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 12:34:22.036  INFO 47008 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 12:34:22.074  INFO 47008 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 12:34:22.075  INFO 47008 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 12:34:22.712  INFO 47008 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 12:34:22.713  INFO 47008 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 12:34:22.730  INFO 47008 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
-2022-11-30 12:34:23.132  INFO 47008 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 12:34:23.138  INFO 47008 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 12:34:23.138  INFO 47008 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 12:34:23.227  INFO 47008 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 12:34:23.227  INFO 47008 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1152 ms
-2022-11-30 12:34:23.571  INFO 47008 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 12:34:23.591  INFO 47008 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 12:34:24.199  INFO 47008 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 12:34:24.288  INFO 47008 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 12:34:24.438  INFO 47008 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 12:34:24.438  INFO 47008 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 12:34:24.449  INFO 47008 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 12:34:24.468  INFO 47008 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 12:34:24.578  INFO 47008 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.853 seconds (JVM running for 3.7)
-2022-11-30 12:34:26.644  INFO 47008 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 12:34:26.645  INFO 47008 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 12:34:26.646  INFO 47008 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 12:34:26.702  INFO 47008 --- [http-nio-8899-exec-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-11-30 12:45:03.899  INFO 47008 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 12:45:03.917  INFO 47008 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-30 12:45:03.919  INFO 47008 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2022-11-30 12:45:08.234  INFO 73620 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 73620 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 12:45:08.235  INFO 73620 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 12:45:08.273  INFO 73620 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 12:45:08.273  INFO 73620 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 12:45:08.933  INFO 73620 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 12:45:08.934  INFO 73620 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 12:45:08.951  INFO 73620 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
-2022-11-30 12:45:09.344  INFO 73620 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 12:45:09.349  INFO 73620 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 12:45:09.350  INFO 73620 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 12:45:09.441  INFO 73620 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 12:45:09.442  INFO 73620 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1169 ms
-2022-11-30 12:45:09.791  INFO 73620 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 12:45:09.811  INFO 73620 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 12:45:10.486  INFO 73620 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 12:45:10.583  INFO 73620 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 12:45:10.745  INFO 73620 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 12:45:10.746  INFO 73620 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 12:45:10.758  INFO 73620 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 12:45:10.778  INFO 73620 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 12:45:10.888  INFO 73620 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.972 seconds (JVM running for 3.804)
-2022-11-30 12:45:14.278  INFO 73620 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 12:45:14.278  INFO 73620 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 12:45:14.279  INFO 73620 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-11-30 12:45:14.340  INFO 73620 --- [http-nio-8899-exec-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-11-30 13:01:36.739  INFO 73620 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 13:01:36.759  INFO 73620 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-30 13:01:36.761  INFO 73620 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2022-11-30 13:01:40.929  INFO 75148 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 75148 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 13:01:40.930  INFO 75148 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 13:01:40.971  INFO 75148 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 13:01:40.971  INFO 75148 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 13:01:41.606  INFO 75148 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 13:01:41.608  INFO 75148 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 13:01:41.624  INFO 75148 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
-2022-11-30 13:01:42.014  INFO 75148 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 13:01:42.019  INFO 75148 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 13:01:42.019  INFO 75148 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 13:01:42.104  INFO 75148 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 13:01:42.104  INFO 75148 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1132 ms
-2022-11-30 13:01:42.444  INFO 75148 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 13:01:42.468  INFO 75148 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 13:01:43.161  INFO 75148 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 13:01:43.252  INFO 75148 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 13:01:43.401  INFO 75148 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 13:01:43.402  INFO 75148 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 13:01:43.413  INFO 75148 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 13:01:43.431  INFO 75148 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 13:01:43.530  INFO 75148 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.906 seconds (JVM running for 3.75)
-2022-11-30 13:01:50.406  INFO 75148 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 13:01:50.406  INFO 75148 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 13:01:50.407  INFO 75148 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 13:01:50.465  INFO 75148 --- [http-nio-8899-exec-1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-11-30 13:03:51.888  INFO 75148 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 13:03:51.906  INFO 75148 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-30 13:03:51.907  INFO 75148 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2022-11-30 13:03:57.625  INFO 75420 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 75420 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 13:03:57.626  INFO 75420 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 13:03:57.676  INFO 75420 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 13:03:57.676  INFO 75420 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 13:03:58.549  INFO 75420 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 13:03:58.550  INFO 75420 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 13:03:58.565  INFO 75420 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
-2022-11-30 13:03:59.070  INFO 75420 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 13:03:59.097  INFO 75420 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 13:03:59.098  INFO 75420 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 13:03:59.245  INFO 75420 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 13:03:59.245  INFO 75420 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1568 ms
-2022-11-30 13:03:59.756  INFO 75420 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 13:03:59.782  INFO 75420 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 13:04:01.087  INFO 75420 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 13:04:01.252  INFO 75420 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 13:04:01.501  INFO 75420 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 13:04:01.503  INFO 75420 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 13:04:01.525  INFO 75420 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 13:04:01.564  INFO 75420 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 13:04:01.700  INFO 75420 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 4.426 seconds (JVM running for 5.492)
-2022-11-30 13:04:11.501  INFO 75420 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 13:04:11.501  INFO 75420 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 13:04:11.502  INFO 75420 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 13:04:11.520  WARN 75420 --- [http-nio-8899-exec-1] c.f.r.s.e.GlobalExceptionHandler         : 请求方式错误
+2023-03-01 10:35:01.551  INFO 23632 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 23632 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
+2023-03-01 10:35:01.556  INFO 23632 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
+2023-03-01 10:35:01.630  INFO 23632 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-01 10:35:01.630  INFO 23632 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-01 10:35:02.841  INFO 23632 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-03-01 10:35:02.844  INFO 23632 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-01 10:35:02.874  INFO 23632 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2023-03-01 10:35:03.640  INFO 23632 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2023-03-01 10:35:03.653  INFO 23632 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-03-01 10:35:03.653  INFO 23632 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-03-01 10:35:03.824  INFO 23632 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2023-03-01 10:35:03.824  INFO 23632 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2194 ms
+2023-03-01 10:35:03.982  INFO 23632 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2023-03-01 10:35:04.625  INFO 23632 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2023-03-01 10:35:05.159  INFO 23632 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
+2023-03-01 10:35:05.205  INFO 23632 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
+2023-03-01 10:35:27.038  WARN 23632 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'WXTask': Invocation of init method failed; nested exception is org.springframework.web.client.ResourceAccessException: I/O error on GET request for "https://api.weixin.qq.com/cgi-bin/token": Read timed out; nested exception is javax.net.ssl.SSLException: Read timed out
+2023-03-01 10:35:27.067  INFO 23632 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2023-03-01 10:35:27.071  INFO 23632 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-03-01 10:35:27.073  INFO 23632 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter destroyed
+2023-03-01 10:35:27.087  INFO 23632 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
 
-org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported
-	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:253) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:442) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:383) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:125) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:67) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:498) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1264) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1046) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) [spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) [spring-webmvc-5.3.22.jar:5.3.22]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) [tomcat-embed-core-9.0.65.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) [spring-webmvc-5.3.22.jar:5.3.22]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) [tomcat-embed-core-9.0.65.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-5.3.22.jar:5.3.22]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.22.jar:5.3.22]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.3.22.jar:5.3.22]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.22.jar:5.3.22]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.3.22.jar:5.3.22]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.22.jar:5.3.22]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.65.jar:9.0.65]
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-03-01 10:35:27.131 ERROR 23632 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'WXTask': Invocation of init method failed; nested exception is org.springframework.web.client.ResourceAccessException: I/O error on GET request for "https://api.weixin.qq.com/cgi-bin/token": Read timed out; nested exception is javax.net.ssl.SSLException: Read timed out
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.22.jar:5.3.22]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.22.jar:5.3.22]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) [spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) [spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) [spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) [spring-boot-2.7.3.jar:2.7.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) [spring-boot-2.7.3.jar:2.7.3]
+	at com.fall.robok.RobokWebApplication.main(RobokWebApplication.java:13) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_292]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_292]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_292]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_292]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.7.3.jar:2.7.3]
+Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "https://api.weixin.qq.com/cgi-bin/token": Read timed out; nested exception is javax.net.ssl.SSLException: Read timed out
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:785) ~[spring-web-5.3.22.jar:5.3.22]
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:711) ~[spring-web-5.3.22.jar:5.3.22]
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:602) ~[spring-web-5.3.22.jar:5.3.22]
+	at com.fall.robok.task.WXTask.getAcessToken(WXTask.java:52) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_292]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_292]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_292]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_292]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333) ~[spring-beans-5.3.22.jar:5.3.22]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157) ~[spring-beans-5.3.22.jar:5.3.22]
+	... 23 common frames omitted
+Caused by: javax.net.ssl.SSLException: Read timed out
+	at sun.security.ssl.Alert.createSSLException(Alert.java:127) ~[na:1.8.0_292]
+	at sun.security.ssl.TransportContext.fatal(TransportContext.java:324) ~[na:1.8.0_292]
+	at sun.security.ssl.TransportContext.fatal(TransportContext.java:267) ~[na:1.8.0_292]
+	at sun.security.ssl.TransportContext.fatal(TransportContext.java:262) ~[na:1.8.0_292]
+	at sun.security.ssl.SSLTransport.decode(SSLTransport.java:138) ~[na:1.8.0_292]
+	at sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1383) ~[na:1.8.0_292]
+	at sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1291) ~[na:1.8.0_292]
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:435) ~[na:1.8.0_292]
+	at sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:559) ~[na:1.8.0_292]
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:197) ~[na:1.8.0_292]
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.connect(HttpsURLConnectionImpl.java:167) ~[na:1.8.0_292]
+	at org.springframework.http.client.SimpleBufferingClientHttpRequest.executeInternal(SimpleBufferingClientHttpRequest.java:76) ~[spring-web-5.3.22.jar:5.3.22]
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48) ~[spring-web-5.3.22.jar:5.3.22]
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-5.3.22.jar:5.3.22]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:776) ~[spring-web-5.3.22.jar:5.3.22]
+	... 33 common frames omitted
+	Suppressed: java.net.SocketException: Connection reset by peer: socket write error
+		at java.net.SocketOutputStream.socketWrite0(Native Method) ~[na:1.8.0_292]
+		at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:111) ~[na:1.8.0_292]
+		at java.net.SocketOutputStream.write(SocketOutputStream.java:155) ~[na:1.8.0_292]
+		at sun.security.ssl.SSLSocketOutputRecord.encodeAlert(SSLSocketOutputRecord.java:81) ~[na:1.8.0_292]
+		at sun.security.ssl.TransportContext.fatal(TransportContext.java:355) ~[na:1.8.0_292]
+		... 46 common frames omitted
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_292]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_292]
+	at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_292]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_292]
+	at sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:457) ~[na:1.8.0_292]
+	at sun.security.ssl.SSLSocketInputRecord.decode(SSLSocketInputRecord.java:165) ~[na:1.8.0_292]
+	at sun.security.ssl.SSLTransport.decode(SSLTransport.java:109) ~[na:1.8.0_292]
+	... 43 common frames omitted
+
+2023-03-01 10:38:15.864  INFO 26080 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 26080 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
+2023-03-01 10:38:15.866  INFO 26080 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
+2023-03-01 10:38:15.931  INFO 26080 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-01 10:38:15.931  INFO 26080 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-01 10:38:17.080  INFO 26080 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-03-01 10:38:17.083  INFO 26080 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-01 10:38:17.109  INFO 26080 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2023-03-01 10:38:17.822  INFO 26080 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2023-03-01 10:38:17.833  INFO 26080 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-03-01 10:38:17.834  INFO 26080 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-03-01 10:38:18.033  INFO 26080 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2023-03-01 10:38:18.033  INFO 26080 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2101 ms
+2023-03-01 10:38:18.167  INFO 26080 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2023-03-01 10:38:18.729  INFO 26080 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2023-03-01 10:38:19.371  INFO 26080 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
+2023-03-01 10:38:19.437  INFO 26080 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
+2023-03-01 10:38:20.728  INFO 26080 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-03-01 10:38:20.867  INFO 26080 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-03-01 10:38:21.190  INFO 26080 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
+2023-03-01 10:38:21.193  INFO 26080 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-03-01 10:38:21.224  INFO 26080 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-03-01 10:38:21.271  INFO 26080 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-03-01 10:38:21.504  INFO 26080 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 6.232 seconds (JVM running for 8.025)
+2023-03-01 11:19:23.937  INFO 26080 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-01 11:19:23.937  INFO 26080 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-03-01 11:19:23.941  INFO 26080 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2023-03-01 12:49:46.456  INFO 26080 --- [lettuce-nioEventLoop-4-1] io.lettuce.core.protocol.CommandHandler  : null Unexpected exception during request: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method) ~[na:1.8.0_292]
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43) ~[na:1.8.0_292]
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223) ~[na:1.8.0_292]
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192) ~[na:1.8.0_292]
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:379) ~[na:1.8.0_292]
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:258) ~[netty-buffer-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132) ~[netty-buffer-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151) ~[netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:722) [netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:658) [netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:584) [netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:496) [netty-transport-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) [netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) [netty-common-4.1.79.Final.jar:4.1.79.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) [netty-common-4.1.79.Final.jar:4.1.79.Final]
 	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_292]
 
-2022-11-30 13:04:11.545  WARN 75420 --- [http-nio-8899-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
-2022-11-30 13:04:24.335  INFO 75420 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 13:04:24.357  INFO 75420 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
-2022-11-30 13:04:28.556  INFO 60204 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 60204 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 13:04:28.557  INFO 60204 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 13:04:28.597  INFO 60204 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 13:04:28.597  INFO 60204 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 13:04:29.247  INFO 60204 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 13:04:29.249  INFO 60204 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 13:04:29.264  INFO 60204 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
-2022-11-30 13:04:29.658  INFO 60204 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 13:04:29.664  INFO 60204 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 13:04:29.664  INFO 60204 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 13:04:29.760  INFO 60204 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 13:04:29.760  INFO 60204 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1162 ms
-2022-11-30 13:04:30.107  INFO 60204 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 13:04:30.128  INFO 60204 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 13:04:30.903  INFO 60204 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 13:04:31.028  INFO 60204 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 13:04:31.240  INFO 60204 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 13:04:31.240  INFO 60204 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 13:04:31.255  INFO 60204 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 13:04:31.276  INFO 60204 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 13:04:31.401  INFO 60204 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 3.141 seconds (JVM running for 3.981)
-2022-11-30 13:04:34.024  INFO 60204 --- [http-nio-8899-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 13:04:34.024  INFO 60204 --- [http-nio-8899-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 13:04:34.025  INFO 60204 --- [http-nio-8899-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 13:04:34.042  WARN 60204 --- [http-nio-8899-exec-2] c.f.r.s.e.GlobalExceptionHandler         : 请求方式错误
-
-org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported
-	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:253) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:442) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:383) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:125) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:67) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:498) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1264) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1046) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) [spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) [spring-webmvc-5.3.22.jar:5.3.22]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) [tomcat-embed-core-9.0.65.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) [spring-webmvc-5.3.22.jar:5.3.22]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) [tomcat-embed-core-9.0.65.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-5.3.22.jar:5.3.22]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.22.jar:5.3.22]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.3.22.jar:5.3.22]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.22.jar:5.3.22]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.3.22.jar:5.3.22]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.22.jar:5.3.22]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_292]
-
-2022-11-30 13:04:34.079  WARN 60204 --- [http-nio-8899-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
-2022-11-30 13:05:45.916  WARN 60204 --- [http-nio-8899-exec-7] c.f.r.s.e.GlobalExceptionHandler         : 请求方式错误
-
-org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported
-	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:253) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:442) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:383) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:125) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:67) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:498) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1264) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1046) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) [spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) [spring-webmvc-5.3.22.jar:5.3.22]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) [tomcat-embed-core-9.0.65.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) [spring-webmvc-5.3.22.jar:5.3.22]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) [tomcat-embed-core-9.0.65.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-5.3.22.jar:5.3.22]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.22.jar:5.3.22]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.3.22.jar:5.3.22]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.22.jar:5.3.22]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.3.22.jar:5.3.22]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.22.jar:5.3.22]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_292]
-
-2022-11-30 13:05:45.918  WARN 60204 --- [http-nio-8899-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
-2022-11-30 13:05:50.531  INFO 60204 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 13:05:50.558  INFO 60204 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
-2022-11-30 13:05:55.045  INFO 64316 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 64316 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 13:05:55.046  INFO 64316 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 13:05:55.084  INFO 64316 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 13:05:55.084  INFO 64316 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 13:05:55.738  INFO 64316 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 13:05:55.739  INFO 64316 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 13:05:55.762  INFO 64316 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
-2022-11-30 13:05:56.168  INFO 64316 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 13:05:56.174  INFO 64316 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 13:05:56.174  INFO 64316 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 13:05:56.260  INFO 64316 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 13:05:56.260  INFO 64316 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1176 ms
-2022-11-30 13:05:56.612  INFO 64316 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 13:05:56.632  INFO 64316 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 13:05:57.255  INFO 64316 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 13:05:57.346  INFO 64316 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 13:05:57.503  INFO 64316 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 13:05:57.503  INFO 64316 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 13:05:57.514  INFO 64316 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 13:05:57.533  INFO 64316 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 13:05:57.644  INFO 64316 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.888 seconds (JVM running for 3.875)
-2022-11-30 13:08:42.610  INFO 64316 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 13:08:42.633  INFO 64316 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
-2022-11-30 13:08:47.153  INFO 51268 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 51268 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 13:08:47.154  INFO 51268 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 13:08:47.201  INFO 51268 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 13:08:47.201  INFO 51268 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 13:08:47.949  INFO 51268 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 13:08:47.951  INFO 51268 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 13:08:47.971  INFO 51268 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
-2022-11-30 13:08:48.423  INFO 51268 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 13:08:48.428  INFO 51268 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 13:08:48.428  INFO 51268 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 13:08:48.516  INFO 51268 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 13:08:48.516  INFO 51268 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1314 ms
-2022-11-30 13:08:48.855  INFO 51268 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 13:08:48.877  INFO 51268 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 13:08:49.535  INFO 51268 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 13:08:49.629  INFO 51268 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 13:08:49.788  INFO 51268 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 13:08:49.789  INFO 51268 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 13:08:49.801  INFO 51268 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 13:08:49.820  INFO 51268 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 13:08:49.930  INFO 51268 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 3.118 seconds (JVM running for 4.045)
-2022-11-30 13:08:55.053  INFO 51268 --- [http-nio-8899-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 13:08:55.054  INFO 51268 --- [http-nio-8899-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 13:08:55.054  INFO 51268 --- [http-nio-8899-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2022-11-30 13:08:55.069  WARN 51268 --- [http-nio-8899-exec-2] c.f.r.s.e.GlobalExceptionHandler         : 请求方式错误
-
-org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported
-	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:253) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:442) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:383) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:125) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:67) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:498) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1264) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1046) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) [spring-webmvc-5.3.22.jar:5.3.22]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) [spring-webmvc-5.3.22.jar:5.3.22]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) [tomcat-embed-core-9.0.65.jar:4.0.FR]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) [spring-webmvc-5.3.22.jar:5.3.22]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) [tomcat-embed-core-9.0.65.jar:4.0.FR]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) [spring-web-5.3.22.jar:5.3.22]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.22.jar:5.3.22]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) [spring-web-5.3.22.jar:5.3.22]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.22.jar:5.3.22]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) [spring-web-5.3.22.jar:5.3.22]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) [spring-web-5.3.22.jar:5.3.22]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.65.jar:9.0.65]
-	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_292]
-
-2022-11-30 13:08:55.094  WARN 51268 --- [http-nio-8899-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
-2022-11-30 13:08:59.955  INFO 51268 --- [http-nio-8899-exec-3] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-11-30 13:24:08.264  INFO 51268 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 13:24:08.285  INFO 51268 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
-2022-11-30 13:24:08.287  INFO 51268 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
-2022-11-30 13:24:14.065  INFO 53500 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 53500 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 13:24:14.066  INFO 53500 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 13:24:14.102  INFO 53500 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 13:24:14.103  INFO 53500 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 13:24:14.745  INFO 53500 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 13:24:14.746  INFO 53500 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 13:24:14.762  INFO 53500 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
-2022-11-30 13:24:15.148  INFO 53500 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 13:24:15.154  INFO 53500 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 13:24:15.154  INFO 53500 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 13:24:15.236  INFO 53500 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 13:24:15.237  INFO 53500 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1133 ms
-2022-11-30 13:24:15.580  INFO 53500 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 13:24:15.601  INFO 53500 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 13:24:16.261  INFO 53500 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 13:24:16.373  INFO 53500 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 13:24:16.541  INFO 53500 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 13:24:16.542  INFO 53500 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 13:24:16.553  INFO 53500 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 13:24:16.571  INFO 53500 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 13:24:16.674  INFO 53500 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.917 seconds (JVM running for 3.74)
-2022-11-30 13:25:19.944  INFO 53500 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 13:25:19.944  INFO 53500 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 13:25:19.945  INFO 53500 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 13:26:58.799  INFO 53500 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 13:26:58.822  INFO 53500 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
-2022-11-30 13:27:03.269  INFO 52988 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 52988 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 13:27:03.270  INFO 52988 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 13:27:03.315  INFO 52988 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 13:27:03.315  INFO 52988 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 13:27:03.963  INFO 52988 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 13:27:03.964  INFO 52988 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 13:27:03.980  INFO 52988 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
-2022-11-30 13:27:04.366  INFO 52988 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 13:27:04.372  INFO 52988 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 13:27:04.372  INFO 52988 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 13:27:04.456  INFO 52988 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 13:27:04.456  INFO 52988 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1140 ms
-2022-11-30 13:27:04.811  INFO 52988 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 13:27:04.832  INFO 52988 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 13:27:05.526  INFO 52988 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 13:27:05.613  INFO 52988 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 13:27:05.762  INFO 52988 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 13:27:05.763  INFO 52988 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 13:27:05.774  INFO 52988 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 13:27:05.793  INFO 52988 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 13:27:05.894  INFO 52988 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.903 seconds (JVM running for 3.816)
-2022-11-30 13:27:09.268  INFO 52988 --- [http-nio-8899-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 13:27:09.268  INFO 52988 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 13:27:09.269  INFO 52988 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 13:28:01.020  INFO 52988 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 13:28:01.045  INFO 52988 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
-2022-11-30 13:28:05.626  INFO 63504 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 63504 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 13:28:05.627  INFO 63504 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 13:28:05.669  INFO 63504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 13:28:05.670  INFO 63504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 13:28:06.354  INFO 63504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 13:28:06.355  INFO 63504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 13:28:06.372  INFO 63504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
-2022-11-30 13:28:06.796  INFO 63504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 13:28:06.802  INFO 63504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 13:28:06.803  INFO 63504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 13:28:06.916  INFO 63504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 13:28:06.916  INFO 63504 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1246 ms
-2022-11-30 13:28:07.299  INFO 63504 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 13:28:07.322  INFO 63504 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 13:28:08.025  INFO 63504 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 13:28:08.123  INFO 63504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 13:28:08.281  INFO 63504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 13:28:08.281  INFO 63504 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 13:28:08.293  INFO 63504 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 13:28:08.312  INFO 63504 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 13:28:08.421  INFO 63504 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 3.117 seconds (JVM running for 4.134)
-2022-11-30 13:28:08.966  INFO 63504 --- [http-nio-8899-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-11-30 13:28:08.966  INFO 63504 --- [http-nio-8899-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-11-30 13:28:08.967  INFO 63504 --- [http-nio-8899-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2022-11-30 13:28:33.557  INFO 63504 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 13:28:33.578  INFO 63504 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
-2022-11-30 13:28:38.132  INFO 64880 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 64880 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
-2022-11-30 13:28:38.133  INFO 64880 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
-2022-11-30 13:28:38.182  INFO 64880 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-30 13:28:38.182  INFO 64880 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-30 13:28:38.819  INFO 64880 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2022-11-30 13:28:38.820  INFO 64880 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-11-30 13:28:38.836  INFO 64880 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
-2022-11-30 13:28:39.227  INFO 64880 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
-2022-11-30 13:28:39.233  INFO 64880 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-11-30 13:28:39.233  INFO 64880 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
-2022-11-30 13:28:39.317  INFO 64880 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2022-11-30 13:28:39.317  INFO 64880 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1135 ms
-2022-11-30 13:28:39.664  INFO 64880 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
-2022-11-30 13:28:39.686  INFO 64880 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
-2022-11-30 13:28:40.324  INFO 64880 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-11-30 13:28:40.413  INFO 64880 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-11-30 13:28:40.561  INFO 64880 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
-2022-11-30 13:28:40.562  INFO 64880 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2022-11-30 13:28:40.572  INFO 64880 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2022-11-30 13:28:40.591  INFO 64880 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2022-11-30 13:28:40.702  INFO 64880 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 2.924 seconds (JVM running for 3.846)
-2022-11-30 13:34:48.850  INFO 64880 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
-2022-11-30 13:34:48.874  INFO 64880 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
+2023-03-01 12:49:46.524  INFO 26080 --- [lettuce-eventExecutorLoop-1-4] i.l.core.protocol.ConnectionWatchdog     : Reconnecting, last destination was localhost/127.0.0.1:6379
+2023-03-01 12:49:48.543  WARN 26080 --- [lettuce-nioEventLoop-4-2] i.l.core.protocol.ConnectionWatchdog     : Cannot reconnect to [localhost:6379]: Connection refused: no further information: localhost/127.0.0.1:6379
+2023-03-01 12:49:52.818  INFO 26080 --- [lettuce-eventExecutorLoop-1-7] i.l.core.protocol.ConnectionWatchdog     : Reconnecting, last destination was localhost:6379
+2023-03-01 12:49:54.823  WARN 26080 --- [lettuce-nioEventLoop-4-5] i.l.core.protocol.ConnectionWatchdog     : Cannot reconnect to [localhost:6379]: Connection refused: no further information: localhost/127.0.0.1:6379
+2023-03-01 12:49:59.118  INFO 26080 --- [lettuce-eventExecutorLoop-1-10] i.l.core.protocol.ConnectionWatchdog     : Reconnecting, last destination was localhost:6379
+2023-03-01 12:50:01.127  WARN 26080 --- [lettuce-nioEventLoop-4-8] i.l.core.protocol.ConnectionWatchdog     : Cannot reconnect to [localhost:6379]: Connection refused: no further information: localhost/127.0.0.1:6379
+2023-03-01 12:50:04.991  INFO 26080 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
+2023-03-01 12:50:05.179  INFO 26080 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed

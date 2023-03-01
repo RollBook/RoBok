@@ -1,13 +1,13 @@
 package com.fall.robok.service.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.fall.robok.config.WxConfig;
 import com.fall.robok.mapper.UserMapper;
 import com.fall.robok.model.User;
 import com.fall.robok.service.IUserService;
 import com.fall.robok.task.WXTask;
 import com.fall.robok.util.encrypt.SHA256Encrypt;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -30,17 +30,24 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class UserServiceImpl implements IUserService {
 
-    @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
+
+    private final WxConfig wxConfig;
+
+    private final StringRedisTemplate stringRedisTemplate;
+
+    private final ObjectMapper mapper;
 
     @Autowired
-    private WxConfig wxConfig;
-
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
+    public UserServiceImpl(UserMapper userMapper, WxConfig wxConfig,
+                           StringRedisTemplate stringRedisTemplate, ObjectMapper mapper) {
+        this.userMapper = userMapper;
+        this.wxConfig = wxConfig;
+        this.stringRedisTemplate = stringRedisTemplate;
+        this.mapper = mapper;
+    }
 
     /**
-     * @param
      * @author FAll
      * @description 获取所有用户信息
      * @return: java.util.List<com.fall.robok.model.User>
@@ -52,24 +59,25 @@ public class UserServiceImpl implements IUserService {
     }
 
     /**
-     * @param code
-     * @param nickName
+     * @param code     微信code
+     * @param nickName 用户昵称
      * @author FAll
      * @description 用户登录&用户注册
-     * @return: java.util.Map
+     * @return: java.util.HashMap<java.lang.String, java.lang.String>
      * @date 2022/9/23 14:50
      */
     @Override
-    public Map SignInAndSignUp(String code, String nickName) throws Exception {
+    public HashMap<String, String> SignInAndSignUp(String code, String nickName) throws Exception {
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + wxConfig.getAppID() + "&secret=" + wxConfig.getAppSecret() + "&js_code=" + code + "&grant_type=authorization_code";
 
         // 发送token到微信服务器，兑换session
         RestTemplate template = new RestTemplate();
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.set("Connection", "close");
-        HttpEntity requestEntity = new HttpEntity(requestHeaders);
+        HttpEntity<HttpHeaders> requestEntity = new HttpEntity<>(requestHeaders);
         HttpEntity<String> response = template.exchange(url, HttpMethod.GET, requestEntity, String.class);
-        Map ret = (Map) JSON.parseObject(response.getBody());
+        HashMap ret = mapper.readValue(response.getBody(), HashMap.class);
+
         if (ret.get("errcode") != null) {
             return null;
         }
@@ -99,8 +107,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     /**
-     * @param openId
-     * @param sessionKey
+     * @param openId     openid
+     * @param sessionKey 会话密钥
      * @author FAll
      * @description 检查用户登录信息是否过期
      * @return: java.lang.Boolean
@@ -108,29 +116,24 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public Boolean isLogin(String openId, String sessionKey) {
-
-        ValueOperations<String, String> stringValueOperations = stringRedisTemplate.opsForValue();
         if (openId == null) {
             return null;
         }
+
+        ValueOperations<String, String> stringValueOperations = stringRedisTemplate.opsForValue();
+
         String session = stringValueOperations.get(openId);
 
-        Boolean isLogin = null;
-        if (session == null) { // 已过期或未注册
-            isLogin = false;
-        } else if (SHA256Encrypt.getSHA256Str(session).equals(sessionKey)) { // 尚未过期
-            isLogin = true;
-        } else { // 恶意请求
-            isLogin = null;
+        if(session == null) {
+            return false;
+        } else {
+            return SHA256Encrypt.getSHA256Str(session).equals(sessionKey);
         }
-
-
-        return isLogin;
     }
 
     /**
-     * @param code
-     * @param openId
+     * @param code   微信code
+     * @param openId openid
      * @author FAll
      * @description 获取用户手机号
      * @return: java.lang.String
@@ -145,29 +148,36 @@ public class UserServiceImpl implements IUserService {
         requestHeaders.set("Connection", "close");
         requestHeaders.add("Accept", MediaType.APPLICATION_JSON.toString());
 
-        JSONObject requestMap = new JSONObject();
+        HashMap<String, String> requestMap = new HashMap<>();
         requestMap.put("code", code);
-        HttpEntity<JSONObject> entity = new HttpEntity<>(requestMap, requestHeaders);
-        JSONObject res = new RestTemplate().postForObject(url, entity, JSONObject.class);
 
-        if ((Integer) res.get("errcode") != 0) {
-            return null;
-        }
-        Map<String, String> phoneInfo = (Map<String, String>) res.get("phone_info");
-        String phone = "+"
-                + phoneInfo.get("countryCode")
-                + " "
-                + phoneInfo.get("purePhoneNumber");
-        if (userMapper.updateByOpenId(new User(
-                openId,
-                null,
-                null,
-                phone,
-                null)) == 0) {
-            return null;
-        }
+        try {
+            String JsonRet = mapper.writeValueAsString(requestMap);
+            HttpEntity<String> entity = new HttpEntity<>(JsonRet, requestHeaders);
+            HashMap<String, Object> res = new RestTemplate().postForObject(url, entity, HashMap.class);
 
-        return phone;
+            if (res != null && (Integer) res.get("errcode") != 0) {
+                return null;
+            }
+            Map<String, String> phoneInfo = (Map<String, String>) res.get("phone_info");
+            String phone = "+"
+                    + phoneInfo.get("countryCode")
+                    + " "
+                    + phoneInfo.get("purePhoneNumber");
+
+            if (userMapper.updateByOpenId(new User(
+                    openId,
+                    null,
+                    null,
+                    phone,
+                    null)) == 0) {
+                return null;
+            }
+
+            return phone;
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

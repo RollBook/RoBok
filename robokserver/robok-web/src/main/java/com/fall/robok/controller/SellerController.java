@@ -25,17 +25,21 @@ import java.util.UUID;
 @RequestMapping("/trade")
 public class SellerController {
 
+    private final SellerServiceImpl tradeService;
+
     @Autowired
-    SellerServiceImpl tradeService;
+    public SellerController(SellerServiceImpl tradeService) {
+        this.tradeService=tradeService;
+    }
 
     /**
-     * @param bookName
-     * @param openid
-     * @param bookStatus
-     * @param timeStamp
-     * @param bookPrice
-     * @param bookInfo
-     * @param response
+     * @param bookName 书本名称
+     * @param openid 用户openid
+     * @param bookStatus 书本状态
+     * @param timeStamp 13位时间戳
+     * @param bookPrice 书本价格
+     * @param bookInfo 书本信息
+     * @param response http响应
      * @author FAll
      * @description 添加书本
      * @return: com.fall.robok.util.bean.ResBean
@@ -65,11 +69,11 @@ public class SellerController {
 
 
     /**
-     * @param openid
-     * @param timeStamp
-     * @param rank
-     * @param photo
-     * @param response
+     * @param openid openid
+     * @param timeStamp 13位时间戳
+     * @param rank 图片排序
+     * @param photo 图片
+     * @param response http响应
      * @author FAll
      * @description 保存书本图片，生成并存储url
      * @return: com.fall.robok.util.bean.ResBean

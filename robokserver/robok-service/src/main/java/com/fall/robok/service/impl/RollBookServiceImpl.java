@@ -1,10 +1,11 @@
 package com.fall.robok.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.fall.robok.mapper.IndexImgMapper;
 import com.fall.robok.model.Img;
 import com.fall.robok.service.IRollBookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,23 +18,45 @@ import java.util.ArrayList;
 @Service
 public class RollBookServiceImpl implements IRollBookService {
 
+    private final IndexImgMapper indexImgMapper;
+
+    private final RedisTemplate<String, Object> redisTemplate;
+
     @Autowired
-    private IndexImgMapper indexImgMapper;
+    public RollBookServiceImpl(IndexImgMapper indexImgMapper, RedisTemplate redisTemplate) {
+        this.indexImgMapper = indexImgMapper;
+        this.redisTemplate = redisTemplate;
+    }
 
     /**
-     * @param
      * @author FAll
      * @description 获取首页轮播图
      * @return: java.util.ArrayList<java.lang.String>
      * @date 2022/9/24 15:45
      */
     @Override
-    public ArrayList<Img> getAllIndexSwiper() {
-        ArrayList<Img> ret = new ArrayList<>();
-        for (Img img : indexImgMapper.getAllIndexSwiper()) {
-            ret.add(img);
+    public ArrayList<String> getAllIndexSwiper() {
+        ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
+        ArrayList<String> imgs = new ArrayList<>();
+
+        // 尝试从redis缓存中获取轮播图url
+        Object objects = valueOperations.get("img");
+        if (objects instanceof ArrayList<?>) {
+            ArrayList<?> arrayList = (ArrayList<?>) objects;
+            for (Object o : arrayList) {
+                if (o instanceof String) {
+                    imgs.add((String) o);
+                }
+            }
+        } else {
+            // 如果没有命中缓存，则从数据库中获取
+            Img allIndexSwiper = indexImgMapper.getAllIndexSwiper();
+            imgs = allIndexSwiper.getImgs();
+
+            // 获取到轮播图url后存入缓存中
+            valueOperations.set("img", imgs);
         }
-        return ret;
+        return imgs;
     }
 
 }

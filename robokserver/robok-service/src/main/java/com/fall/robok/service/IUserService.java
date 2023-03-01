@@ -20,8 +20,8 @@ public interface IUserService {
     List<User> getAllUser();
 
     /**
-     * @param code
-     * @param nickName
+     * @param code 微信code
+     * @param nickName 用户昵称
      * @author FAll
      * @description 用户登录&用户注册
      * @return: java.util.Map
@@ -30,8 +30,8 @@ public interface IUserService {
     Map SignInAndSignUp(String code, String nickName) throws Exception;
 
     /**
-     * @param openId
-     * @param sessionKey
+     * @param openId openid
+     * @param sessionKey 会话密钥
      * @author FAll
      * @description 检查用户登录信息是否过期
      * @return: java.lang.Boolean
@@ -40,8 +40,8 @@ public interface IUserService {
     Boolean isLogin(String openId, String sessionKey);
 
     /**
-     * @param code
-     * @param openId
+     * @param code 微信code
+     * @param openId openid
      * @author FAll
      * @description 获取用户手机号
      * @return: java.lang.String

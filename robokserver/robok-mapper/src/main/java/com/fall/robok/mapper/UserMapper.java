@@ -18,7 +18,6 @@ import java.util.List;
 public interface UserMapper {
 
     /**
-     * @param
      * @author FAll
      * @description 获取所有用户信息
      * @return: java.util.List<com.fall.robok.model.User>
@@ -28,7 +27,7 @@ public interface UserMapper {
     List<User> getAllUser();
 
     /**
-     * @param openId
+     * @param openId openid
      * @author FAll
      * @description 查询是否存在该用户
      * @return: java.lang.Integer
@@ -37,20 +36,19 @@ public interface UserMapper {
     Integer userIsExist(@Param("openId") String openId);
 
     /**
-     * @param openId
-     * @param nickName
-     * @param createdTime
+     * @param openId      openid
+     * @param nickName    用户昵称
+     * @param createdTime 注册时间
      * @author FAll
      * @description 新用户注册
-     * @return: java.lang.Integer
      * @date 2022/9/24 12:29
      */
-    Integer userSignUp(@Param("openId") String openId, @Param("nickName") String nickName, @Param("createdTime") String createdTime);
+    void userSignUp(@Param("openId") String openId, @Param("nickName") String nickName, @Param("createdTime") String createdTime);
 
     /**
      * @author FAll
      * @description 根据openid更新用户信息
-     * @param user
+     * @param user 用户
      * @return: java.lang.Integer
      * @date 2022/9/25 18:22
      */

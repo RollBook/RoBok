@@ -1,32 +1,33 @@
 package com.fall.robok.controller;
 
-import com.fall.robok.config.WxConfig;
 import com.fall.robok.service.impl.UserServiceImpl;
 import com.fall.robok.util.bean.ResBean;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotEmpty;
-import java.util.Map;
+import java.util.HashMap;
 
 
 /**
  * @author FAll
  * @date 2022/9/22 21:59
  */
-
 @Validated
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    UserServiceImpl userService;
+    private final UserServiceImpl userService;
 
     @Autowired
-    WxConfig config;
+    public UserController(UserServiceImpl userService) {
+        this.userService = userService;
+    }
 
     @ApiOperation("获取所有用户")
     @GetMapping("/get")
@@ -35,8 +36,8 @@ public class UserController {
     }
 
     /**
-     * @param code
-     * @param nickName
+     * @param code     微信code
+     * @param nickName 用户昵称
      * @author FAll
      * @description 用户登录&用户注册
      * @return: com.fall.robok.util.bean.ResBean
@@ -44,11 +45,12 @@ public class UserController {
      */
     @ApiOperation("用户登录&用户注册")
     @PostMapping("/login")
-    public ResBean userLogin(@NotEmpty String code,
-                             @NotEmpty String nickName) throws Exception {
-        Map ret = userService.SignInAndSignUp(code, nickName);
-        ResBean res = null;
+    public ResBean userLogin(@NotEmpty String code, @Nullable String nickName,
+                             HttpServletResponse response) throws Exception {
+        HashMap<String, String> ret = userService.SignInAndSignUp(code, nickName);
+        ResBean res;
         if (ret == null) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             res = ResBean.badRequest("badRequest");
         } else {
             res = ResBean.ok("ok", ret);
@@ -57,8 +59,8 @@ public class UserController {
     }
 
     /**
-     * @param openId
-     * @param sessionKey
+     * @param openId     openid
+     * @param sessionKey 会话密钥
      * @author FAll
      * @description 检查用户登录信息是否过期
      * @return: com.fall.robok.util.bean.ResBean
@@ -67,7 +69,8 @@ public class UserController {
     @ApiOperation("检查用户登录信息是否过期")
     @GetMapping("/check_login")
     public ResBean checkLogin(@NotEmpty @RequestParam("openid") String openId,
-                              @NotEmpty @RequestParam("session_key") String sessionKey) {
+                              @NotEmpty @RequestParam("session_key") String sessionKey,
+                              HttpServletResponse response) {
         Object ret = userService.isLogin(openId, sessionKey);
         if (ret == null) {
             return ResBean.badRequest("badRequest");
@@ -76,14 +79,15 @@ public class UserController {
         if (isLogin) {
             return ResBean.ok("ok");
         } else {
-            return ResBean.badRequest(401, "Unauthorized");
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return ResBean.unauthorized("Unauthorized");
         }
 
     }
 
     /**
-     * @param code
-     * @param openId
+     * @param code   微信code
+     * @param openId openid
      * @author FAll
      * @description 获取用户手机号
      * @return: com.fall.robok.util.bean.ResBean
@@ -98,7 +102,7 @@ public class UserController {
             return ResBean.badRequest("badRequest");
         }
 
-        return ResBean.ok("200", (String) phoneNum);
+        return ResBean.ok("ok", phoneNum);
     }
 
 }
