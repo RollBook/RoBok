@@ -97,6 +97,15 @@ public class GlobalExceptionHandler{
         return ResBean.badRequest(String.format("参数校验错误:%s", Objects.requireNonNull(fieldError).getDefaultMessage()));
     }
 
+    /**
+     * @author FAll
+     * @description
+     * @param e         异常
+     * @param request   http请求
+     * @param response  http响应
+     * @return: com.fall.robok.util.bean.ResBean
+     * @date 2023/2/25 22:01
+     */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
     public ResBean constraintViolationException(ConstraintViolationException e,

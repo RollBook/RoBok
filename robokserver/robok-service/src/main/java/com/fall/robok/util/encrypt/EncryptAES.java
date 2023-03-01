@@ -32,7 +32,7 @@ public class EncryptAES {
             byte[] encrypted1 = new BASE64Decoder().decodeBuffer(sSrc);// 先用base64解密
             try {
                 byte[] original = cipher.doFinal(encrypted1);
-                return new String(original, "utf-8");
+                return new String(original, StandardCharsets.UTF_8);
             } catch (Exception e) {
                 System.out.println(e.toString());
                 return null;
