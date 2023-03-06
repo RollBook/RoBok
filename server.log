@@ -82,3 +82,26 @@
 2023-03-06 18:08:52.235  INFO 38344 --- [http-nio-8899-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
 2023-03-06 18:10:47.379  INFO 38344 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
 2023-03-06 18:10:47.515  INFO 38344 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2023-03-06 18:10:51.395  INFO 50868 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 50868 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
+2023-03-06 18:10:51.396  INFO 50868 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
+2023-03-06 18:10:51.435  INFO 50868 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-06 18:10:51.435  INFO 50868 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-06 18:10:52.070  INFO 50868 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-03-06 18:10:52.071  INFO 50868 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-06 18:10:52.091  INFO 50868 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2023-03-06 18:10:52.483  INFO 50868 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2023-03-06 18:10:52.488  INFO 50868 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-03-06 18:10:52.488  INFO 50868 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-03-06 18:10:52.594  INFO 50868 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2023-03-06 18:10:52.594  INFO 50868 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1158 ms
+2023-03-06 18:10:52.662  INFO 50868 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2023-03-06 18:10:52.960  INFO 50868 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2023-03-06 18:10:53.231  INFO 50868 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
+2023-03-06 18:10:53.258  INFO 50868 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
+2023-03-06 18:10:53.911  INFO 50868 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-03-06 18:10:53.971  INFO 50868 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-03-06 18:10:54.118  INFO 50868 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
+2023-03-06 18:10:54.118  INFO 50868 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-03-06 18:10:54.130  INFO 50868 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-03-06 18:10:54.148  INFO 50868 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-03-06 18:10:54.243  INFO 50868 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 3.136 seconds (JVM running for 4.056)
