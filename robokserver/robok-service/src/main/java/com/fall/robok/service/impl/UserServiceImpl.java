@@ -155,7 +155,6 @@ public class UserServiceImpl implements IUserService {
             String JsonRet = mapper.writeValueAsString(requestMap);
             HttpEntity<String> entity = new HttpEntity<>(JsonRet, requestHeaders);
             HashMap<String, Object> res = new RestTemplate().postForObject(url, entity, HashMap.class);
-
             if (res != null && (Integer) res.get("errcode") != 0) {
                 return null;
             }
@@ -165,12 +164,11 @@ public class UserServiceImpl implements IUserService {
                     + " "
                     + phoneInfo.get("purePhoneNumber");
 
-            if (userMapper.updateByOpenId(new User(
-                    openId,
-                    null,
-                    null,
-                    phone,
-                    null)) == 0) {
+            if (userMapper.updateByOpenId(new User.Builder()
+                                                  .openId(openId)
+                                                  .phone(phone)
+                                                  .build()) == 0)
+            {
                 return null;
             }
 

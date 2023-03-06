@@ -97,6 +97,7 @@ public class UserController {
     @PostMapping("/code2phone_num")
     public ResBean getPhoneNum(@NotEmpty @RequestParam("code") String code,
                                @NotEmpty @RequestParam("openid") String openId) {
+
         Object phoneNum = userService.getPhoneNum(code, openId);
         if (phoneNum == null) {
             return ResBean.badRequest("badRequest");

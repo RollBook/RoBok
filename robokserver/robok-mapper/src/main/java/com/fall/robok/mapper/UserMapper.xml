@@ -5,8 +5,8 @@
 <mapper namespace="com.fall.robok.mapper.UserMapper">
     <!-- Integer userSignUp(@Param("openId") String openId, @Param("nickName") String nickName, @Param("createdTime") String createdTime) -->
     <insert id="userSignUp">
-        insert into t_user (open_id, nick_name, created_time, phone, email)
-        values (#{openId}, #{nickName}, #{createdTime}, null, null)
+        insert into t_user (open_id, nick_name, created_time, phone, email, address, latitude, longitude)
+        values (#{openId}, #{nickName}, #{createdTime}, null, null,null,null,null)
     </insert>
     <!-- Integer userIsExist(@Param("openId") String openId) -->
     <select id="userIsExist" resultType="int">
@@ -26,6 +26,15 @@
             </if>
             <if test="email != null">
                 email = #{email},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude},
+            </if>
+            <if test="longitude != null">
+                longitude = #{longitude},
             </if>
         </set>
         where open_id = #{openId}
