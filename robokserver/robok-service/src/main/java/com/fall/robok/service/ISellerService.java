@@ -3,6 +3,8 @@ package com.fall.robok.service;
 import com.fall.robok.model.Book;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 /**
  * @author FAll
  * @date 2022/11/21 10:27
@@ -29,4 +31,6 @@ public interface ISellerService {
      * @date 2022/11/21 10:37
      */
     Boolean setImg(String openid, String timestamp, String rank, MultipartFile[] photo);
+
+    List<Book> getSellBook(String openid);
 }

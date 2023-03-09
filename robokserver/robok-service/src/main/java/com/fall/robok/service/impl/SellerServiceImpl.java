@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 
 /**
  * @author FAll
@@ -87,5 +89,11 @@ public class SellerServiceImpl implements ISellerService {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public List<Book> getSellBook(String openid){
+        List<Book> books = bookMapper.getSellBook(openid);
+        return books;
     }
 }
