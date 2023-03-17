@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -22,14 +23,14 @@ import java.util.UUID;
 
 @Validated
 @RestController
-@RequestMapping("/trade")
+@RequestMapping("/seller")
 public class SellerController {
 
-    private final SellerServiceImpl tradeService;
+    private final SellerServiceImpl sellerService;
 
     @Autowired
-    public SellerController(SellerServiceImpl tradeService) {
-        this.tradeService=tradeService;
+    public SellerController(SellerServiceImpl sellerService) {
+        this.sellerService=sellerService;
     }
 
     /**
@@ -55,7 +56,7 @@ public class SellerController {
                            @RequestParam("bookInfo") String bookInfo,
                            HttpServletResponse response) {
 
-        Boolean ret = tradeService.addBook(new Book(UUID.randomUUID().toString(), openid,
+        Boolean ret = sellerService.addBook(new Book(UUID.randomUUID().toString(), openid,
                 bookName, bookPrice, null, bookStatus, 0,
                 null, null, null, null, bookInfo, timeStamp));
         if (!ret) {
@@ -86,7 +87,7 @@ public class SellerController {
                           @NotEmpty @RequestPart("rank") String rank,
                           @NotNull @RequestPart("files") MultipartFile[] photo,
                           HttpServletResponse response) {
-        Boolean ret = tradeService.setImg(openid, timeStamp, rank, photo);
+        Boolean ret = sellerService.setImg(openid, timeStamp, rank, photo);
 
         if (!ret) {
             response.setStatus(405);
@@ -95,5 +96,22 @@ public class SellerController {
         response.setStatus(201);
         return ResBean.ok("ok");
     }
+
+
+    /**
+     * @author Tan
+     * @description 卖书书架，获取书本
+     * @param openid openid
+     * @return: com.fall.robok.util.bean.ResBean
+     * @date  15:20
+     */
+    @ApiOperation("卖书书架，获取书本")
+    @GetMapping("/get_sell_book")
+    public ResBean getSellBook(@NotEmpty @RequestParam("openid") String openid){
+        List<Book> books = sellerService.getSellBook(openid);
+        return ResBean.ok("ok",books);
+    }
+
+
 
 }
