@@ -20,14 +20,19 @@ import java.util.List;
 @Service
 public class SellerServiceImpl implements ISellerService {
 
-    @Autowired
-    private BookMapper bookMapper;
+    private final BookMapper bookMapper;
+
+    private final MultipartFileUpload multipartFileUpload;
+
+    private final ServerConfig serverConfig;
 
     @Autowired
-    private MultipartFileUpload multipartFileUpload;
+    public SellerServiceImpl(BookMapper bookMapper,MultipartFileUpload multipartFileUpload,ServerConfig serverConfig) {
+        this.bookMapper = bookMapper;
+        this.multipartFileUpload = multipartFileUpload;
+        this.serverConfig = serverConfig;
+    }
 
-    @Autowired
-    private ServerConfig serverConfig;
 
     /**
      * @param book 书本
@@ -91,6 +96,14 @@ public class SellerServiceImpl implements ISellerService {
         return true;
     }
 
+
+    /**
+     * @param openid openid
+     * @author Tan
+     * @description 获取书架书本
+     * @return: java.lang.String
+     * @date 2022/9/27 14:45
+     */
     @Override
     public List<Book> getSellBook(String openid){
         List<Book> books = bookMapper.getSellBook(openid);
