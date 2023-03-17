@@ -32,5 +32,12 @@ public interface ISellerService {
      */
     Boolean setImg(String openid, String timestamp, String rank, MultipartFile[] photo);
 
+    /**
+     * @author Tan
+     * @description
+     * @param openid openid
+     * @return: java.util.List<com.fall.robok.model.Book>
+     * @date  15:33
+     */
     List<Book> getSellBook(String openid);
 }
