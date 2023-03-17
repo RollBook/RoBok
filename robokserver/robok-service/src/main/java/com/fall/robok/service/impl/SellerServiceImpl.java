@@ -24,7 +24,9 @@ public class SellerServiceImpl implements ISellerService {
 
     private final MultipartFileUpload multipartFileUpload;
 
+
     private final ServerConfig serverConfig;
+
     @Autowired
     public SellerServiceImpl(MultipartFileUpload multipartFileUpload,
                              BookMapper bookMapper,ServerConfig serverConfig) {
@@ -32,6 +34,7 @@ public class SellerServiceImpl implements ISellerService {
         this.bookMapper = bookMapper;
         this.serverConfig = serverConfig;
     }
+
 
     /**
      * @param book 书本
@@ -89,6 +92,14 @@ public class SellerServiceImpl implements ISellerService {
         return ret != 0;
     }
 
+
+    /**
+     * @param openid openid
+     * @author Tan
+     * @description 获取书架书本
+     * @return: java.lang.String
+     * @date 2022/9/27 14:45
+     */
     @Override
     public List<Book> getSellBook(String openid){
         return bookMapper.getSellBook(openid);

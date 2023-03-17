@@ -26,4 +26,6 @@ public class Order {
 
     String bookId;
 
+    Book book;
+
 }

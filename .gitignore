@@ -13,7 +13,6 @@ target/
 *.iws
 *.iml
 *.ipr
-*.log
 
 ### Eclipse ###
 .apt_generated
@@ -41,4 +40,5 @@ build/
 .DS_Store
 
 ### Log ###
+server.log
 *.log
