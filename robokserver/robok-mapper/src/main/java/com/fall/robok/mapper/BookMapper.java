@@ -2,7 +2,10 @@ package com.fall.robok.mapper;
 
 import com.fall.robok.model.Book;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author FAll
@@ -30,5 +33,8 @@ public interface BookMapper {
      * @date 2022/9/29 20:11
      */
     Integer updateBook(Book book);
+
+
+    List<Book> getSellBook(@Param("openid") String openid);
 
 }
