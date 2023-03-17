@@ -49,6 +49,17 @@ spring:
     # swagger-ui启动配置
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
+
+  # MQTT配置
+  mqtt:
+    username: admin
+    password: 123RollBook
+    url: tcp://120.25.144.59:1883
+    client:
+      id: mqttx_b11a7a81
+    default:
+      topic: RoServe/usr/roll
+
 # 服务配置
 server:
   port: 8899
