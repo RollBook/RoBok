@@ -1,5 +1,6 @@
 package com.fall.robok.controller;
 
+import com.fall.robok.service.gateway.MqttGateway;
 import com.fall.robok.service.impl.RollBookServiceImpl;
 import com.fall.robok.util.bean.ResBean;
 import io.swagger.annotations.ApiOperation;
@@ -23,6 +24,11 @@ public class RollBookController {
     @Autowired
     RollBookServiceImpl rollBookService;
 
+    @Autowired
+    MqttGateway gateway;
+
+    private boolean pos;
+
     /**
      * @param response http响应
      * @author FAll
@@ -35,6 +41,19 @@ public class RollBookController {
     public ResBean getIndexSwiper(HttpServletResponse response) {
         response.setStatus(200);
         return ResBean.ok("ok", rollBookService.getAllIndexSwiper());
+    }
+
+
+    @GetMapping("/roll")
+    public ResBean roll(HttpServletResponse response) {
+        response.setStatus(200);
+        if(pos){
+            gateway.sendToMqtt("1","RoServe/usr/roll");
+        } else {
+            gateway.sendToMqtt("2","RoServe/usr/roll");
+        }
+        pos = !pos;
+        return ResBean.ok("ok");
     }
 
 }
