@@ -87,3 +87,47 @@
 2023-03-17 16:49:15.087  INFO 26948 --- [SpringApplicationShutdownHook] o.s.integration.channel.DirectChannel    : Channel 'application.mqttOutboundChannel' has 0 subscriber(s).
 2023-03-17 16:49:15.087  INFO 26948 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : stopped bean 'mqttConfig.mqttOutbound.serviceActivator'
 2023-03-17 16:49:15.207  INFO 26948 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2023-03-17 17:07:44.833  INFO 29720 --- [restartedMain] com.fall.robok.RobokWebApplication       : Starting RobokWebApplication using Java 1.8.0_292 on FAll with PID 29720 (D:\WorkSpace\SrpingBoot\robok\robok\robokserver\robok-web\target\classes started by 94031 in D:\WorkSpace\SrpingBoot\robok\robok)
+2023-03-17 17:07:44.834  INFO 29720 --- [restartedMain] com.fall.robok.RobokWebApplication       : The following 1 profile is active: "dev"
+2023-03-17 17:07:44.872  INFO 29720 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-17 17:07:44.872  INFO 29720 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-17 17:07:45.436  INFO 29720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-03-17 17:07:45.438  INFO 29720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-17 17:07:45.457  INFO 29720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2023-03-17 17:07:45.587  INFO 29720 --- [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2023-03-17 17:07:45.595  INFO 29720 --- [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2023-03-17 17:07:45.762  INFO 29720 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-03-17 17:07:45.766  INFO 29720 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'integrationChannelResolver' of type [org.springframework.integration.support.channel.BeanFactoryChannelResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-03-17 17:07:46.007  INFO 29720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2023-03-17 17:07:46.012  INFO 29720 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-03-17 17:07:46.013  INFO 29720 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2023-03-17 17:07:46.083  INFO 29720 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2023-03-17 17:07:46.084  INFO 29720 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1211 ms
+2023-03-17 17:07:46.156  INFO 29720 --- [restartedMain] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2023-03-17 17:07:46.470  INFO 29720 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2023-03-17 17:07:46.750  INFO 29720 --- [restartedMain] com.fall.robok.config.ServerConfig       : 上传文件夹加载完成
+2023-03-17 17:07:46.779  INFO 29720 --- [restartedMain] com.fall.robok.config.RobokFilter        : Filter created
+2023-03-17 17:07:47.562  INFO 29720 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-03-17 17:07:47.662  INFO 29720 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2023-03-17 17:07:47.662  INFO 29720 --- [restartedMain] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 1 subscriber(s).
+2023-03-17 17:07:47.663  INFO 29720 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean '_org.springframework.integration.errorLogger'
+2023-03-17 17:07:47.663  INFO 29720 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {message-handler:mqttConfig.mqttOutbound.serviceActivator} as a subscriber to the 'mqttOutboundChannel' channel
+2023-03-17 17:07:47.663  INFO 29720 --- [restartedMain] o.s.integration.channel.DirectChannel    : Channel 'application.mqttOutboundChannel' has 1 subscriber(s).
+2023-03-17 17:07:47.663  INFO 29720 --- [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean 'mqttConfig.mqttOutbound.serviceActivator'
+2023-03-17 17:07:47.663  INFO 29720 --- [restartedMain] ProxyFactoryBean$MethodInvocationGateway : started bean 'mqttGateway#sendToMqtt(String, String)'
+2023-03-17 17:07:47.663  INFO 29720 --- [restartedMain] o.s.i.gateway.GatewayProxyFactoryBean    : started bean 'mqttGateway'
+2023-03-17 17:07:47.678  INFO 29720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path '/api'
+2023-03-17 17:07:47.689  INFO 29720 --- [restartedMain] com.fall.robok.RobokWebApplication       : Started RobokWebApplication in 3.178 seconds (JVM running for 3.956)
+2023-03-17 17:07:50.074  INFO 29720 --- [http-nio-8899-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-17 17:07:50.074  INFO 29720 --- [http-nio-8899-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-03-17 17:07:50.075  INFO 29720 --- [http-nio-8899-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-03-17 17:15:17.640  INFO 29720 --- [SpringApplicationShutdownHook] com.fall.robok.config.RobokFilter        : Filter destroyed
+2023-03-17 17:15:17.645  INFO 29720 --- [SpringApplicationShutdownHook] ProxyFactoryBean$MethodInvocationGateway : stopped bean 'mqttGateway#sendToMqtt(String, String)'
+2023-03-17 17:15:17.645  INFO 29720 --- [SpringApplicationShutdownHook] o.s.i.gateway.GatewayProxyFactoryBean    : stopped bean 'mqttGateway'
+2023-03-17 17:15:17.645  INFO 29720 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2023-03-17 17:15:17.646  INFO 29720 --- [SpringApplicationShutdownHook] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 0 subscriber(s).
+2023-03-17 17:15:17.646  INFO 29720 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : stopped bean '_org.springframework.integration.errorLogger'
+2023-03-17 17:15:17.646  INFO 29720 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : Removing {message-handler:mqttConfig.mqttOutbound.serviceActivator} as a subscriber to the 'mqttOutboundChannel' channel
+2023-03-17 17:15:17.646  INFO 29720 --- [SpringApplicationShutdownHook] o.s.integration.channel.DirectChannel    : Channel 'application.mqttOutboundChannel' has 0 subscriber(s).
+2023-03-17 17:15:17.646  INFO 29720 --- [SpringApplicationShutdownHook] o.s.i.endpoint.EventDrivenConsumer       : stopped bean 'mqttConfig.mqttOutbound.serviceActivator'
+2023-03-17 17:15:17.767  INFO 29720 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed

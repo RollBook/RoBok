@@ -20,14 +20,18 @@ import java.util.List;
 @Service
 public class SellerServiceImpl implements ISellerService {
 
-    @Autowired
-    private BookMapper bookMapper;
+    private final BookMapper bookMapper;
 
-    @Autowired
-    private MultipartFileUpload multipartFileUpload;
+    private final MultipartFileUpload multipartFileUpload;
 
+    private final ServerConfig serverConfig;
     @Autowired
-    private ServerConfig serverConfig;
+    public SellerServiceImpl(MultipartFileUpload multipartFileUpload,
+                             BookMapper bookMapper,ServerConfig serverConfig) {
+        this.multipartFileUpload = multipartFileUpload;
+        this.bookMapper = bookMapper;
+        this.serverConfig = serverConfig;
+    }
 
     /**
      * @param book 书本
@@ -39,10 +43,7 @@ public class SellerServiceImpl implements ISellerService {
     @Override
     public Boolean addBook(Book book) {
         Integer ret = bookMapper.addBook(book);
-        if (ret == 0) {
-            return false;
-        }
-        return true;
+        return ret != 0;
     }
 
     /**
@@ -85,15 +86,11 @@ public class SellerServiceImpl implements ISellerService {
 
         Integer ret = bookMapper.updateBook(book);
 
-        if (ret == 0) {
-            return false;
-        }
-        return true;
+        return ret != 0;
     }
 
     @Override
     public List<Book> getSellBook(String openid){
-        List<Book> books = bookMapper.getSellBook(openid);
-        return books;
+        return bookMapper.getSellBook(openid);
     }
 }
