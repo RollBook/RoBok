@@ -1,4 +1,4 @@
-package com.fall.robok.service.gateway;
+package com.fall.robok.gateway;
 
 import org.springframework.integration.annotation.MessagingGateway;
 import org.springframework.integration.mqtt.support.MqttHeaders;

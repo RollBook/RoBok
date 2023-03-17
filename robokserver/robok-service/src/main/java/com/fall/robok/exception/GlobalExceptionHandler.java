@@ -1,4 +1,4 @@
-package com.fall.robok.service.exception;
+package com.fall.robok.exception;
 
 import com.fall.robok.util.bean.ResBean;
 import com.fasterxml.jackson.core.JsonProcessingException;

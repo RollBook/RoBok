@@ -24,12 +24,14 @@ public class SellerServiceImpl implements ISellerService {
 
     private final MultipartFileUpload multipartFileUpload;
 
+
     private final ServerConfig serverConfig;
 
     @Autowired
-    public SellerServiceImpl(BookMapper bookMapper,MultipartFileUpload multipartFileUpload,ServerConfig serverConfig) {
-        this.bookMapper = bookMapper;
+    public SellerServiceImpl(MultipartFileUpload multipartFileUpload,
+                             BookMapper bookMapper,ServerConfig serverConfig) {
         this.multipartFileUpload = multipartFileUpload;
+        this.bookMapper = bookMapper;
         this.serverConfig = serverConfig;
     }
 
@@ -44,10 +46,7 @@ public class SellerServiceImpl implements ISellerService {
     @Override
     public Boolean addBook(Book book) {
         Integer ret = bookMapper.addBook(book);
-        if (ret == 0) {
-            return false;
-        }
-        return true;
+        return ret != 0;
     }
 
     /**
@@ -90,10 +89,7 @@ public class SellerServiceImpl implements ISellerService {
 
         Integer ret = bookMapper.updateBook(book);
 
-        if (ret == 0) {
-            return false;
-        }
-        return true;
+        return ret != 0;
     }
 
 
@@ -106,7 +102,6 @@ public class SellerServiceImpl implements ISellerService {
      */
     @Override
     public List<Book> getSellBook(String openid){
-        List<Book> books = bookMapper.getSellBook(openid);
-        return books;
+        return bookMapper.getSellBook(openid);
     }
 }
