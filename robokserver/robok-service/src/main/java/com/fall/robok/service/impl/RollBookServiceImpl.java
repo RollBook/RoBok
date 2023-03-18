@@ -1,7 +1,7 @@
 package com.fall.robok.service.impl;
 
 import com.fall.robok.mapper.IndexImgMapper;
-import com.fall.robok.model.Img;
+import com.fall.robok.po.Img;
 import com.fall.robok.service.IRollBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

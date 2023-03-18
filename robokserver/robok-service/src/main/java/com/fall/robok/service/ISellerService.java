@@ -1,6 +1,7 @@
 package com.fall.robok.service;
 
-import com.fall.robok.model.Book;
+import com.fall.robok.po.Book;
+import com.fall.robok.vo.SellerInfo;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -33,10 +34,20 @@ public interface ISellerService {
     Boolean setImg(String openid, String timestamp, String rank, MultipartFile[] photo);
 
     /**
-     * @author Tan
-     * @description
+     * @author FAll
+     * @description 更新卖家信息
+     * @param sellerInfo 卖家信息
      * @param openid openid
-     * @return: java.util.List<com.fall.robok.model.Book>
+     * @return: java.lang.Boolean
+     * @date 2023/3/18 15:35
+     */
+    Boolean setSellerInfo(SellerInfo sellerInfo,String openid);
+
+    /**
+     * @author Tan
+     * @description 卖书书架，获取书本
+     * @param openid openid
+     * @return: java.util.List<com.fall.robok.po.Book>
      * @date  15:33
      */
     List<Book> getSellBook(String openid);

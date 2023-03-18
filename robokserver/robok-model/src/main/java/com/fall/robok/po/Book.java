@@ -1,4 +1,4 @@
-package com.fall.robok.model;
+package com.fall.robok.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +11,6 @@ import lombok.ToString;
  */
 
 @Data
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class Book {

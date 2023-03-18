@@ -1,6 +1,6 @@
 package com.fall.robok.service;
 
-import com.fall.robok.model.User;
+import com.fall.robok.po.User;
 
 import java.util.List;
 import java.util.Map;
@@ -14,7 +14,7 @@ public interface IUserService {
     /**
      * @author FAll
      * @description 获取所有用户信息
-     * @return: java.util.List<com.fall.robok.model.User>
+     * @return: java.util.List<com.fall.robok.po.User>
      * @date 2022/11/21 10:41
      */
     List<User> getAllUser();

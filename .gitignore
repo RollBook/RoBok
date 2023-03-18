@@ -4,6 +4,7 @@ target/
 !**/src/test/**/target/
 
 /robokserver/robok-web/src/main/resources/static/*.jpg
+/robokserver/robok-web/src/main/resources/application-dev.yml
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -40,4 +41,5 @@ build/
 .DS_Store
 
 ### Log ###
+server.log
 *.log

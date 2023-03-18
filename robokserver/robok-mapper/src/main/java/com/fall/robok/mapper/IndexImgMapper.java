@@ -1,11 +1,9 @@
 package com.fall.robok.mapper;
 
-import com.fall.robok.model.Img;
+import com.fall.robok.po.Img;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * @author FAll
@@ -19,7 +17,7 @@ public interface IndexImgMapper {
     /**
      * @author FAll
      * @description 获取主页所有轮播图
-     * @return: java.util.List<com.fall.robok.model.Img>
+     * @return: java.util.List<com.fall.robok.po.Img>
      * @date 2022/9/24 15:20
      */
     @Select("SELECT `index_swiper0`, `index_swiper1`," +

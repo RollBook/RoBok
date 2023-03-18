@@ -1,6 +1,6 @@
 package com.fall.robok.controller;
 
-import com.fall.robok.service.gateway.MqttGateway;
+import com.fall.robok.gateway.MqttGateway;
 import com.fall.robok.service.impl.RollBookServiceImpl;
 import com.fall.robok.util.bean.ResBean;
 import io.swagger.annotations.ApiOperation;
