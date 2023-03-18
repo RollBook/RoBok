@@ -133,14 +133,4 @@
         where open_id = #{openId} and timestamp = #{timestamp}
     </update>
 
-
-    <!--List<Book> getSellBook(@Param("openid") String openid);-->
-    <select id="getSellBook" resultType="com.fall.robok.po.Book">
-        select * from t_book
-        <where>
-            <if test="openid != null">
-                open_id = #{openid}
-            </if>
-        </where>
-    </select>
 </mapper>

@@ -35,13 +35,4 @@ public interface BookMapper {
     Integer updateBook(Book book);
 
 
-    /**
-     * @author Tan
-     * @description
-     * @param openid openid
-     * @return: java.util.List<com.fall.robok.po.Book>
-     * @date  15:27
-     */
-    List<Book> getSellBook(@Param("openid") String openid);
-
 }

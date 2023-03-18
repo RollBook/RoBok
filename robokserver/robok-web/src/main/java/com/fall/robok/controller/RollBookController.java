@@ -4,11 +4,9 @@ import com.fall.robok.gateway.MqttGateway;
 import com.fall.robok.service.impl.RollBookServiceImpl;
 import com.fall.robok.util.bean.ResBean;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 
 
 /**
@@ -21,16 +19,18 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/rollbook")
 public class RollBookController {
 
-    @Autowired
-    RollBookServiceImpl rollBookService;
+    private final RollBookServiceImpl rollBookService;
 
-    @Autowired
-    MqttGateway gateway;
+    private final MqttGateway gateway;
+
+    public RollBookController(RollBookServiceImpl rollBookService,MqttGateway gateway){
+        this.rollBookService = rollBookService;
+        this.gateway = gateway;
+    }
 
     private boolean pos;
 
     /**
-     * @param response http响应
      * @author FAll
      * @description 获取首页轮播图
      * @return: com.fall.robok.util.bean.ResBean
@@ -38,15 +38,13 @@ public class RollBookController {
      */
     @ApiOperation("获取小程序首页轮播图")
     @GetMapping("/get_index_swiper")
-    public ResBean getIndexSwiper(HttpServletResponse response) {
-        response.setStatus(200);
+    public ResBean getIndexSwiper() {
         return ResBean.ok("ok", rollBookService.getAllIndexSwiper());
     }
 
 
     @GetMapping("/roll")
-    public ResBean roll(HttpServletResponse response) {
-        response.setStatus(200);
+    public ResBean roll() {
         if(pos){
             gateway.sendToMqtt("1","RoServe/usr/roll");
         } else {
