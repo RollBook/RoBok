@@ -1,5 +1,6 @@
-package com.fall.robok.model;
+package com.fall.robok.po;
 
+import com.fall.robok.vo.SellerInfo;
 import lombok.*;
 
 /**
@@ -14,6 +15,8 @@ public class User {
     private String openId;
     // 用户昵称
     private String nickName;
+    // 用户学校
+    private String school;
     // 用户注册时间
     private String createdTime;
     // 用户手机号码
@@ -30,6 +33,7 @@ public class User {
     private User(Builder builder) {
         this.openId = builder.openId;
         this.nickName = builder.nickName;
+        this.school = builder.school;
         this.createdTime = builder.createdTime;
         this.phone = builder.phone;
         this.email = builder.email;
@@ -46,6 +50,7 @@ public class User {
     public static final class Builder {
         private String openId;
         private String nickName;
+        private String school;
         private String createdTime;
         private String phone;
         private String email;
@@ -56,7 +61,7 @@ public class User {
         /**
          * @author FAll
          * @description 使用建造者创建用户对象
-         * @return: com.fall.robok.model.User
+         * @return: com.fall.robok.po.User
          * @date 2023/3/6 18:10
          */
         public User build(){
@@ -70,6 +75,10 @@ public class User {
 
         public Builder nickName(String nickName) {
             this.nickName = nickName;
+            return this;
+        }
+        public Builder school(String school) {
+            this.school = school;
             return this;
         }
 
@@ -100,6 +109,16 @@ public class User {
 
         public Builder longitude(Double longitude) {
             this.longitude = longitude;
+            return this;
+        }
+
+        public Builder seller(SellerInfo sellerInfo) {
+            this.nickName = sellerInfo.getNickName();
+            this.school = sellerInfo.getSchool();
+            this.phone = sellerInfo.getPhone();
+            this.address = sellerInfo.getAddress();
+            this.latitude = sellerInfo.getLatitude();
+            this.longitude = sellerInfo.getLongitude();
             return this;
         }
     }

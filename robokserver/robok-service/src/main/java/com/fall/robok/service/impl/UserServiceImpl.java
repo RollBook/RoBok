@@ -2,7 +2,7 @@ package com.fall.robok.service.impl;
 
 import com.fall.robok.config.WxConfig;
 import com.fall.robok.mapper.UserMapper;
-import com.fall.robok.model.User;
+import com.fall.robok.po.User;
 import com.fall.robok.service.IUserService;
 import com.fall.robok.task.WXTask;
 import com.fall.robok.util.encrypt.SHA256Encrypt;
@@ -50,7 +50,7 @@ public class UserServiceImpl implements IUserService {
     /**
      * @author FAll
      * @description 获取所有用户信息
-     * @return: java.util.List<com.fall.robok.model.User>
+     * @return: java.util.List<com.fall.robok.po.User>
      * @date 2022/9/23 12:50
      */
     @Override

@@ -1,6 +1,6 @@
 package com.fall.robok.mapper;
 
-import com.fall.robok.model.Book;
+import com.fall.robok.po.Book;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -39,7 +39,7 @@ public interface BookMapper {
      * @author Tan
      * @description
      * @param openid openid
-     * @return: java.util.List<com.fall.robok.model.Book>
+     * @return: java.util.List<com.fall.robok.po.Book>
      * @date  15:27
      */
     List<Book> getSellBook(@Param("openid") String openid);

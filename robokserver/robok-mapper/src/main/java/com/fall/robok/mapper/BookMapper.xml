@@ -135,7 +135,7 @@
 
 
     <!--List<Book> getSellBook(@Param("openid") String openid);-->
-    <select id="getSellBook" resultType="com.fall.robok.model.Book">
+    <select id="getSellBook" resultType="com.fall.robok.po.Book">
         select * from t_book
         <where>
             <if test="openid != null">

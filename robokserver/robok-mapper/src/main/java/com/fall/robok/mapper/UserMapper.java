@@ -1,6 +1,6 @@
 package com.fall.robok.mapper;
 
-import com.fall.robok.model.User;
+import com.fall.robok.po.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -20,7 +20,7 @@ public interface UserMapper {
     /**
      * @author FAll
      * @description 获取所有用户信息
-     * @return: java.util.List<com.fall.robok.model.User>
+     * @return: java.util.List<com.fall.robok.po.User>
      * @date 2022/9/23 12:59
      */
     @Select("select * from `t_user`")
@@ -53,6 +53,5 @@ public interface UserMapper {
      * @date 2022/9/25 18:22
      */
     Integer updateByOpenId(User user);
-
 
 }
