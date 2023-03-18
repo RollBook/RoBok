@@ -35,6 +35,15 @@ public interface ISellerService {
 
     /**
      * @author FAll
+     * @description 获取卖家信息
+     * @param openid openid
+     * @return: com.fall.robok.vo.SellerInfo
+     * @date 2023/3/18 17:23
+     */
+    SellerInfo getSellerInfo(String openid);
+
+    /**
+     * @author FAll
      * @description 更新卖家信息
      * @param sellerInfo 卖家信息
      * @param openid openid
@@ -43,12 +52,5 @@ public interface ISellerService {
      */
     Boolean setSellerInfo(SellerInfo sellerInfo,String openid);
 
-    /**
-     * @author Tan
-     * @description 卖书书架，获取书本
-     * @param openid openid
-     * @return: java.util.List<com.fall.robok.po.Book>
-     * @date  15:33
-     */
-    List<Book> getSellBook(String openid);
+
 }
