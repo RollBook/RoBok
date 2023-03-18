@@ -5,24 +5,24 @@
 <mapper namespace="com.fall.robok.mapper.OrderMapper">
 
 
-    <resultMap id="orderResultMap" type="com.fall.robok.model.Order">
-        <id property="orderId" column="order_id"></id>
-        <result property="createdTime" column="created_time"></result>
-        <result property="buyerId" column="buyer_id"></result>
-        <result property="sellerId" column="seller_id"></result>
-        <association property="book" javaType="com.fall.robok.model.Book">
-            <id property="bookId" column="book_id"></id>
-            <result property="openId" column="open_id"></result>
-            <result property="bookName" column="book_name"></result>
-            <result property="price" column="price"></result>
-            <result property="pressId" column="press_id"></result>
-            <result property="status" column="status"></result>
-            <result property="audit" column="audit"></result>
-            <result property="url1" column="url1"></result>
-            <result property="url2" column="url2"></result>
-            <result property="url3" column="url3"></result>
-            <result property="description" column="description"></result>
-            <result property="timestamp" column="timestamp"></result>
+    <resultMap id="orderResultMap" type="com.fall.robok.po.Order">
+        <id property="orderId" column="order_id"/>
+        <result property="createdTime" column="created_time"/>
+        <result property="buyerId" column="buyer_id"/>
+        <result property="sellerId" column="seller_id"/>
+        <association property="book" javaType="com.fall.robok.po.Book">
+            <id property="bookId" column="book_id"/>
+            <result property="openId" column="open_id"/>
+            <result property="bookName" column="book_name"/>
+            <result property="price" column="price"/>
+            <result property="pressId" column="press_id"/>
+            <result property="status" column="status"/>
+            <result property="audit" column="audit"/>
+            <result property="url1" column="url1"/>
+            <result property="url2" column="url2"/>
+            <result property="url3" column="url3"/>
+            <result property="description" column="description"/>
+            <result property="timestamp" column="timestamp"/>
         </association>
     </resultMap>
     <!--List<Order> getOrder(@Param("openid") String openid);-->

@@ -1,6 +1,6 @@
 package com.fall.robok.controller;
 
-import com.fall.robok.model.Order;
+import com.fall.robok.po.Order;
 import com.fall.robok.service.impl.OrderServiceImpl;
 import com.fall.robok.util.bean.ResBean;
 import io.swagger.annotations.ApiOperation;

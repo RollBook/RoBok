@@ -2,8 +2,7 @@ package com.fall.robok.service.impl;
 
 import com.fall.robok.config.ServerConfig;
 import com.fall.robok.mapper.OrderMapper;
-import com.fall.robok.model.Book;
-import com.fall.robok.model.Order;
+import com.fall.robok.po.Order;
 import com.fall.robok.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

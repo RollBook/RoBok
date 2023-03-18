@@ -1,14 +1,16 @@
 package com.fall.robok.controller;
 
-import com.fall.robok.model.Book;
+import com.fall.robok.po.Book;
 import com.fall.robok.service.impl.SellerServiceImpl;
 import com.fall.robok.util.bean.ResBean;
+import com.fall.robok.vo.SellerInfo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -97,6 +99,17 @@ public class SellerController {
         return ResBean.ok("ok");
     }
 
+    @ApiOperation("更新卖家信息")
+    @PostMapping("/set_seller_info")
+    public ResBean setSellerInfo(@RequestBody SellerInfo sellerInfo, HttpServletRequest request){
+        String openid = request.getHeader("openid");
+        Boolean ret = sellerService.setSellerInfo(sellerInfo,openid);
+        if(ret) {
+            return ResBean.ok("ok");
+        } else {
+            return ResBean.badRequest("badRequest");
+        }
+    }
 
     /**
      * @author Tan

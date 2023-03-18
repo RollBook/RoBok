@@ -2,9 +2,12 @@ package com.fall.robok.service.impl;
 
 import com.fall.robok.config.ServerConfig;
 import com.fall.robok.mapper.BookMapper;
-import com.fall.robok.model.Book;
+import com.fall.robok.mapper.UserMapper;
+import com.fall.robok.po.Book;
+import com.fall.robok.po.User;
 import com.fall.robok.service.ISellerService;
 import com.fall.robok.util.file.MultipartFileUpload;
+import com.fall.robok.vo.SellerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,16 +25,18 @@ public class SellerServiceImpl implements ISellerService {
 
     private final BookMapper bookMapper;
 
-    private final MultipartFileUpload multipartFileUpload;
+    private final UserMapper userMapper;
 
+    private final MultipartFileUpload multipartFileUpload;
 
     private final ServerConfig serverConfig;
 
     @Autowired
-    public SellerServiceImpl(MultipartFileUpload multipartFileUpload,
+    public SellerServiceImpl(MultipartFileUpload multipartFileUpload,UserMapper userMapper,
                              BookMapper bookMapper,ServerConfig serverConfig) {
         this.multipartFileUpload = multipartFileUpload;
         this.bookMapper = bookMapper;
+        this.userMapper = userMapper;
         this.serverConfig = serverConfig;
     }
 
@@ -92,11 +97,27 @@ public class SellerServiceImpl implements ISellerService {
         return ret != 0;
     }
 
+    /**
+     * @author FAll
+     * @description 更新卖家信息
+     * @param sellerInfo 卖家信息
+     * @param openid openid
+     * @return: java.lang.Boolean
+     * @date 2023/3/18 15:42
+     */
+    @Override
+    public Boolean setSellerInfo(SellerInfo sellerInfo,String openid) {
+         int ret = userMapper.updateByOpenId(new User.Builder()
+                                                     .openId(openid)
+                                                     .seller(sellerInfo)
+                                                     .build());
+        return ret != 0;
+    }
 
     /**
      * @param openid openid
      * @author Tan
-     * @description 获取书架书本
+     * @description 卖书书架，获取书本
      * @return: java.lang.String
      * @date 2022/9/27 14:45
      */
@@ -104,4 +125,6 @@ public class SellerServiceImpl implements ISellerService {
     public List<Book> getSellBook(String openid){
         return bookMapper.getSellBook(openid);
     }
+
+
 }
