@@ -43,6 +43,8 @@ public class ResBean {
         return new ResBean(400, msg, obj);
     }
 
+    public static ResBean notFound() {return new ResBean(404,"Not Found",null);}
+
     public static ResBean unauthorized(String msg) {
         return new ResBean(401, msg, null);
     }

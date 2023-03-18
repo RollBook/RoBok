@@ -62,11 +62,10 @@ public class SellerController {
                 bookName, bookPrice, null, bookStatus, 0,
                 null, null, null, null, bookInfo, timeStamp));
         if (!ret) {
-            response.setStatus(405);
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return ResBean.badRequest("Bad request");
         }
 
-        response.setStatus(201);
         return ResBean.ok("ok");
     }
 
@@ -92,11 +91,21 @@ public class SellerController {
         Boolean ret = sellerService.setImg(openid, timeStamp, rank, photo);
 
         if (!ret) {
-            response.setStatus(405);
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return ResBean.badRequest("Bad request");
         }
-        response.setStatus(201);
+        response.setStatus(HttpServletResponse.SC_CREATED);
         return ResBean.ok("ok");
+    }
+
+    @GetMapping("/get_seller_info")
+    public ResBean getSellerInfo(HttpServletRequest request,HttpServletResponse response) {
+        SellerInfo ret = sellerService.getSellerInfo(request.getHeader("openid"));
+        if(ret != null) {
+            return ResBean.ok("ok",ret);
+        }
+        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        return ResBean.notFound();
     }
 
     @ApiOperation("更新卖家信息")
@@ -106,25 +115,9 @@ public class SellerController {
         Boolean ret = sellerService.setSellerInfo(sellerInfo,openid);
         if(ret) {
             return ResBean.ok("ok");
-        } else {
-            return ResBean.badRequest("badRequest");
         }
+        return ResBean.badRequest("badRequest");
+
     }
-
-    /**
-     * @author Tan
-     * @description 卖书书架，获取书本
-     * @param openid openid
-     * @return: com.fall.robok.util.bean.ResBean
-     * @date  15:20
-     */
-    @ApiOperation("卖书书架，获取书本")
-    @GetMapping("/get_sell_book")
-    public ResBean getSellBook(@NotEmpty @RequestParam("openid") String openid){
-        List<Book> books = sellerService.getSellBook(openid);
-        return ResBean.ok("ok",books);
-    }
-
-
 
 }

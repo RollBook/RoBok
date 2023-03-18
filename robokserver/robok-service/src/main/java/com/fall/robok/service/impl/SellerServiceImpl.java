@@ -2,6 +2,7 @@ package com.fall.robok.service.impl;
 
 import com.fall.robok.config.ServerConfig;
 import com.fall.robok.mapper.BookMapper;
+import com.fall.robok.mapper.SellerMapper;
 import com.fall.robok.mapper.UserMapper;
 import com.fall.robok.po.Book;
 import com.fall.robok.po.User;
@@ -27,14 +28,18 @@ public class SellerServiceImpl implements ISellerService {
 
     private final UserMapper userMapper;
 
+    private final SellerMapper sellerMapper;
+
     private final MultipartFileUpload multipartFileUpload;
 
     private final ServerConfig serverConfig;
 
     @Autowired
-    public SellerServiceImpl(MultipartFileUpload multipartFileUpload,UserMapper userMapper,
+    public SellerServiceImpl(MultipartFileUpload multipartFileUpload,
+                             SellerMapper sellerMapper,UserMapper userMapper,
                              BookMapper bookMapper,ServerConfig serverConfig) {
         this.multipartFileUpload = multipartFileUpload;
+        this.sellerMapper = sellerMapper;
         this.bookMapper = bookMapper;
         this.userMapper = userMapper;
         this.serverConfig = serverConfig;
@@ -97,6 +102,11 @@ public class SellerServiceImpl implements ISellerService {
         return ret != 0;
     }
 
+    @Override
+    public SellerInfo getSellerInfo(String openid) {
+        return sellerMapper.getSellerInfoByOpenId(openid);
+    }
+
     /**
      * @author FAll
      * @description 更新卖家信息
@@ -113,18 +123,5 @@ public class SellerServiceImpl implements ISellerService {
                                                      .build());
         return ret != 0;
     }
-
-    /**
-     * @param openid openid
-     * @author Tan
-     * @description 卖书书架，获取书本
-     * @return: java.lang.String
-     * @date 2022/9/27 14:45
-     */
-    @Override
-    public List<Book> getSellBook(String openid){
-        return bookMapper.getSellBook(openid);
-    }
-
 
 }
