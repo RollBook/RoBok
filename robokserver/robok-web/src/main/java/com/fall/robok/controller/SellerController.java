@@ -1,8 +1,8 @@
 package com.fall.robok.controller;
 
-import com.fall.robok.po.Book;
 import com.fall.robok.service.impl.SellerServiceImpl;
 import com.fall.robok.util.bean.ResBean;
+import com.fall.robok.vo.BookOfSeller;
 import com.fall.robok.vo.SellerInfo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.List;
-import java.util.UUID;
 
 
 /**
@@ -36,12 +34,7 @@ public class SellerController {
     }
 
     /**
-     * @param bookName 书本名称
-     * @param openid 用户openid
-     * @param bookStatus 书本状态
-     * @param timeStamp 13位时间戳
-     * @param bookPrice 书本价格
-     * @param bookInfo 书本信息
+     * @param booksOfSeller 上架的书本
      * @param response http响应
      * @author FAll
      * @description 添加书本
@@ -49,18 +42,11 @@ public class SellerController {
      * @date 2022/9/26 22:46
      */
     @ApiOperation("创建书本:添加书本第一步")
-    @PostMapping("/add_book")
-    public ResBean addBook(@NotEmpty(message = "书本名不能为空") @RequestParam("bookName") String bookName,
-                           @NotEmpty(message = "openid不能为空") @RequestParam("openid") String openid,
-                           @NotEmpty(message = "状态信息不能为空") @RequestParam("bookStatus") String bookStatus,
-                           @NotEmpty(message = "创建时间不能为空") @RequestParam("timeStamp") String timeStamp,
-                           @NotNull(message = "价格不能为空") @RequestParam("bookPrice") Double bookPrice,
-                           @RequestParam("bookInfo") String bookInfo,
+    @PostMapping("/add_books")
+    public ResBean addBook(@RequestBody BookOfSeller[] booksOfSeller,
                            HttpServletResponse response) {
 
-        Boolean ret = sellerService.addBook(new Book(UUID.randomUUID().toString(), openid,
-                bookName, bookPrice, null, bookStatus, 0,
-                null, null, null, null, bookInfo, timeStamp));
+        Boolean ret = sellerService.addSellerBooks(booksOfSeller);
         if (!ret) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return ResBean.badRequest("Bad request");

@@ -8,6 +8,7 @@ import com.fall.robok.po.Book;
 import com.fall.robok.po.User;
 import com.fall.robok.service.ISellerService;
 import com.fall.robok.util.file.MultipartFileUpload;
+import com.fall.robok.vo.BookOfSeller;
 import com.fall.robok.vo.SellerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,16 +48,24 @@ public class SellerServiceImpl implements ISellerService {
 
 
     /**
-     * @param book 书本
+     * @param books 待上架书本
      * @author FAll
      * @description 添加书本
      * @return: java.lang.Boolean
      * @date 2022/9/26 22:52
      */
     @Override
-    public Boolean addBook(Book book) {
-        Integer ret = bookMapper.addBook(book);
-        return ret != 0;
+    public Boolean addSellerBooks(BookOfSeller[] books) {
+        for (BookOfSeller bookOfSeller : books) {
+            Book book = new Book.Builder()
+                                .bookOfSeller(bookOfSeller)
+                                .build();
+            if(bookMapper.addBook(book) == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -91,9 +100,11 @@ public class SellerServiceImpl implements ISellerService {
             }
             case 2: {
                 book.setUrl2(retUrl);
+                break;
             }
             case 3: {
                 book.setUrl3(retUrl);
+                break;
             }
         }
 

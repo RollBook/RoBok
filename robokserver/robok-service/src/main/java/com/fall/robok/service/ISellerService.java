@@ -1,6 +1,7 @@
 package com.fall.robok.service;
 
 import com.fall.robok.po.Book;
+import com.fall.robok.vo.BookOfSeller;
 import com.fall.robok.vo.SellerInfo;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,13 +14,13 @@ import java.util.List;
 public interface ISellerService {
 
     /**
-     * @param book 书本
+     * @param books 待上架书本
      * @author FAll
-     * @description 添加书本
+     * @description 卖家上架书本
      * @return: java.lang.Boolean
      * @date 2022/11/21 10:37
      */
-    Boolean addBook(Book book);
+    Boolean addSellerBooks(BookOfSeller[] books);
 
     /**
      * @param openid openid
