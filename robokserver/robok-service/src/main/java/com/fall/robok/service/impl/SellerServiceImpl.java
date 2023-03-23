@@ -1,6 +1,7 @@
 package com.fall.robok.service.impl;
 
 import com.fall.robok.config.ServerConfig;
+import com.fall.robok.constant.AuditStatus;
 import com.fall.robok.mapper.BookMapper;
 import com.fall.robok.mapper.SellerMapper;
 import com.fall.robok.mapper.UserMapper;
@@ -13,8 +14,6 @@ import com.fall.robok.vo.SellerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 
 /**
@@ -57,7 +56,12 @@ public class SellerServiceImpl implements ISellerService {
     @Override
     public Boolean addSellerBooks(BookOfSeller[] books) {
         for (BookOfSeller bookOfSeller : books) {
+            String bookId = bookOfSeller.getOpenId()
+                    +"&&"
+                    + bookOfSeller.getTimestamp();
             Book book = new Book.Builder()
+                                .bookId(bookId)
+                                .audit(AuditStatus.UNCHECKED.getStatus())
                                 .bookOfSeller(bookOfSeller)
                                 .build();
             if(bookMapper.addBook(book) == 0) {

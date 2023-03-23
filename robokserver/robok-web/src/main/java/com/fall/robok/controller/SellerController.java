@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -43,7 +44,7 @@ public class SellerController {
      */
     @ApiOperation("创建书本:添加书本第一步")
     @PostMapping("/add_books")
-    public ResBean addBook(@RequestBody BookOfSeller[] booksOfSeller,
+    public ResBean addBook(@Valid @RequestBody BookOfSeller[] booksOfSeller,
                            HttpServletResponse response) {
 
         Boolean ret = sellerService.addSellerBooks(booksOfSeller);
@@ -68,7 +69,7 @@ public class SellerController {
      * @date 2022/9/27 14:19
      */
     @ApiOperation("保存书本图片，生成并存储url:添加书本第二步")
-    @PostMapping("set_img")
+    @PostMapping("/set_img")
     public ResBean setImg(@NotEmpty @RequestPart("openid") String openid,
                           @NotEmpty @RequestPart("timeStamp") String timeStamp,
                           @NotEmpty @RequestPart("rank") String rank,
@@ -84,6 +85,7 @@ public class SellerController {
         return ResBean.ok("ok");
     }
 
+    @ApiOperation("获取卖家信息")
     @GetMapping("/get_seller_info")
     public ResBean getSellerInfo(HttpServletRequest request,HttpServletResponse response) {
         SellerInfo ret = sellerService.getSellerInfo(request.getHeader("openid"));
