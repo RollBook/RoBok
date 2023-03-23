@@ -20,4 +20,6 @@ public interface SellerMapper {
      * @date 2023/3/18 16:47
      */
     SellerInfo getSellerInfoByOpenId(String openid);
+
+
 }
