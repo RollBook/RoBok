@@ -92,7 +92,7 @@ public class SellerController {
         if(ret != null) {
             return ResBean.ok("ok",ret);
         }
-        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         return ResBean.notFound();
     }
 
