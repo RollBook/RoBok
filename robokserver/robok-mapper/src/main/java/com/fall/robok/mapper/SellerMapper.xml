@@ -6,7 +6,7 @@
 
     <!-- SellerInfo getSellerInfoByOpenId(String openid); -->
     <select id="getSellerInfoByOpenId" resultType="com.fall.robok.vo.SellerInfo">
-        select `nick_name`,`school`,`phone`,`address`,`latitude`,`longitude`
+        select `open_id`,`nick_name`,`school`,`phone`,`address`,`latitude`,`longitude`
         from t_user where open_id = #{openid}
     </select>
 
