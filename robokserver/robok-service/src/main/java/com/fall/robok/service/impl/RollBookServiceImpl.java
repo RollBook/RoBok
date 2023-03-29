@@ -20,10 +20,10 @@ public class RollBookServiceImpl implements IRollBookService {
 
     private final IndexImgMapper indexImgMapper;
 
-    private final RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<Object, Object> redisTemplate;
 
     @Autowired
-    public RollBookServiceImpl(IndexImgMapper indexImgMapper, RedisTemplate redisTemplate) {
+    public RollBookServiceImpl(IndexImgMapper indexImgMapper, RedisTemplate<Object,Object> redisTemplate) {
         this.indexImgMapper = indexImgMapper;
         this.redisTemplate = redisTemplate;
     }
@@ -36,7 +36,7 @@ public class RollBookServiceImpl implements IRollBookService {
      */
     @Override
     public ArrayList<String> getAllIndexSwiper() {
-        ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
+        ValueOperations<Object, Object> valueOperations = redisTemplate.opsForValue();
         ArrayList<String> imgs = new ArrayList<>();
 
         // 尝试从redis缓存中获取轮播图url

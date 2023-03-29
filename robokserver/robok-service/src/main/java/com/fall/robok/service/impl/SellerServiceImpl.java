@@ -90,9 +90,16 @@ public class SellerServiceImpl implements ISellerService {
         if (url == null) {
             return null;
         }
-        String retUrl = url[0];
+        String retUrl;
         if (serverConfig.getEnvironment().equals("dev")) {
             retUrl = ("http://localhost:" + serverConfig.getPort() + "/api/") + url[0];
+        } else {
+            retUrl = ("http://"+ serverConfig.getIp()
+                    + ":"
+                    + serverConfig.getPort()
+                    + "/api/"
+                    + "images/")
+                    + url[0];
         }
         Book book = new Book();
         book.setOpenId(openid);
