@@ -21,5 +21,4 @@ public interface SellerMapper {
      */
     SellerInfo getSellerInfoByOpenId(String openid);
 
-
 }

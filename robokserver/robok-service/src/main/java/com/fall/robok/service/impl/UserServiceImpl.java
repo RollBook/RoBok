@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -76,7 +77,7 @@ public class UserServiceImpl implements IUserService {
         requestHeaders.set("Connection", "close");
         HttpEntity<HttpHeaders> requestEntity = new HttpEntity<>(requestHeaders);
         HttpEntity<String> response = template.exchange(url, HttpMethod.GET, requestEntity, String.class);
-        HashMap ret = mapper.readValue(response.getBody(), HashMap.class);
+        HashMap<?,?> ret = mapper.readValue(response.getBody(), HashMap.class);
 
         if (ret.get("errcode") != null) {
             return null;
@@ -141,6 +142,8 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public String getPhoneNum(String code, String openId) {
+
+        // 初始化请求信息
         String url = "https://api.weixin.qq.com/wxa/business/getuserphonenumber?access_token=" + WXTask.accessToken;
 
         HttpHeaders requestHeaders = new HttpHeaders();
@@ -152,13 +155,25 @@ public class UserServiceImpl implements IUserService {
         requestMap.put("code", code);
 
         try {
+            // 请求微信服务器获取号码信息
             String JsonRet = mapper.writeValueAsString(requestMap);
             HttpEntity<String> entity = new HttpEntity<>(JsonRet, requestHeaders);
-            HashMap<String, Object> res = new RestTemplate().postForObject(url, entity, HashMap.class);
+            HashMap<?,?> res = new RestTemplate().postForObject(url, entity, HashMap.class);
+
+            // 校验返回结果不为空
             if (res != null && (Integer) res.get("errcode") != 0) {
                 return null;
             }
-            Map<String, String> phoneInfo = (Map<String, String>) res.get("phone_info");
+
+            // 校验号码信息结果是否为Map<String, String>
+            Map<String, String> phoneInfo = new HashMap<>();
+            Objects.requireNonNull(res).forEach((k, v)->{
+                if(k instanceof String && res.get(k) instanceof String) {
+                    phoneInfo.put((String) k,(String) v);
+                }
+            });
+
+
             String phone = "+"
                     + phoneInfo.get("countryCode")
                     + " "

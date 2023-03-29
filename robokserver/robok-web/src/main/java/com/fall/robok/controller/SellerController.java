@@ -52,14 +52,14 @@ public class SellerController {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return ResBean.badRequest("Bad request");
         }
-
+        response.setStatus(HttpServletResponse.SC_OK);
         return ResBean.ok("ok");
     }
 
 
     /**
      * @param openid openid
-     * @param timeStamp 13位时间戳
+     * @param timestamp 13位时间戳
      * @param rank 图片排序
      * @param photo 图片
      * @param response http响应
@@ -71,17 +71,17 @@ public class SellerController {
     @ApiOperation("保存书本图片，生成并存储url:添加书本第二步")
     @PostMapping("/set_img")
     public ResBean setImg(@NotEmpty @RequestPart("openid") String openid,
-                          @NotEmpty @RequestPart("timeStamp") String timeStamp,
+                          @NotEmpty @RequestPart("timestamp") String timestamp,
                           @NotEmpty @RequestPart("rank") String rank,
                           @NotNull @RequestPart("files") MultipartFile[] photo,
                           HttpServletResponse response) {
-        Boolean ret = sellerService.setImg(openid, timeStamp, rank, photo);
+        Boolean ret = sellerService.setImg(openid, timestamp, rank, photo);
 
         if (!ret) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return ResBean.badRequest("Bad request");
         }
-        response.setStatus(HttpServletResponse.SC_CREATED);
+        response.setStatus(HttpServletResponse.SC_OK);
         return ResBean.ok("ok");
     }
 

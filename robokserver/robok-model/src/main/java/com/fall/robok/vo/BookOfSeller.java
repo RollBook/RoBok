@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.Nullable;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -23,6 +24,7 @@ public class BookOfSeller {
     @NotEmpty(message = "书本名不能为空")
     String bookName;
 
+    @Min(value = 0,message = "书本价格必须为大于0的数字")
     @NotNull(message = "书本价格不能为空")
     Double price;
 
