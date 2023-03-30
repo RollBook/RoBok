@@ -14,9 +14,9 @@ import lombok.ToString;
 public enum BookStatus {
 
     COMPLETE(8)  ,  // 无缺页、残页
-    CLEARPRINT(4),  // 印刷清晰
-    NOPAINTING(2),  // 无污渍、笔记
-    CLEARCOVER(1);  // 封面干净
+    CLEAR_PRINT(4),  // 印刷清晰
+    NO_PAINTING(2),  // 无污渍、笔记
+    CLEAR_COVER(1);  // 封面干净
 
     private final int status;
 }
