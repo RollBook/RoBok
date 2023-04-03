@@ -69,6 +69,7 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public HashMap<String, String> SignInAndSignUp(String code, String nickName) throws Exception {
+
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + wxConfig.getAppID() + "&secret=" + wxConfig.getAppSecret() + "&js_code=" + code + "&grant_type=authorization_code";
 
         // 发送token到微信服务器，兑换session
