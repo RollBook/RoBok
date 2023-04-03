@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -21,7 +22,8 @@ import java.util.Set;
  * @date 2022/9/23 19:22
  */
 
-@WebFilter(urlPatterns = {"/user/*", "/trade/*"}, filterName = "RobokFilter")
+// urlPatterns列出需要被过滤的Controller
+@WebFilter(urlPatterns = {"/user/*","/seller/*","/order/*"}, filterName = "RobokFilter")
 @Slf4j
 public class RobokFilter implements Filter {
     private final UserServiceImpl userService;
@@ -39,6 +41,7 @@ public class RobokFilter implements Filter {
 
     private Boolean isDev = false;
 
+    // 此处列出不用拦截的接口
     private static final Set<String> ALLOWED_PATHS = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
             "/user/login",
             "/user/check_login"
@@ -68,6 +71,8 @@ public class RobokFilter implements Filter {
             // redis校验session
             Object ret = userService.isLogin(req.getHeader("openid"), req.getHeader("session_key"));
             if (ret == null) {
+                HttpServletResponse httpResponse = (HttpServletResponse) response;
+                httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 returnJson(response, mapper.writeValueAsString(ResBean.badRequest(401, "登录信息已失效,请重新登录")));
                 return;
             }
