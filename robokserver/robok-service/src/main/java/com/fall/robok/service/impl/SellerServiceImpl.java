@@ -3,14 +3,13 @@ package com.fall.robok.service.impl;
 import com.fall.robok.config.ServerConfig;
 import com.fall.robok.constant.AuditStatus;
 import com.fall.robok.mapper.BookMapper;
-import com.fall.robok.mapper.SellerMapper;
 import com.fall.robok.mapper.UserMapper;
 import com.fall.robok.po.Book;
 import com.fall.robok.po.User;
 import com.fall.robok.service.ISellerService;
 import com.fall.robok.util.file.MultipartFileUpload;
 import com.fall.robok.vo.BookOfSeller;
-import com.fall.robok.vo.SellerInfo;
+import com.fall.robok.vo.UserBasicInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,18 +27,15 @@ public class SellerServiceImpl implements ISellerService {
 
     private final UserMapper userMapper;
 
-    private final SellerMapper sellerMapper;
-
     private final MultipartFileUpload multipartFileUpload;
 
     private final ServerConfig serverConfig;
 
     @Autowired
     public SellerServiceImpl(MultipartFileUpload multipartFileUpload,
-                             SellerMapper sellerMapper,UserMapper userMapper,
-                             BookMapper bookMapper,ServerConfig serverConfig) {
+                             UserMapper userMapper, BookMapper bookMapper,
+                             ServerConfig serverConfig) {
         this.multipartFileUpload = multipartFileUpload;
-        this.sellerMapper = sellerMapper;
         this.bookMapper = bookMapper;
         this.userMapper = userMapper;
         this.serverConfig = serverConfig;
@@ -125,23 +121,23 @@ public class SellerServiceImpl implements ISellerService {
     }
 
     @Override
-    public SellerInfo getSellerInfo(String openid) {
-        return sellerMapper.getSellerInfoByOpenId(openid);
+    public UserBasicInfo getSellerInfo(String openid) {
+        return userMapper.getUserBasicInfoByOpenId(openid);
     }
 
     /**
      * @author FAll
      * @description 更新卖家信息
-     * @param sellerInfo 卖家信息
+     * @param userBasicInfo 用户基本信息
      * @param openid openid
      * @return: java.lang.Boolean
      * @date 2023/3/18 15:42
      */
     @Override
-    public Boolean setSellerInfo(SellerInfo sellerInfo,String openid) {
+    public Boolean setSellerInfo(UserBasicInfo userBasicInfo, String openid) {
          int ret = userMapper.updateByOpenId(new User.Builder()
                                                      .openId(openid)
-                                                     .seller(sellerInfo)
+                                                     .userBasicInfo(userBasicInfo)
                                                      .build());
         return ret != 0;
     }

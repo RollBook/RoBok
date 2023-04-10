@@ -46,5 +46,10 @@
         where open_id = #{openId}
     </update>
 
+    <select id="getUserBasicInfoByOpenId" resultType="com.fall.robok.vo.UserBasicInfo">
+        select `open_id`,`nick_name`,`school`,`phone`,`address`,`latitude`,`longitude`
+        from t_user where open_id = #{openid}
+    </select>
+
 
 </mapper>

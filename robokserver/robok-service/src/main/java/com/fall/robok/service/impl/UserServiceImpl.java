@@ -6,6 +6,7 @@ import com.fall.robok.po.User;
 import com.fall.robok.service.IUserService;
 import com.fall.robok.task.WXTask;
 import com.fall.robok.util.encrypt.SHA256Encrypt;
+import com.fall.robok.vo.UserBasicInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -174,7 +175,6 @@ public class UserServiceImpl implements IUserService {
                 }
             });
 
-
             String phone = "+"
                     + phoneInfo.get("countryCode")
                     + " "
@@ -195,4 +195,15 @@ public class UserServiceImpl implements IUserService {
 
     }
 
+    /**
+     * @author FAll
+     * @description 根据openid获取用户基本信息
+     * @param openId openid
+     * @return: com.fall.robok.vo.UserBasicInfo
+     * @date 2023/4/4 11:40
+     */
+    @Override
+    public UserBasicInfo getUserBasicInfo(String openId) {
+        return userMapper.getUserBasicInfoByOpenId(openId);
+    }
 }
