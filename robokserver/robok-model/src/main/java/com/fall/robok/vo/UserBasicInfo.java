@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SellerInfo {
+public class UserBasicInfo {
     private String openId;
 
     private String nickName;

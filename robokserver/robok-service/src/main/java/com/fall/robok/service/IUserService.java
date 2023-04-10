@@ -1,6 +1,7 @@
 package com.fall.robok.service;
 
 import com.fall.robok.po.User;
+import com.fall.robok.vo.UserBasicInfo;
 
 import java.util.List;
 import java.util.Map;
@@ -49,5 +50,13 @@ public interface IUserService {
      */
     String getPhoneNum(String code, String openId);
 
+    /**
+     * @author FAll
+     * @description 获取用户基本信息
+     * @param openId openid
+     * @return: com.fall.robok.vo.UserBasicInfo
+     * @date 2023/4/4 11:36
+     */
+    UserBasicInfo getUserBasicInfo(String openId);
 
 }

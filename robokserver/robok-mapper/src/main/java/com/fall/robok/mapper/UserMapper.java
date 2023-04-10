@@ -1,6 +1,7 @@
 package com.fall.robok.mapper;
 
 import com.fall.robok.po.User;
+import com.fall.robok.vo.UserBasicInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -53,5 +54,14 @@ public interface UserMapper {
      * @date 2022/9/25 18:22
      */
     Integer updateByOpenId(User user);
+
+    /**
+     * @author FAll
+     * @description 根据openid查询基本用户信息
+     * @param openid openid
+     * @return: com.fall.robok.vo.SellerInfo
+     * @date 2023/3/18 16:47
+     */
+    UserBasicInfo getUserBasicInfoByOpenId(String openid);
 
 }

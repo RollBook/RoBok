@@ -1,6 +1,6 @@
 package com.fall.robok.po;
 
-import com.fall.robok.vo.SellerInfo;
+import com.fall.robok.vo.UserBasicInfo;
 import lombok.*;
 
 /**
@@ -112,13 +112,13 @@ public class User {
             return this;
         }
 
-        public Builder seller(SellerInfo sellerInfo) {
-            this.nickName = sellerInfo.getNickName();
-            this.school = sellerInfo.getSchool();
-            this.phone = sellerInfo.getPhone();
-            this.address = sellerInfo.getAddress();
-            this.latitude = sellerInfo.getLatitude();
-            this.longitude = sellerInfo.getLongitude();
+        public Builder userBasicInfo(UserBasicInfo userBasicInfo) {
+            this.nickName = userBasicInfo.getNickName();
+            this.school = userBasicInfo.getSchool();
+            this.phone = userBasicInfo.getPhone();
+            this.address = userBasicInfo.getAddress();
+            this.latitude = userBasicInfo.getLatitude();
+            this.longitude = userBasicInfo.getLongitude();
             return this;
         }
     }

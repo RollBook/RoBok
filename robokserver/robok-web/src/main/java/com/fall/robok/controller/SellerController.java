@@ -3,7 +3,7 @@ package com.fall.robok.controller;
 import com.fall.robok.service.impl.SellerServiceImpl;
 import com.fall.robok.util.bean.ResBean;
 import com.fall.robok.vo.BookOfSeller;
-import com.fall.robok.vo.SellerInfo;
+import com.fall.robok.vo.UserBasicInfo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.io.IOException;
 
 
 /**
@@ -52,6 +53,7 @@ public class SellerController {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return ResBean.badRequest("Bad request");
         }
+
         response.setStatus(HttpServletResponse.SC_OK);
         return ResBean.ok("ok");
     }
@@ -74,13 +76,15 @@ public class SellerController {
                           @NotEmpty @RequestPart("timestamp") String timestamp,
                           @NotEmpty @RequestPart("rank") String rank,
                           @NotNull @RequestPart("files") MultipartFile[] photo,
-                          HttpServletResponse response) {
-        Boolean ret = sellerService.setImg(openid, timestamp, rank, photo);
+                          HttpServletResponse response) throws IOException {
 
+        Boolean ret = sellerService.setImg(openid, timestamp, rank, photo);
         if (!ret) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return ResBean.badRequest("Bad request");
         }
+
+        response.flushBuffer();
         response.setStatus(HttpServletResponse.SC_OK);
         return ResBean.ok("ok");
     }
@@ -88,22 +92,28 @@ public class SellerController {
     @ApiOperation("获取卖家信息")
     @GetMapping("/get_seller_info")
     public ResBean getSellerInfo(HttpServletRequest request,HttpServletResponse response) {
-        SellerInfo ret = sellerService.getSellerInfo(request.getHeader("openid"));
+
+        UserBasicInfo ret = sellerService.getSellerInfo(request.getHeader("openid"));
         if(ret != null) {
             return ResBean.ok("ok",ret);
         }
+
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         return ResBean.notFound();
     }
 
     @ApiOperation("更新卖家信息")
     @PostMapping("/set_seller_info")
-    public ResBean setSellerInfo(@RequestBody SellerInfo sellerInfo, HttpServletRequest request){
+    public ResBean setSellerInfo(@RequestBody UserBasicInfo userBasicInfo,
+                                 HttpServletRequest request, HttpServletResponse response){
+
         String openid = request.getHeader("openid");
-        Boolean ret = sellerService.setSellerInfo(sellerInfo,openid);
+        Boolean ret = sellerService.setSellerInfo(userBasicInfo,openid);
         if(ret) {
             return ResBean.ok("ok");
         }
+
+        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         return ResBean.badRequest("badRequest");
 
     }

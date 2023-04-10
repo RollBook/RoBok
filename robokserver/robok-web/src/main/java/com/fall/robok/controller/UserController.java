@@ -2,12 +2,14 @@ package com.fall.robok.controller;
 
 import com.fall.robok.service.impl.UserServiceImpl;
 import com.fall.robok.util.bean.ResBean;
+import com.fall.robok.vo.UserBasicInfo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotEmpty;
 import java.util.HashMap;
@@ -104,6 +106,30 @@ public class UserController {
         }
 
         return ResBean.ok("ok", phoneNum);
+    }
+
+    /**
+     * @author FAll
+     * @description 获取用户基本信息
+     * @param
+     * @return: com.fall.robok.util.bean.ResBean
+     * @date 2023/4/4 11:30
+     */
+    @ApiOperation("通过openid获取用户基本信息")
+    @GetMapping("/get_user_basic_info")
+    public ResBean getUserBasicInfoByOpenid (HttpServletRequest request) {
+
+        String openId = request.getHeader("openid");
+        if(openId != null) {
+            UserBasicInfo userBasicInfo = userService.getUserBasicInfo(openId);
+            if(userBasicInfo != null) {
+                return ResBean.ok("ok",userService.getUserBasicInfo(openId));
+            }
+
+        }
+
+        return ResBean.badRequest("BadRequest");
+
     }
 
 }
