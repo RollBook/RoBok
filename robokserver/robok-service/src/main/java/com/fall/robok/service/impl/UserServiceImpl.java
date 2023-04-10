@@ -16,11 +16,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -167,18 +167,33 @@ public class UserServiceImpl implements IUserService {
             }
 
             // 校验号码信息结果是否为Map<String, String>
-            Map<String, String> phoneInfo = new HashMap<>();
+            HashMap<String, String> phoneInfo = new HashMap<>();
             Objects.requireNonNull(res).forEach((k, v)->{
-                if(k instanceof String && res.get(k) instanceof String) {
-                    phoneInfo.put((String) k,(String) v);
+
+                if((k instanceof String) && !(v instanceof String) && !(v instanceof Integer)) {
+                        // 此处遍历得到data的HashMap对象
+                        if(v instanceof HashMap) {
+                            // 此处获取到携带手机号的HashMap对象
+                            Objects.requireNonNull((HashMap<?,?>) v).forEach((key, value)-> {
+                                if(key instanceof String && value instanceof String) {
+                                    phoneInfo.put((String) key,(String) value);
+                                }
+                            });
+                        }
                 }
             });
 
+            String countryCode = phoneInfo.get("countryCode");
+            String purePhoneNumber = phoneInfo.get("purePhoneNumber");
+
+            if(StringUtils.hasText(countryCode) || StringUtils.hasText(purePhoneNumber)) {
+                return null;
+            }
 
             String phone = "+"
-                    + phoneInfo.get("countryCode")
+                    + countryCode
                     + " "
-                    + phoneInfo.get("purePhoneNumber");
+                    + purePhoneNumber;
 
             if (userMapper.updateByOpenId(new User.Builder()
                                                   .openId(openId)

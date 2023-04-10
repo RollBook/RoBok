@@ -94,7 +94,7 @@ public class UserController {
      * @date 2022/9/25 18:12
      */
     @ApiOperation("获取用户手机号")
-    @PostMapping("/code2phone_num")
+    @GetMapping("/code2phone_num")
     public ResBean getPhoneNum(@NotEmpty @RequestParam("code") String code,
                                @NotEmpty @RequestParam("openid") String openId) {
 
