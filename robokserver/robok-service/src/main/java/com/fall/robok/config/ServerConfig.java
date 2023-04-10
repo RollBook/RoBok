@@ -23,6 +23,9 @@ public class ServerConfig {
     @Value("${server.port}")
     private String port;
 
+    @Value("${server.ip}")
+    private String ip;
+
     @Value("${spring.profiles.active}")
     private String environment;
 

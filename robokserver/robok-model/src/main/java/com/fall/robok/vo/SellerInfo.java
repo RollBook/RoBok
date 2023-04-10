@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SellerInfo {
+    private String openId;
+
     private String nickName;
 
     private String school;
