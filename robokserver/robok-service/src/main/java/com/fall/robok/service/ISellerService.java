@@ -1,11 +1,8 @@
 package com.fall.robok.service;
 
-import com.fall.robok.po.Book;
 import com.fall.robok.vo.BookOfSeller;
-import com.fall.robok.vo.SellerInfo;
+import com.fall.robok.vo.UserBasicInfo;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 /**
  * @author FAll
@@ -41,17 +38,17 @@ public interface ISellerService {
      * @return: com.fall.robok.vo.SellerInfo
      * @date 2023/3/18 17:23
      */
-    SellerInfo getSellerInfo(String openid);
+    UserBasicInfo getSellerInfo(String openid);
 
     /**
      * @author FAll
      * @description 更新卖家信息
-     * @param sellerInfo 卖家信息
+     * @param userBasicInfo 卖家信息
      * @param openid openid
      * @return: java.lang.Boolean
      * @date 2023/3/18 15:35
      */
-    Boolean setSellerInfo(SellerInfo sellerInfo,String openid);
+    Boolean setSellerInfo(UserBasicInfo userBasicInfo, String openid);
 
 
 }
