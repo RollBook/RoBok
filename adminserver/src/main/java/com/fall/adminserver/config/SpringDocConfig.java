@@ -20,7 +20,7 @@ public class SpringDocConfig {
         return new OpenAPI()
                 .info(docInfos())
                 .externalDocs(new ExternalDocumentation()
-                        .description("GitHub 仓库")
+                        .description("GitHub repo")
                         .url("https://github.com/RollBook/RoBok"));
     }
 
