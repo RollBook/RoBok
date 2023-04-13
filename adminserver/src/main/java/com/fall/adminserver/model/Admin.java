@@ -20,5 +20,5 @@ public class Admin{
     @JsonIgnore
     String password;    // 密码
 
-    int authority;      // 权限
+    Integer authority;  // 权限
 }

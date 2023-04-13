@@ -45,7 +45,8 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests(authorize ->
                         // 允许匿名访问的接口
-                        authorize.requestMatchers("/admin/register").anonymous()
+                        authorize
+                                .requestMatchers("/admin/register").anonymous()
                                 .anyRequest().authenticated());
 
         return http.build();
