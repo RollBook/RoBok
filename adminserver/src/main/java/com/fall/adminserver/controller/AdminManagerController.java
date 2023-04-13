@@ -3,6 +3,7 @@ package com.fall.adminserver.controller;
 import com.fall.adminserver.model.vo.AdminRegisterVo;
 import com.fall.adminserver.model.vo.ResponseRecord;
 import com.fall.adminserver.service.AdminManagerService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +34,7 @@ public class AdminManagerController {
      * @return: com.fall.adminserver.model.vo.ResponseRecord<java.lang.Void>
      * @date 2023/4/13 下午5:52
      */
+    @Operation(summary = "新增管理员")
     @PostMapping("/register")
     ResponseRecord<Void> adminRegister(@Valid @RequestBody AdminRegisterVo admin, HttpServletResponse response) {
 
