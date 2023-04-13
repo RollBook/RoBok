@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 /**
  * @author FAll
  * @date 2023/4/12 下午5:52
+ * Security用户详情实现
  */
 public class UserDetailServiceImpl implements UserDetailsService {
 

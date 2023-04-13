@@ -12,6 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 /**
  * @author FAll
  * @date 2023/4/12 下午5:28
+ * Security配置
  */
 @Configuration
 public class SecurityConfig {
@@ -22,6 +23,22 @@ public class SecurityConfig {
         this.authenticationConfiguration = authenticationConfiguration;
     }
 
+    // 未登录请求接口
+    private static final String[] URL_ANONYMOUS = {
+            "/admin/login",
+    };
+
+    // 接口白名单
+    private static final String[] URL_PERMIT_ALL = {
+            "/",
+            "/error",
+            // swagger
+            "/swagger-ui.html",
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            // admin
+            "/admin/register",
+    };
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -46,7 +63,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize ->
                         // 允许匿名访问的接口
                         authorize
-                                .requestMatchers("/admin/register").anonymous()
+                                .requestMatchers(URL_ANONYMOUS).anonymous()
+                                .requestMatchers(URL_PERMIT_ALL).permitAll()
                                 .anyRequest().authenticated());
 
         return http.build();

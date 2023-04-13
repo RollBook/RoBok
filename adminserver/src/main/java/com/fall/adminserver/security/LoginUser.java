@@ -8,6 +8,7 @@ import java.util.Collection;
 /**
  * @author FAll
  * @date 2023/4/12 下午5:51
+ * Security用户详情类
  */
 public class LoginUser implements UserDetails {
 
