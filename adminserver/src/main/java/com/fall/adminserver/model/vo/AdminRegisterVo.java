@@ -7,10 +7,10 @@ import lombok.Data;
 /**
  * @author FAll
  * @date 2023/4/13 下午4:26
- * 管理员vo
+ * 管理员注册vo
  */
 @Data
-public class AdminVo {
+public class AdminRegisterVo {
     @NotEmpty(message = "姓名不能为空")
     String name;
 
@@ -18,5 +18,5 @@ public class AdminVo {
     String password;
 
     @NotNull(message = "权限不能为空")
-    int authority;
+    Integer authority;
 }

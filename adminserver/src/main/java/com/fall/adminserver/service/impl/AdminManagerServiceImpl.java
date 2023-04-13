@@ -2,7 +2,7 @@ package com.fall.adminserver.service.impl;
 
 import com.fall.adminserver.mapper.AdminManagerMapper;
 import com.fall.adminserver.model.Admin;
-import com.fall.adminserver.model.vo.AdminVo;
+import com.fall.adminserver.model.vo.AdminRegisterVo;
 import com.fall.adminserver.service.AdminManagerService;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,9 @@ public class AdminManagerServiceImpl implements AdminManagerService {
     }
 
     @Override
-    public Boolean register(AdminVo adminVo) {
+    public Boolean register(AdminRegisterVo adminVo) {
+
+        //TODO: 检查是否重名
 
         String id = UUID.randomUUID().toString();
         int ret = adminManagerMapper.register(new Admin(id,
@@ -33,4 +35,5 @@ public class AdminManagerServiceImpl implements AdminManagerService {
 
         return ret == 1;
     }
+
 }

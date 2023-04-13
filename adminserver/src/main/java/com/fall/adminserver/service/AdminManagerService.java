@@ -1,6 +1,6 @@
 package com.fall.adminserver.service;
 
-import com.fall.adminserver.model.vo.AdminVo;
+import com.fall.adminserver.model.vo.AdminRegisterVo;
 
 /**
  * @author FAll
@@ -9,5 +9,5 @@ import com.fall.adminserver.model.vo.AdminVo;
  */
 public interface AdminManagerService {
 
-    public Boolean register(AdminVo adminVo);
+    public Boolean register(AdminRegisterVo adminRegisterVo);
 }

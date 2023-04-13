@@ -172,10 +172,11 @@ public class GlobalExceptionHandler {
             String headerName;
             while (headerNames.hasMoreElements()) {
                 headerName = headerNames.nextElement();
-                headerMap.put(headerName, request.getHeader(headerName)+"\n");
+                headerMap.put(headerName, request.getHeader(headerName));
             }
             log.warn(" 请求 头: {}", mapper.writeValueAsString(headerMap));
-            log.warn(" 请求 参数: {}", mapper.writeValueAsString(request.getParameterMap()));
+            log.warn(" 请求 query: {}",mapper.writeValueAsString(request.getQueryString()));
+            log.warn(" 请求 param: {}", mapper.writeValueAsString(request.getParameterMap()));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -197,10 +198,11 @@ public class GlobalExceptionHandler {
             String headerName;
             while (headerNames.hasMoreElements()) {
                 headerName = headerNames.nextElement();
-                headerMap.put(headerName, request.getHeader(headerName)+"\n");
+                headerMap.put(headerName, request.getHeader(headerName));
             }
             log.error(" 请求 头: {}", mapper.writeValueAsString(headerMap));
-            log.error(" 请求 参数: {}", mapper.writeValueAsString(request.getParameterMap()));
+            log.warn(" 请求 query: {}",mapper.writeValueAsString(request.getQueryString()));
+            log.error(" 请求 param: {}", mapper.writeValueAsString(request.getParameterMap()));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

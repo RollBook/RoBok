@@ -1,6 +1,6 @@
 package com.fall.adminserver.controller;
 
-import com.fall.adminserver.model.vo.AdminVo;
+import com.fall.adminserver.model.vo.AdminRegisterVo;
 import com.fall.adminserver.model.vo.ResponseRecord;
 import com.fall.adminserver.service.AdminManagerService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -34,7 +34,7 @@ public class AdminManagerController {
      * @date 2023/4/13 下午5:52
      */
     @PostMapping("/register")
-    ResponseRecord<Void> adminRegister(@Valid @RequestBody AdminVo admin, HttpServletResponse response) {
+    ResponseRecord<Void> adminRegister(@Valid @RequestBody AdminRegisterVo admin, HttpServletResponse response) {
 
         boolean ret = adminManagerService.register(admin);
         if(ret) {
