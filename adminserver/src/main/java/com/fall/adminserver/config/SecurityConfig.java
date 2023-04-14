@@ -118,6 +118,7 @@ public class SecurityConfig {
             // 查询管理员信息
             Admin admin = Optional.ofNullable(adminManagerMapper.getAdminByName(username))
                     .orElseThrow(() -> new RuntimeException("用户名或密码错误"));
+
             // TODO: 查询对应权限信息
             // 把数据封装成UserDetails返回
             return new SecurityLoginUser(admin);
