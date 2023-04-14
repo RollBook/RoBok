@@ -1,5 +1,9 @@
-package com.fall.adminserver.security;
+package com.fall.adminserver.model;
 
+import com.fall.adminserver.model.Admin;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,7 +14,12 @@ import java.util.Collection;
  * @date 2023/4/12 下午5:51
  * Security用户详情类
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class LoginUser implements UserDetails {
+
+    private Admin admin;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -19,31 +28,31 @@ public class LoginUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return admin.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return admin.getName();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

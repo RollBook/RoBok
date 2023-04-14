@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 /**
  * @author FAll
@@ -11,8 +14,9 @@ import lombok.Getter;
  * 管理员实体
  */
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-public class Admin{
+public class Admin implements Serializable {
     String id;          // id
 
     String name;        // 昵称

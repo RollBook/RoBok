@@ -2,6 +2,8 @@ package com.fall.adminserver.mapper;
 
 import com.fall.adminserver.model.Admin;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,5 +16,11 @@ import org.springframework.stereotype.Repository;
 public interface AdminManagerMapper {
 
     int register(Admin admin);
+
+    @Select("""
+                select * from `t_admin`
+                    where `name` = #{name}
+            """)
+    Admin getAdminByName(@Param("name") String name);
 
 }

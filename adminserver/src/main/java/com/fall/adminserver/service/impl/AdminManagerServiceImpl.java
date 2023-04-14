@@ -2,12 +2,21 @@ package com.fall.adminserver.service.impl;
 
 import com.fall.adminserver.mapper.AdminManagerMapper;
 import com.fall.adminserver.model.Admin;
+import com.fall.adminserver.model.vo.AdminLoginVo;
 import com.fall.adminserver.model.vo.AdminRegisterVo;
+import com.fall.adminserver.model.LoginUser;
 import com.fall.adminserver.service.AdminManagerService;
+import com.fall.adminserver.utils.JwtUtil;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * @author FAll
@@ -19,10 +28,18 @@ public class AdminManagerServiceImpl implements AdminManagerService {
 
     private final AdminManagerMapper adminManagerMapper;
 
+    private final RedisTemplate<Object,Object> redisTemplate;
+
+    private final AuthenticationManager authenticationManager;
+
     private final BCryptPasswordEncoder passwordEncoder;
 
     public AdminManagerServiceImpl(AdminManagerMapper adminManagerMapper,
+                                   RedisTemplate<Object, Object> redisTemplate,
+                                   AuthenticationManager authenticationManager,
                                    BCryptPasswordEncoder passwordEncoder) {
+        this.redisTemplate = redisTemplate;
+        this.authenticationManager = authenticationManager;
         this.passwordEncoder = passwordEncoder;
         this.adminManagerMapper = adminManagerMapper;
     }
@@ -41,4 +58,37 @@ public class AdminManagerServiceImpl implements AdminManagerService {
         return ret == 1;
     }
 
+    @Override
+    public String login(AdminLoginVo admin) {
+
+        // 通过 AuthenticationManager 的 authenticate方法进行管理员认证
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(admin.getName(), admin.getPassword());
+
+        Authentication authentication;
+        try {
+            authentication = authenticationManager.authenticate(authenticationToken);
+        } catch (AuthenticationException e) {
+            return null;
+        }
+        // 认证没通过，给出对应提示;
+        if(Objects.isNull(authentication)) {
+            throw new RuntimeException("登录失败");
+        }
+
+        // 认证通过了，使用管理员的id生成一个jwt
+        Object principal = authentication.getPrincipal();
+
+        if(principal instanceof LoginUser loginUser) {
+            String id = loginUser.getAdmin().getId();
+            String  jwt = JwtUtil.createJWT(id);
+
+            // 把完整的管理员信息存入redis id作为key
+            redisTemplate.opsForValue().set("login:"+id,loginUser);
+
+            return jwt;
+
+        } else {
+            throw new RuntimeException("登录异常");
+        }
+    }
 }
