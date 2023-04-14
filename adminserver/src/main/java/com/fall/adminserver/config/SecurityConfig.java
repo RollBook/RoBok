@@ -1,8 +1,10 @@
 package com.fall.adminserver.config;
 
+import com.fall.adminserver.handler.AuthenticationEntryPointHandler;
+import com.fall.adminserver.handler.RequestDeniedHandler;
 import com.fall.adminserver.mapper.AdminManagerMapper;
 import com.fall.adminserver.model.Admin;
-import com.fall.adminserver.model.LoginUser;
+import com.fall.adminserver.model.SecurityLoginUser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,13 +30,21 @@ import java.util.Optional;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final AuthenticationConfiguration authenticationConfiguration;
-
     private final AdminManagerMapper adminManagerMapper;
 
+    private final AuthenticationConfiguration authenticationConfiguration;
+
+    private final AuthenticationEntryPointHandler authenticationEntryPointHandler;
+
+    private final RequestDeniedHandler deniedHandler;
+
     public SecurityConfig(AuthenticationConfiguration authenticationConfiguration,
+                          AuthenticationEntryPointHandler authenticationEntryPointHandler,
+                          RequestDeniedHandler deniedHandler,
                           AdminManagerMapper adminManagerMapper) {
         this.adminManagerMapper = adminManagerMapper;
+        this.deniedHandler = deniedHandler;
+        this.authenticationEntryPointHandler = authenticationEntryPointHandler;
         this.authenticationConfiguration = authenticationConfiguration;
     }
 
@@ -88,6 +98,9 @@ public class SecurityConfig {
                 // 允许跨域
                 .cors()
                 .and()
+                // 配置异常处理器，处理失败JSON响应
+                .exceptionHandling().authenticationEntryPoint(authenticationEntryPointHandler).accessDeniedHandler(deniedHandler)
+                .and()
                 .authorizeHttpRequests(authorize ->
                         // 允许匿名访问的接口
                         authorize
@@ -107,7 +120,7 @@ public class SecurityConfig {
                     .orElseThrow(() -> new RuntimeException("用户名或密码错误"));
             // TODO: 查询对应权限信息
             // 把数据封装成UserDetails返回
-            return new LoginUser(admin);
+            return new SecurityLoginUser(admin);
         };
     }
 

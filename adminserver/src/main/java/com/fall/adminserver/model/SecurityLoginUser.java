@@ -1,6 +1,5 @@
 package com.fall.adminserver.model;
 
-import com.fall.adminserver.model.Admin;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +16,7 @@ import java.util.Collection;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginUser implements UserDetails {
+public class SecurityLoginUser implements UserDetails {
 
     private Admin admin;
 

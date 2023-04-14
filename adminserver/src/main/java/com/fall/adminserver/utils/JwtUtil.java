@@ -14,6 +14,7 @@ import java.util.UUID;
 /**
  * @author FAll
  * @date 2023/4/14 下午4:27
+ * Jwt工具类
  */
 public class JwtUtil {
     // TODO: 导出配置

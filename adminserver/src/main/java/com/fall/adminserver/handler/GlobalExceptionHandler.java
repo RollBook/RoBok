@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -139,6 +140,16 @@ public class GlobalExceptionHandler {
                 String.format("请求方法不正确:%s", e.getMessage()));
     }
 
+    /**
+     * @author FAll
+     * @description 抛出校验异常，交给ExceptionTranslationFilter捕获处理
+     * @param e 异常
+     * @date 2023/4/14 下午10:38
+     */
+    @ExceptionHandler(AuthenticationException.class)
+    public void authenticationExceptionHandler(AuthenticationException e) throws AuthenticationException {
+        throw e;
+    }
 
     /**
      * @param e        异常

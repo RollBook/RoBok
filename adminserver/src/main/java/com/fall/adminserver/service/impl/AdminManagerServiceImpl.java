@@ -4,14 +4,13 @@ import com.fall.adminserver.mapper.AdminManagerMapper;
 import com.fall.adminserver.model.Admin;
 import com.fall.adminserver.model.vo.AdminLoginVo;
 import com.fall.adminserver.model.vo.AdminRegisterVo;
-import com.fall.adminserver.model.LoginUser;
+import com.fall.adminserver.model.SecurityLoginUser;
 import com.fall.adminserver.service.AdminManagerService;
 import com.fall.adminserver.utils.JwtUtil;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -62,14 +61,11 @@ public class AdminManagerServiceImpl implements AdminManagerService {
     public String login(AdminLoginVo admin) {
 
         // 通过 AuthenticationManager 的 authenticate方法进行管理员认证
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(admin.getName(), admin.getPassword());
+        UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken(admin.getName(),admin.getPassword());
 
-        Authentication authentication;
-        try {
-            authentication = authenticationManager.authenticate(authenticationToken);
-        } catch (AuthenticationException e) {
-            return null;
-        }
+        Authentication authentication = authenticationManager.authenticate(authenticationToken);
+
         // 认证没通过，给出对应提示;
         if(Objects.isNull(authentication)) {
             throw new RuntimeException("登录失败");
@@ -78,12 +74,12 @@ public class AdminManagerServiceImpl implements AdminManagerService {
         // 认证通过了，使用管理员的id生成一个jwt
         Object principal = authentication.getPrincipal();
 
-        if(principal instanceof LoginUser loginUser) {
-            String id = loginUser.getAdmin().getId();
+        if(principal instanceof SecurityLoginUser securityLoginUser) {
+            String id = securityLoginUser.getAdmin().getId();
             String  jwt = JwtUtil.createJWT(id);
 
             // 把完整的管理员信息存入redis id作为key
-            redisTemplate.opsForValue().set("login:"+id,loginUser);
+            redisTemplate.opsForValue().set("login:"+id, securityLoginUser);
 
             return jwt;
 
