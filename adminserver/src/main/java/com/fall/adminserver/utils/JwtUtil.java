@@ -4,6 +4,8 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -16,36 +18,39 @@ import java.util.UUID;
  * @date 2023/4/14 下午4:27
  * Jwt工具类
  */
+@Component
 public class JwtUtil {
-    // TODO: 导出配置
-    public static final Long JWT_TTL = 60 * 60 * 1000L;
 
-    public static final String JWT_KEY = "RollBookFAllTan";
+    @Value("${jwt.expire-time}")
+    public String JWT_TTL;
 
-    public static String getUUID() {
+    @Value("${jwt.secret-key}")
+    public String JWT_KEY;
+
+    public String getUUID() {
         return UUID.randomUUID().toString().replaceAll("-","");
     }
 
-    public static String createJWT(String subject) {
+    public String createJWT(String subject) {
         JwtBuilder builder = getJwtBuilder(subject,null,getUUID());
         return builder.compact();
     }
 
-    public static String createJWT(String subject, Long ttlMillis) {
+    public String createJWT(String subject, Long ttlMillis) {
         JwtBuilder builder = getJwtBuilder(subject,ttlMillis,getUUID());
         return builder.compact();
     }
 
-    private static JwtBuilder getJwtBuilder(String subject, Long ttlMillis, String uuid) {
+    private JwtBuilder getJwtBuilder(String subject, Long ttlMillis, String uuid) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         SecretKey secretKey = generalKey();
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
 
         if(ttlMillis==null) {
-            ttlMillis = JwtUtil.JWT_TTL;
+            ttlMillis = Long.parseLong(this.JWT_TTL);
         }
-        long expMillis = nowMillis + JWT_TTL;
+        long expMillis = nowMillis + Long.parseLong(this.JWT_TTL);
         Date expDate = new Date(expMillis);
 
         return Jwts.builder()
@@ -58,18 +63,17 @@ public class JwtUtil {
 
     }
 
-    public static String createJWT(String id, String subject, Long ttlMillis) {
+    public String createJWT(String id, String subject, Long ttlMillis) {
         JwtBuilder builder = getJwtBuilder(subject, ttlMillis, id);
         return builder.compact();
     }
 
-    public static SecretKey generalKey(){
-        byte[] encodedKey = Base64.getDecoder().decode(JwtUtil.JWT_KEY);
-        SecretKey key = new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
-        return key;
+    public SecretKey generalKey(){
+        byte[] encodedKey = Base64.getDecoder().decode(this.JWT_KEY);
+        return new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
     }
 
-    public static Claims parseJWT(String jwt) {
+    public Claims parseJWT(String jwt) {
         SecretKey secretKey = generalKey();
         return Jwts.parser()
                 .setSigningKey(secretKey)

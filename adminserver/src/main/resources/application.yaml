@@ -1,6 +1,8 @@
 # 服务配置
 server:
   port: 9527
+  servlet:
+    context-path: /api
 
 # 当前激活配置
 spring:
@@ -46,3 +48,8 @@ mybatis:
 wx-app:
   app-secret: f259a9d4f7fbf17f4ac96a058e8d0de7,
   appID: wx5260f83aed33c580
+
+# jwt配置
+jwt:
+  expire-time: 3600000
+  secret-key: RollBookFAllTan

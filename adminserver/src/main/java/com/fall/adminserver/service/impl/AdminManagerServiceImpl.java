@@ -35,10 +35,14 @@ public class AdminManagerServiceImpl implements AdminManagerService {
 
     private final BCryptPasswordEncoder passwordEncoder;
 
+    private final JwtUtil jwtUtil;
+
     public AdminManagerServiceImpl(AdminManagerMapper adminManagerMapper,
                                    RedisTemplate<Object, Object> redisTemplate,
                                    AuthenticationManager authenticationManager,
-                                   BCryptPasswordEncoder passwordEncoder) {
+                                   BCryptPasswordEncoder passwordEncoder,
+                                   JwtUtil jwtUtil) {
+        this.jwtUtil = jwtUtil;
         this.redisTemplate = redisTemplate;
         this.authenticationManager = authenticationManager;
         this.passwordEncoder = passwordEncoder;
@@ -86,7 +90,7 @@ public class AdminManagerServiceImpl implements AdminManagerService {
 
         if(principal instanceof SecurityLoginUser securityLoginUser) {
             String id = securityLoginUser.getAdmin().getId();
-            String  jwt = JwtUtil.createJWT(id);
+            String  jwt = jwtUtil.createJWT(id);
 
             // 把完整的管理员信息存入redis id作为key
             redisTemplate.opsForValue().set("login:"+id, securityLoginUser);
