@@ -1,16 +1,14 @@
 package com.fall.adminserver.model;
 
-import com.fall.adminserver.constant.Authority;
+import com.fall.adminserver.constant.AuthorityEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,12 +24,12 @@ public class SecurityLoginUser implements UserDetails {
 
     private SysUser sysUser;
 
-    private Authority authority;
+    private AuthorityEnum authority;
 
     @JsonIgnore
     private List<SimpleGrantedAuthority> authorities;
 
-    public SecurityLoginUser(SysUser sysUser, Authority authority){
+    public SecurityLoginUser(SysUser sysUser, AuthorityEnum authority){
         this.sysUser = sysUser;
         this.authority = authority;
     }

@@ -38,7 +38,6 @@ public class SysUserController {
     @Operation(summary = "系统用户登录")
     @PostMapping("/login")
     ResponseRecord<String> adminLogin(@Valid @RequestBody SysUserLoginVo admin) {
-
         // 管理员登录
         return Optional.ofNullable(sysUserService.login(admin))
                 .map(ResponseRecord::success)

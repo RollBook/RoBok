@@ -1,6 +1,6 @@
 package com.fall.adminserver.model.vo;
 
-import com.fall.adminserver.constant.Authority;
+import com.fall.adminserver.constant.AuthorityEnum;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -19,5 +19,5 @@ public class SysUserRegisterVo {
     String password;
 
     @NotNull(message = "权限不能为空")
-    Authority authority;
+    AuthorityEnum authorityEnum;
 }
