@@ -29,6 +29,7 @@ public class RequestDeniedHandler implements AccessDeniedHandler {
     public void handle(HttpServletRequest request, HttpServletResponse response,
                        AccessDeniedException accessDeniedException) throws IOException {
 
+        response.setStatus(response.SC_UNAUTHORIZED);
         String json = mapper.writeValueAsString(ResponseRecord.fail(response.SC_UNAUTHORIZED,"权限不足"));
         WebUtil.renderString(response,json);
 

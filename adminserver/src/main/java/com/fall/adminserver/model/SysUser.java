@@ -3,7 +3,6 @@ package com.fall.adminserver.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
@@ -11,12 +10,12 @@ import java.io.Serializable;
 /**
  * @author FAll
  * @date 2023/4/13 下午4:00
- * 管理员实体
+ * 系统用户实体
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Admin implements Serializable {
+public class SysUser implements Serializable {
     String id;          // id
 
     String name;        // 昵称
@@ -24,5 +23,5 @@ public class Admin implements Serializable {
     @JsonIgnore
     String password;    // 密码
 
-    Integer authority;  // 权限
+    int authority;  // 权限
 }

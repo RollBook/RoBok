@@ -1,23 +1,29 @@
 package com.fall.adminserver.config;
 
+import com.fall.adminserver.constant.Authority;
+import com.fall.adminserver.filter.JwtAuthenticationTokenFilter;
 import com.fall.adminserver.handler.AuthenticationEntryPointHandler;
 import com.fall.adminserver.handler.RequestDeniedHandler;
-import com.fall.adminserver.mapper.AdminManagerMapper;
-import com.fall.adminserver.model.Admin;
+import com.fall.adminserver.mapper.SysAdminManagerMapper;
+import com.fall.adminserver.model.SysUser;
 import com.fall.adminserver.model.SecurityLoginUser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.util.Optional;
 
@@ -28,9 +34,12 @@ import java.util.Optional;
  */
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
-    private final AdminManagerMapper adminManagerMapper;
+    private final SysAdminManagerMapper adminManagerMapper;
+
+    private final JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
     private final AuthenticationConfiguration authenticationConfiguration;
 
@@ -39,18 +48,20 @@ public class SecurityConfig {
     private final RequestDeniedHandler deniedHandler;
 
     public SecurityConfig(AuthenticationConfiguration authenticationConfiguration,
+                          JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter,
                           AuthenticationEntryPointHandler authenticationEntryPointHandler,
                           RequestDeniedHandler deniedHandler,
-                          AdminManagerMapper adminManagerMapper) {
+                          SysAdminManagerMapper adminManagerMapper) {
         this.adminManagerMapper = adminManagerMapper;
         this.deniedHandler = deniedHandler;
+        this.jwtAuthenticationTokenFilter = jwtAuthenticationTokenFilter;
         this.authenticationEntryPointHandler = authenticationEntryPointHandler;
         this.authenticationConfiguration = authenticationConfiguration;
     }
 
     // 未登录请求接口
     private static final String[] URL_ANONYMOUS = {
-            "/admin/login",
+            "/sys/login",
     };
 
     // 接口白名单
@@ -64,7 +75,7 @@ public class SecurityConfig {
             "/swagger-ui/**",
 
             // admin
-            "/admin/register",
+            // "/admin/register",
     };
 
     @Bean
@@ -80,7 +91,7 @@ public class SecurityConfig {
     @Bean
     public AuthenticationProvider authenticationProvider() {
         final DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setUserDetailsService(userDetailsService());
+        daoAuthenticationProvider.setUserDetailsService(usernamePasswordDetailService());
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         return daoAuthenticationProvider;
     }
@@ -101,6 +112,8 @@ public class SecurityConfig {
                 // 配置异常处理器，处理失败JSON响应
                 .exceptionHandling().authenticationEntryPoint(authenticationEntryPointHandler).accessDeniedHandler(deniedHandler)
                 .and()
+                // 将JWT过滤器挂载到用户密码验证过滤之前
+                .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize ->
                         // 允许匿名访问的接口
                         authorize
@@ -112,16 +125,15 @@ public class SecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
+    public UserDetailsService usernamePasswordDetailService() {
         return username -> {
 
             // 查询管理员信息
-            Admin admin = Optional.ofNullable(adminManagerMapper.getAdminByName(username))
-                    .orElseThrow(() -> new RuntimeException("用户名或密码错误"));
+            SysUser sysUser = Optional.ofNullable(adminManagerMapper.getSysUserByName(username))
+                    .orElseThrow(() -> new BadCredentialsException("用户名或密码错误"));
 
-            // TODO: 查询对应权限信息
             // 把数据封装成UserDetails返回
-            return new SecurityLoginUser(admin);
+            return new SecurityLoginUser(sysUser, Authority.IntToAuthority(sysUser.getAuthority()));
         };
     }
 

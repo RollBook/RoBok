@@ -1,6 +1,6 @@
 package com.fall.adminserver.mapper;
 
-import com.fall.adminserver.model.Admin;
+import com.fall.adminserver.model.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -13,14 +13,14 @@ import org.springframework.stereotype.Repository;
  */
 @Mapper
 @Repository
-public interface AdminManagerMapper {
+public interface SysAdminManagerMapper {
 
-    int register(Admin admin);
+    int register(SysUser sysUser);
 
     @Select("""
                 select * from `t_admin`
                     where `name` = #{name}
             """)
-    Admin getAdminByName(@Param("name") String name);
+    SysUser getSysUserByName(@Param("name") String name);
 
 }
