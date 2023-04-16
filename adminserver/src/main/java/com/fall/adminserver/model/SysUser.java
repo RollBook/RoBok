@@ -23,5 +23,5 @@ public class SysUser implements Serializable {
     @JsonIgnore
     String password;    // 密码
 
-    Integer authority;  // 权限
+    int authority;  // 权限
 }

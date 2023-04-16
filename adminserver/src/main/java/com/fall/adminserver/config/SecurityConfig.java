@@ -1,5 +1,6 @@
 package com.fall.adminserver.config;
 
+import com.fall.adminserver.constant.Authority;
 import com.fall.adminserver.filter.JwtAuthenticationTokenFilter;
 import com.fall.adminserver.handler.AuthenticationEntryPointHandler;
 import com.fall.adminserver.handler.RequestDeniedHandler;
@@ -10,9 +11,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -30,6 +34,7 @@ import java.util.Optional;
  */
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
     private final SysAdminManagerMapper adminManagerMapper;
@@ -70,7 +75,7 @@ public class SecurityConfig {
             "/swagger-ui/**",
 
             // admin
-            "/admin/register",
+            // "/admin/register",
     };
 
     @Bean
@@ -124,12 +129,11 @@ public class SecurityConfig {
         return username -> {
 
             // 查询管理员信息
-            SysUser admin = Optional.ofNullable(adminManagerMapper.getSysUserByName(username))
-                    .orElseThrow(() -> new RuntimeException("用户名或密码错误"));
+            SysUser sysUser = Optional.ofNullable(adminManagerMapper.getSysUserByName(username))
+                    .orElseThrow(() -> new BadCredentialsException("用户名或密码错误"));
 
-            // TODO: 查询对应权限信息
             // 把数据封装成UserDetails返回
-            return new SecurityLoginUser(admin);
+            return new SecurityLoginUser(sysUser, Authority.IntToAuthority(sysUser.getAuthority()));
         };
     }
 

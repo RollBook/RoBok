@@ -1,12 +1,12 @@
 package com.fall.adminserver.controller;
 
-import com.fall.adminserver.model.vo.SysUserLoginVo;
 import com.fall.adminserver.model.vo.SysUserRegisterVo;
 import com.fall.adminserver.model.vo.ResponseRecord;
 import com.fall.adminserver.service.SysAdminManagerService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +37,7 @@ public class SysAdminManagerController {
      * @date 2023/4/13 下午5:52
      */
     @Operation(summary = "新增管理员")
+    @PreAuthorize("@ss.hasAuth('ADMIN')")
     @PostMapping("/register")
     ResponseRecord<Void> adminRegister(@Valid @RequestBody SysUserRegisterVo admin) {
 

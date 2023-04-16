@@ -61,7 +61,7 @@ public class SysUserServiceImpl implements SysUserService {
         Object principal = authentication.getPrincipal();
 
         if(principal instanceof SecurityLoginUser securityLoginUser) {
-            String id = securityLoginUser.getAdmin().getId();
+            String id = securityLoginUser.getSysUser().getId();
             String  jwt = jwtUtil.createJWT(id);
 
             // 把完整的管理员信息存入redis id作为key

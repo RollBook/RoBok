@@ -1,12 +1,18 @@
 package com.fall.adminserver.model;
 
+import com.fall.adminserver.constant.Authority;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * @author FAll
@@ -18,21 +24,40 @@ import java.util.Collection;
 @AllArgsConstructor
 public class SecurityLoginUser implements UserDetails {
 
-    private SysUser admin;
+    private SysUser sysUser;
+
+    private Authority authority;
+
+    @JsonIgnore
+    private List<SimpleGrantedAuthority> authorities;
+
+    public SecurityLoginUser(SysUser sysUser, Authority authority){
+        this.sysUser = sysUser;
+        this.authority = authority;
+    }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+    public List<SimpleGrantedAuthority> getAuthorities() {
+
+        return Optional.ofNullable(this.authorities)
+                .orElseGet(()->{
+                    ArrayList<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>();
+                    SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(authority.toString());
+                    grantedAuthorities.add(simpleGrantedAuthority);
+                    this.authorities = grantedAuthorities;
+                    return grantedAuthorities;
+                });
+
     }
 
     @Override
     public String getPassword() {
-        return admin.getPassword();
+        return sysUser.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return admin.getName();
+        return sysUser.getName();
     }
 
     @Override
