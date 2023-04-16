@@ -18,7 +18,7 @@ import java.util.Collection;
 @AllArgsConstructor
 public class SecurityLoginUser implements UserDetails {
 
-    private Admin admin;
+    private SysUser admin;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
