@@ -18,9 +18,9 @@ public record ResponseRecord<T>(int status, String msg, T data) implements Seria
 
 
     // 失败响应
-    public static <T> ResponseRecord<T> fail(int code, String msg) {
-        return fail(code, msg, null);
-    }
+    public static <T> ResponseRecord<T> fail(int code) { return fail(code, null, null); }
+
+    public static <T> ResponseRecord<T> fail(int code, String msg) { return fail(code, msg, null); }
 
     public static <T> ResponseRecord<T> fail(int code, String msg, T data) { return new ResponseRecord<>(code, msg, data); }
 

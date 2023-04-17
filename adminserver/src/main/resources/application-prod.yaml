@@ -1,0 +1,16 @@
+spring:
+  # redis配置
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password:
+
+
+  # 数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/robok?useUnicode=true&allowPublicKeyRetrieval=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false

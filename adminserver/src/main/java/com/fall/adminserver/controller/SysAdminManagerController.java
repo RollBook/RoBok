@@ -1,11 +1,12 @@
 package com.fall.adminserver.controller;
 
-import com.fall.adminserver.model.vo.AdminRegisterVo;
+import com.fall.adminserver.model.vo.SysUserRegisterVo;
 import com.fall.adminserver.model.vo.ResponseRecord;
-import com.fall.adminserver.service.AdminManagerService;
+import com.fall.adminserver.service.SysAdminManagerService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,31 +21,30 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/admin")
-public class AdminManagerController {
+public class SysAdminManagerController {
 
-    private final AdminManagerService adminManagerService;
+    private final SysAdminManagerService adminManagerService;
 
-    public AdminManagerController(AdminManagerService adminManagerService) {
-        this.adminManagerService = adminManagerService;
+    public SysAdminManagerController(SysAdminManagerService sysAdminManagerService) {
+        this.adminManagerService = sysAdminManagerService;
     }
 
     /**
      * @author FAll
      * @description 新增管理员
-     * @param admin 管理员
-     * @param response http响应
+     * @param admin 管理员注册vo
      * @return: com.fall.adminserver.model.vo.ResponseRecord<java.lang.Void>
      * @date 2023/4/13 下午5:52
      */
     @Operation(summary = "新增管理员")
+    @PreAuthorize("@ss.hasAuth('ADMIN')")
     @PostMapping("/register")
-    ResponseRecord<Void> adminRegister(@Valid @RequestBody AdminRegisterVo admin, HttpServletResponse response) {
+    ResponseRecord<Void> adminRegister(@Valid @RequestBody SysUserRegisterVo admin) {
 
-        boolean ret = adminManagerService.register(admin);
-        if(ret) {
+        if(adminManagerService.register(admin)) {
             return ResponseRecord.success();
         }
-        return ResponseRecord.fail(response.SC_BAD_REQUEST,"注册失败");
+        return ResponseRecord.fail(HttpServletResponse.SC_BAD_REQUEST,"注册失败");
     }
 
 }

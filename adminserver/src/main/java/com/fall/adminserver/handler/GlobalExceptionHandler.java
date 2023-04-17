@@ -8,6 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -134,11 +137,45 @@ public class GlobalExceptionHandler {
     public ResponseRecord<Void> httpRequestMethodNotSupportedExceptionHandler(HttpRequestMethodNotSupportedException e,
                                                                  HttpServletRequest request) {
         logWarn(request);
-        log.warn("请求方式错误", e);
-        return ResponseRecord.fail(HttpServletResponse.SC_BAD_REQUEST,
-                String.format("请求方法不正确:%s", e.getMessage()));
+        log.warn("请求方式错误: {}", e.getMessage());
+        return ResponseRecord.fail(HttpServletResponse.SC_BAD_REQUEST, "请求方法不正确");
     }
 
+    /**
+     * @author FAll
+     * @description 请求内容不可读
+     * @param e 异常
+     * @param request http请求
+     * @return: com.fall.adminserver.model.vo.ResponseRecord<java.lang.Void>
+     * @date 2023/4/16 下午12:58
+     */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseRecord<Void> httpMessageNotReadableExceptionHandler(HttpMessageNotReadableException e,
+                                                                       HttpServletRequest request) {
+        logWarn(request);
+        log.warn("请求内容不可读: {} ",e.getMessage());
+        return ResponseRecord.fail(HttpServletResponse.SC_BAD_REQUEST, "请求内容不可读");
+    }
+
+    /**
+     * @author FAll
+     * @description 抛出校验异常，交给ExceptionTranslationFilter捕获处理
+     * @param e 异常
+     * @date 2023/4/14 下午10:38
+     */
+    @ExceptionHandler(AuthenticationException.class)
+    public void authenticationExceptionHandler(AuthenticationException e) {
+        // TODO: 生产环境时注释掉堆栈信息打印
+        e.printStackTrace();
+        throw e;
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public void accessDeniedExceptionHandler(AccessDeniedException e) {
+        // TODO: 生产环境时注释掉堆栈信息打印
+        e.printStackTrace();
+        throw e;
+    }
 
     /**
      * @param e        异常
