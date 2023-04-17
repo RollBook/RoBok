@@ -20,4 +20,12 @@ public interface MallMapper {
     List<MallSwiper> getMallSwiper();
 
     List<Book> getGoods();
+
+    List<Book> searchGoods(String input);
+
+    List<Book> searchGoodsByHow(String input);
+
+    List<Book> searchGoodsByPrice(String input);
+
+    Book getGoodById(String bookId);
 }

@@ -23,4 +23,12 @@ public interface IMallService {
     List<MallSwiper> getMallSwiper();
 
     List<Book> getGoods(Integer nowPage);
+
+    List<Book> searchBooks(String input);
+
+    List<Book> searchBooksByHow(String input);
+
+    List<Book> searchBooksByPrice(String input);
+
+    Book getGoodById(String bookId);
 }

@@ -14,4 +14,24 @@
         select * from t_book
     </select>
 
+    <!--List<Book> searchGoods(String input);-->
+    <select id="searchGoods" resultType="com.fall.robok.po.Book">
+        select * from t_book where book_name like '%${input}%'
+    </select>
+
+    <!--List<Book> searchGoodsByHow(String input);-->
+    <select id="searchGoodsByHow" resultType="com.fall.robok.po.Book">
+        select * from t_book where book_name like '%${input}%' ORDER BY status
+    </select>
+
+    <!--List<Book> searchGoodsByPrice(String input);-->
+    <select id="searchGoodsByPrice" resultType="com.fall.robok.po.Book">
+        select * from t_book where book_name like '%${input}%' ORDER BY price
+    </select>
+
+    <!--Book getGoodById(String bookId);-->
+    <select id="getGoodById" resultType="com.fall.robok.po.Book">
+        select * from t_book where book_id = #{bookId}
+    </select>
+
 </mapper>

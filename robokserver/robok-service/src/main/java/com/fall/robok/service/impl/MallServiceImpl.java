@@ -45,4 +45,26 @@ public class MallServiceImpl implements IMallService {
         Page<Object> page = PageHelper.startPage(nowPage, 10);
         return mallMapper.getGoods();
     }
+
+    @Override
+    public List<Book> searchBooks(String input) {
+        return mallMapper.searchGoods(input);
+    }
+
+    @Override
+    public List<Book> searchBooksByHow(String input) {
+        return mallMapper.searchGoodsByHow(input);
+    }
+
+    @Override
+    public List<Book> searchBooksByPrice(String input) {
+        return mallMapper.searchGoodsByPrice(input);
+    }
+
+    @Override
+    public Book getGoodById(String bookId) {
+        return mallMapper.getGoodById(bookId);
+    }
+
+
 }
