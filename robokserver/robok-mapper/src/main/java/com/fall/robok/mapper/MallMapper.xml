@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fall.robok.mapper.MallMapper">
+
+    <!--List<MallSwiper> getMallSwiper();-->
+    <select id="getMallSwiper" resultType="com.fall.robok.po.MallSwiper">
+        select * from t_mall_swiper
+    </select>
+
+    <!--List<Book> getGoods();-->
+    <select id="getGoods" resultType="com.fall.robok.po.Book">
+        select * from t_book
+    </select>
+
+    <!--List<Book> searchGoods(String input);-->
+    <select id="searchGoods" resultType="com.fall.robok.po.Book">
+        select * from t_book where book_name like '%${input}%'
+    </select>
+
+    <!--List<Book> searchGoodsByHow(String input);-->
+    <select id="searchGoodsByHow" resultType="com.fall.robok.po.Book">
+        select * from t_book where book_name like '%${input}%' ORDER BY status
+    </select>
+
+    <!--List<Book> searchGoodsByPrice(String input);-->
+    <select id="searchGoodsByPrice" resultType="com.fall.robok.po.Book">
+        select * from t_book where book_name like '%${input}%' ORDER BY price
+    </select>
+
+    <!--Book getGoodById(String bookId);-->
+    <select id="getGoodById" resultType="com.fall.robok.po.Book">
+        select * from t_book where book_id = #{bookId}
+    </select>
+
+</mapper>
