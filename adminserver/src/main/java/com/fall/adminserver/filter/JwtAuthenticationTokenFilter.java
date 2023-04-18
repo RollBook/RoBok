@@ -91,6 +91,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             }
 
         } catch (JwtException | IOException | ServletException e) {
+            // 捕获到上方抛出的异常，则返回校验失败响应
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             String json = mapper
                     .writeValueAsString(ResponseRecord.fail(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage()) );

@@ -1,5 +1,6 @@
 package com.fall.adminserver.controller;
 
+import com.fall.adminserver.model.vo.MenuItem;
 import com.fall.adminserver.model.vo.ResponseRecord;
 import com.fall.adminserver.model.vo.SysUserLoginVo;
 import com.fall.adminserver.service.SysUserService;
@@ -8,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -53,4 +55,17 @@ public class SysUserController {
                 .map(ResponseRecord::success)
                 .orElse(ResponseRecord.fail(HttpServletResponse.SC_UNAUTHORIZED));
     }
+
+    /**
+     * @author FAll
+     * @description 系统用户获取菜单列表
+     * @return: com.fall.adminserver.model.vo.ResponseRecord<java.util.List < com.fall.adminserver.model.vo.MenuItem>>
+     * @date 2023/4/18 下午9:18
+     */
+    @Operation(summary = "获取菜单列表")
+    @GetMapping("/get_menu_list")
+    ResponseRecord<List<MenuItem>> getMenuList() {
+        return ResponseRecord.success(sysUserService.getMenuList());
+    }
+
 }
