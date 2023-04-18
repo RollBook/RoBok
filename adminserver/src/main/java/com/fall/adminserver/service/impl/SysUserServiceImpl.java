@@ -1,6 +1,9 @@
 package com.fall.adminserver.service.impl;
 
+import com.fall.adminserver.constant.AuthorityEnum;
 import com.fall.adminserver.constant.MenuIDEnum;
+import com.fall.adminserver.mapper.SysUserMapper;
+import com.fall.adminserver.model.MenuSubItem;
 import com.fall.adminserver.model.SecurityLoginUser;
 import com.fall.adminserver.model.vo.MenuItem;
 import com.fall.adminserver.model.vo.SysUserLoginVo;
@@ -8,19 +11,17 @@ import com.fall.adminserver.service.SysUserService;
 import com.fall.adminserver.utils.JwtUtil;
 import jakarta.annotation.PostConstruct;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author FAll
@@ -34,57 +35,72 @@ public class SysUserServiceImpl implements SysUserService {
 
     private final AuthenticationManager authenticationManager;
 
+    private final SysUserMapper userMapper;
+
     private final JwtUtil jwtUtil;
 
     public SysUserServiceImpl(RedisTemplate<Object, Object> redisTemplate,
                               AuthenticationManager authenticationManager,
-                              BCryptPasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
+                              SysUserMapper userMapper, JwtUtil jwtUtil) {
         this.redisTemplate = redisTemplate;
+        this.userMapper = userMapper;
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
     }
 
     @PostConstruct
     public void initMenuLists() {
+        // 获取所有菜单项
+        List<MenuSubItem> subItems = userMapper.getSubItems();
 
-        // 初始化下属子项为空的各菜单子项
-        MenuItem userItem = new MenuItem(MenuIDEnum.USER_MANAGE.getId(),
-                null,null,new ArrayList<>());
-        MenuItem bookItem = new MenuItem(MenuIDEnum.BOOK_MANAGE.getId(),
-                null,null,new ArrayList<>());
-        MenuItem orderItem = new MenuItem(MenuIDEnum.ORDER_MANAGE.getId(),
-                null,null,new ArrayList<>());
-        MenuItem announcementItem = new MenuItem(MenuIDEnum.ANNOUNCEMENT.getId(),
-                null,null,new ArrayList<>());
+        // 将菜单项根据权限分组
+        Map<Integer, List<MenuSubItem>> collect = subItems.stream()
+                .collect(Collectors.groupingBy(MenuSubItem::getAuthority));
 
-        // 将菜单子项添加进菜单
-        ArrayList<MenuItem> menuList =
-                new ArrayList<>(Arrays.asList(userItem, bookItem, orderItem, announcementItem));
+        MenuItem userItem = new MenuItem(MenuIDEnum.USER_MANAGE.getId(), null, "用户", null);
+        MenuItem bookItem = new MenuItem(MenuIDEnum.BOOK_MANAGE.getId(), null, "书本", null);
+        MenuItem orderItem = new MenuItem(MenuIDEnum.ORDER_MANAGE.getId(), null, "订单", null);
+        MenuItem machineItem = new MenuItem(MenuIDEnum.MACHINE_MANAGE.getId(), null, "机器", null);
+        MenuItem eventItem = new MenuItem(MenuIDEnum.ANNOUNCEMENT.getId(), null, "活动", null);
 
-        // 初始化客服菜单
-        // 用户 (客服)
-        userItem.setChildren(Arrays.asList(
-                // 用户管理
-                new MenuItem(MenuIDEnum.USER_LIST.getId(), "/user_list","用户管理",null),
-                // 用户反馈
-                new MenuItem(MenuIDEnum.USER_FEEDBACK.getId(), "/user_feedback","用户反馈",null)));
-        // 书本 (客服)
-        bookItem.setChildren(Arrays.asList(
-                // 书本管理
-                new MenuItem(MenuIDEnum.BOOK_LIST.getId(), "/book_list","书本管理",null),
-                // 书本审核
-                new MenuItem(MenuIDEnum.BOOK_CHECK.getId(), "/book_check","书本审核",null),
-                // 书本垃圾站
-                new MenuItem(MenuIDEnum.BOOK_RECYCLE_BIN.getId(), "/book_recycle_bin","书本回收站",null)));
-        // 订单(客服)
-        orderItem.setChildren(Arrays.asList(
-                // 订单管理
-                new MenuItem(MenuIDEnum.ORDER_LIST.getId(), "/order_list","订单管理",null),
-                // 订单垃圾站
-                new MenuItem(MenuIDEnum.ORDER_RECYCLE_BIN.getId(), "/order_recycle_bin","订单回收站",null)));
+        // 初始化总菜单
+        ArrayList<MenuItem> menuList = new ArrayList<>(Arrays.asList(userItem, bookItem, orderItem, machineItem, eventItem));
 
+        // 初始化redis操作
+        ValueOperations<Object, Object> redisValueOperations = redisTemplate.opsForValue();
+
+        // 将菜单数据根据权限，添加到总菜单，并在redis中缓存不同权限的菜单
+
+        // 客服
+        // 将客服相关页面根据功能排序
+        Map<Integer, List<MenuSubItem>> customerServiceCollectByModule = collect.get(AuthorityEnum.CUSTOMER_SERVICE.getAuth()).stream()
+                .collect(Collectors.groupingBy((item -> item.getId() / 10)));
+
+        customerServiceCollectByModule.forEach((entry,list)->
+                menuList.forEach(menuItem -> { if(menuItem.getId() == entry) { menuItem.setChildren(list); } })
+        );
+        redisValueOperations.set("menu:customerService",menuList);
+
+        // 管理员
+        // 将管理员相关页面根据功能排序
+        Map<Integer, List<MenuSubItem>> adminCollectByModule = collect.get(AuthorityEnum.ADMIN.getAuth()).stream()
+                .collect(Collectors.groupingBy((item -> item.getId() / 10)));
+        // 管理员权限页面数组和客服页面数组相加
+        adminCollectByModule.forEach((entry,list)-> menuList.forEach(menuItem -> {
+            if(menuItem.getId() == entry) { menuItem.appendChildren(list); } })
+        );
+        redisValueOperations.set("menu:admin",menuList);
+
+        // ROOT
+        // 将ROOT相关页面根据功能排序
+        Map<Integer, List<MenuSubItem>> rootCollectByModule = collect.get(AuthorityEnum.ROOT.getAuth()).stream()
+                .collect(Collectors.groupingBy((item -> item.getId() / 10)));
+        // ROOT权限页面数组和客服页面数组相加
+        rootCollectByModule.forEach((entry,list)-> menuList.forEach(menuItem -> {
+                if(menuItem.getId() == entry) { menuItem.appendChildren(list); } })
+        );
+        redisValueOperations.set("menu:root",menuList);
     }
-
 
     @Override
     public String login(SysUserLoginVo admin) {
@@ -123,21 +139,22 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public List<MenuItem> getMenuList() {
+    public List<?> getMenuList() {
         // 获取当前用户权限等级
         Authentication authentication = SecurityContextHolder
                 .getContext().getAuthentication();
         if(authentication.getPrincipal() instanceof SecurityLoginUser loginUser) {
             int auth = loginUser.getAuthority().getAuth();
 
-
-
+            ValueOperations<Object, Object> redisValueOperations = redisTemplate.opsForValue();
+            // 根据用户权限查询对应菜单
             // 3:root 2:管理 1：客服
-            switch (auth) {
-                case 1: {
-
-                }
-            }
+            return switch (auth) {
+                case 0 -> (List<?>)redisValueOperations.get("menu:root");
+                case 1 -> (List<?>)redisValueOperations.get("menu:customerService");
+                case 2 -> (List<?>)redisValueOperations.get("menu:admin");
+                default -> throw new IllegalStateException("Unexpected value: " + auth);
+            };
         }
         return null;
     }

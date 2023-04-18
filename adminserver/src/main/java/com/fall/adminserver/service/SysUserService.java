@@ -1,9 +1,6 @@
 package com.fall.adminserver.service;
 
-import com.fall.adminserver.model.vo.MenuItem;
 import com.fall.adminserver.model.vo.SysUserLoginVo;
-
-import java.util.List;
 
 /**
  * @author FAll
@@ -14,6 +11,6 @@ public interface SysUserService {
 
     String login(SysUserLoginVo sysUserLoginVo);
 
-    List<MenuItem> getMenuList();
+    Object getMenuList();
 
 }

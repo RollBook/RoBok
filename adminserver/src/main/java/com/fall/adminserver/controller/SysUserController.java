@@ -64,7 +64,7 @@ public class SysUserController {
      */
     @Operation(summary = "获取菜单列表")
     @GetMapping("/get_menu_list")
-    ResponseRecord<List<MenuItem>> getMenuList() {
+    ResponseRecord<Object> getMenuList() {
         return ResponseRecord.success(sysUserService.getMenuList());
     }
 
