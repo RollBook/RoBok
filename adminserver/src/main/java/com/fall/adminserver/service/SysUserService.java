@@ -11,4 +11,6 @@ public interface SysUserService {
 
     String login(SysUserLoginVo sysUserLoginVo);
 
+    Object getMenuList();
+
 }
