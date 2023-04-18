@@ -44,7 +44,7 @@ public class SysAdminManagerController {
         if(adminManagerService.register(admin)) {
             return ResponseRecord.success();
         }
-        return ResponseRecord.fail(HttpServletResponse.SC_BAD_REQUEST,"注册失败");
+        return ResponseRecord.fail(HttpServletResponse.SC_BAD_REQUEST,"该名称已被占用");
     }
 
 }

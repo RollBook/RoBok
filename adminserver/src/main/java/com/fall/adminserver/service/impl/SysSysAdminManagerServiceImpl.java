@@ -41,7 +41,7 @@ public class SysSysAdminManagerServiceImpl implements SysAdminManagerService {
         int ret = adminManagerMapper.register(new SysUser(id,
                 adminVo.getName(),
                 passwordEncoder.encode(adminVo.getPassword()),
-                adminVo.getAuthorityEnum().getAuth()));
+                adminVo.getAuthority().getAuth()));
 
         return ret == 1;
     }

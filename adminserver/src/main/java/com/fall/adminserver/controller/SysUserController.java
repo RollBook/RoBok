@@ -6,10 +6,7 @@ import com.fall.adminserver.service.SysUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -30,6 +27,19 @@ public class SysUserController {
 
     /**
      * @author FAll
+     * @description 页面拦截检查登录
+     * @return: com.fall.adminserver.model.vo.ResponseRecord<java.lang.Void>
+     * @date 2023/4/18 下午1:55
+     */
+    @Operation(summary = "检查是否登录")
+    @GetMapping("/check_login")
+    ResponseRecord<Void> checkLogin() {
+        // 通过了JWT过滤器，说明登录未过期，直接返回成功
+        return ResponseRecord.success();
+    }
+
+    /**
+     * @author FAll
      * @description
      * @param admin 系统用户登录vo
      * @return: com.fall.adminserver.model.vo.ResponseRecord<java.lang.Void>
@@ -37,8 +47,8 @@ public class SysUserController {
      */
     @Operation(summary = "系统用户登录")
     @PostMapping("/login")
-    ResponseRecord<String> adminLogin(@Valid @RequestBody SysUserLoginVo admin) {
-        // 管理员登录
+    ResponseRecord<String> sysUserLogin(@Valid @RequestBody SysUserLoginVo admin) {
+        // 系统用户登录
         return Optional.ofNullable(sysUserService.login(admin))
                 .map(ResponseRecord::success)
                 .orElse(ResponseRecord.fail(HttpServletResponse.SC_UNAUTHORIZED));

@@ -19,5 +19,5 @@ public class SysUserRegisterVo {
     String password;
 
     @NotNull(message = "权限不能为空")
-    AuthorityEnum authorityEnum;
+    AuthorityEnum authority;
 }

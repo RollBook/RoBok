@@ -46,7 +46,7 @@ public enum AuthorityEnum {
         return switch (authorityName) {
             case "root","ROOT" -> ROOT;
             case "admin","ADMIN" -> ADMIN;
-            case "customService","CUSTOM_SERVICE" -> CUSTOMER_SERVICE;
+            case "customerService","CUSTOMER_SERVICE" -> CUSTOMER_SERVICE;
             default -> throw new IllegalStateException( "未知权限: " + authorityName); };
     }
 

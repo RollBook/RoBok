@@ -24,7 +24,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
@@ -159,7 +158,7 @@ public class SecurityConfig {
 
     /**
      * @author FAll
-     * @description 跨欲过滤器
+     * @description 跨域过滤器
      * @return: org.springframework.web.filter.CorsFilter
      * @date 2023/4/16 下午8:08
      */
