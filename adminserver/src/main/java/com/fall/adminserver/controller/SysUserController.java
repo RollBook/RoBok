@@ -34,10 +34,14 @@ public class SysUserController {
      * @date 2023/4/18 下午1:55
      */
     @Operation(summary = "检查是否登录")
-    @GetMapping("/check_login")
-    ResponseRecord<Void> checkLogin() {
+    @GetMapping("/check/page_auth")
+    ResponseRecord<Void> checkLogin(@RequestParam("url") String path) {
         // 通过了JWT过滤器，说明登录未过期，直接返回成功
-        return ResponseRecord.success();
+        if(sysUserService.checkPageAuth(path)) {
+            return ResponseRecord.success();
+        }
+        return ResponseRecord.fail(HttpServletResponse.SC_FORBIDDEN,"权限不足");
+
     }
 
     /**
