@@ -66,10 +66,13 @@ public class SysUserServiceImpl implements SysUserService {
                 .collect(Collectors.groupingBy(MenuSubItem::getAuthority));
 
         // 将不同页面存入redis
+        // 客服
         ArrayList<MenuSubItem> menuSubItemsToCache = new ArrayList<>(collect.get(2));
         redisValueOperations.set("page:customerService",menuSubItemsToCache);
+        // 管理员
         menuSubItemsToCache.addAll(collect.get(1));
         redisValueOperations.set("page:admin",menuSubItemsToCache);
+        // root
         menuSubItemsToCache.addAll(collect.get(0));
         redisValueOperations.set("page:root",menuSubItemsToCache);
 
@@ -83,8 +86,6 @@ public class SysUserServiceImpl implements SysUserService {
         // 初始化总菜单
         ArrayList<MenuItem> menuList = new ArrayList<>(Arrays.asList(userItem, bookItem,
                 orderItem, machineItem, eventItem));
-
-
 
         /* 将菜单数据根据权限，添加到总菜单，并在redis中缓存不同权限的菜单 */
         // 客服
@@ -141,13 +142,13 @@ public class SysUserServiceImpl implements SysUserService {
         Object principal = authentication.getPrincipal();
 
         if(principal instanceof SecurityLoginUser securityLoginUser) {
+            // 获取系统用户id
             String id = securityLoginUser.getSysUser().getId();
-            String  jwt = jwtUtil.createJWT(id);
-
-            // 把完整的管理员信息存入redis id作为key
+            // 把完整的系统用户信息存入redis id作为key
             redisTemplate.opsForValue().set("login:"+id, securityLoginUser);
 
-            return jwt;
+            // 签发并返回token
+            return jwtUtil.createJWT(id);
 
         } else {
             throw new RuntimeException("登录异常");
@@ -195,11 +196,13 @@ public class SysUserServiceImpl implements SysUserService {
             // 检查访问的页面是否在可访问范围内
             if(o instanceof List<?> list) {
                 return list.stream()
+                        // 对list中所有对象进行类型检查，并转化为MenuSubItem
                         .map(listItem->{
                             if(listItem instanceof MenuSubItem subItem) { return subItem; }
                             return null;
                         })
                         .filter(Objects::nonNull)
+                        // 判断获得的可访问页面list中是否存在path对应页面
                         .anyMatch(matchItem -> matchItem.getPath().equals(path));
             }
             return false;
