@@ -13,4 +13,6 @@ public interface SysUserService {
 
     Object getMenuList();
 
+    Boolean checkPageAuth(String path);
+
 }

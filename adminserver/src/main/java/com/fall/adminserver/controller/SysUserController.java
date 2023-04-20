@@ -1,6 +1,5 @@
 package com.fall.adminserver.controller;
 
-import com.fall.adminserver.model.vo.MenuItem;
 import com.fall.adminserver.model.vo.ResponseRecord;
 import com.fall.adminserver.model.vo.SysUserLoginVo;
 import com.fall.adminserver.service.SysUserService;
@@ -9,7 +8,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -29,15 +27,18 @@ public class SysUserController {
 
     /**
      * @author FAll
-     * @description 页面拦截检查登录
+     * @description 页面拦截检查登录和访问权限
      * @return: com.fall.adminserver.model.vo.ResponseRecord<java.lang.Void>
      * @date 2023/4/18 下午1:55
      */
-    @Operation(summary = "检查是否登录")
-    @GetMapping("/check_login")
-    ResponseRecord<Void> checkLogin() {
+    @Operation(summary = "检查是否登录和是否有权访问")
+    @GetMapping("/check/page_auth")
+    ResponseRecord<Void> checkLogin(@RequestParam("url") String path) {
         // 通过了JWT过滤器，说明登录未过期，直接返回成功
-        return ResponseRecord.success();
+        if(sysUserService.checkPageAuth(path)) {
+            return ResponseRecord.success();
+        }
+        return ResponseRecord.fail(HttpServletResponse.SC_FORBIDDEN,"权限不足");
     }
 
     /**

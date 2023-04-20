@@ -34,9 +34,7 @@ public class SecurityExpressionRoot {
             // 判断用户权限是否足够 (值越小，权限越大)
             return userAuthority <= authorityEnum.getAuth();
 
-        } else {
-            throw new RuntimeException();
-        }
+        } else { throw new RuntimeException(); }
 
     }
 }

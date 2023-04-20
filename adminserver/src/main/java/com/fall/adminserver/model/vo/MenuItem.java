@@ -23,6 +23,12 @@ public class MenuItem implements Serializable {
     private String itemName;        // 子项名称
     private List<MenuSubItem> children;// 下属子项
 
+    /**
+     * @author FAll
+     * @description 追加下属列表并去重
+     * @param childrenToAppend 待追加列表
+     * @date 2023/4/19 上午12:32
+     */
     public void appendChildren( List<MenuSubItem> childrenToAppend ) {
         HashSet<MenuSubItem> childrenSet = new HashSet<>(children);
         childrenSet.addAll(childrenToAppend);

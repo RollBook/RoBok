@@ -9,7 +9,6 @@ spring:
   profiles:
     active: dev
 
-
 ########## 通用配置 #############
   # druid连接池配置
   datasource:

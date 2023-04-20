@@ -4,7 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fall.robok.mapper.OrderMapper">
 
-
     <resultMap id="orderResultMap" type="com.fall.robok.po.Order">
         <id property="orderId" column="order_id"/>
         <result property="createdTime" column="created_time"/>
