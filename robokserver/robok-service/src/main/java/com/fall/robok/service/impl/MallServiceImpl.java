@@ -2,6 +2,7 @@ package com.fall.robok.service.impl;
 
 import com.fall.robok.mapper.MallMapper;
 import com.fall.robok.po.Book;
+import com.fall.robok.po.Cart;
 import com.fall.robok.po.MallSwiper;
 import com.fall.robok.service.IMallService;
 import com.github.pagehelper.Page;
@@ -64,6 +65,11 @@ public class MallServiceImpl implements IMallService {
     @Override
     public Book getGoodById(String bookId) {
         return mallMapper.getGoodById(bookId);
+    }
+
+    @Override
+    public Integer addCart(Cart cart) {
+        return mallMapper.addCart(cart);
     }
 
 
