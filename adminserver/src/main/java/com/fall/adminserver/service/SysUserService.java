@@ -11,4 +11,8 @@ public interface SysUserService {
 
     String login(SysUserLoginVo sysUserLoginVo);
 
+    Object getMenuList();
+
+    Boolean checkPageAuth(String path);
+
 }

@@ -16,14 +16,14 @@ import java.util.Objects;
  * 管理所有admin账户
  */
 @Service
-public class SysSysAdminManagerServiceImpl implements SysAdminManagerService {
+public class SysAdminManagerServiceImpl implements SysAdminManagerService {
 
     private final SysAdminManagerMapper adminManagerMapper;
 
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public SysSysAdminManagerServiceImpl(SysAdminManagerMapper sysAdminManagerMapper,
-                                         BCryptPasswordEncoder passwordEncoder) {
+    public SysAdminManagerServiceImpl(SysAdminManagerMapper sysAdminManagerMapper,
+                                      BCryptPasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
         this.adminManagerMapper = sysAdminManagerMapper;
     }

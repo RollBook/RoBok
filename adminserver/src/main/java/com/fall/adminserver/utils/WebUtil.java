@@ -10,7 +10,7 @@ import java.io.IOException;
  * Web工具类
  */
 public class WebUtil {
-    public static void renderString(HttpServletResponse response, String json) {
+    public static void renderString(HttpServletResponse response, Object json) {
         try {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");

@@ -31,12 +31,12 @@ public class SysAdminManagerController {
 
     /**
      * @author FAll
-     * @description 新增管理员
-     * @param admin 管理员注册vo
+     * @description 新增新增系统用户
+     * @param admin 系统用户注册vo
      * @return: com.fall.adminserver.model.vo.ResponseRecord<java.lang.Void>
      * @date 2023/4/13 下午5:52
      */
-    @Operation(summary = "新增管理员")
+    @Operation(summary = "新增系统用户")
     @PreAuthorize("@ss.hasAuth('ADMIN')")
     @PostMapping("/register")
     ResponseRecord<Void> adminRegister(@Valid @RequestBody SysUserRegisterVo admin) {
@@ -44,7 +44,7 @@ public class SysAdminManagerController {
         if(adminManagerService.register(admin)) {
             return ResponseRecord.success();
         }
-        return ResponseRecord.fail(HttpServletResponse.SC_BAD_REQUEST,"注册失败");
+        return ResponseRecord.fail(HttpServletResponse.SC_BAD_REQUEST,"该名称已被占用");
     }
 
 }
