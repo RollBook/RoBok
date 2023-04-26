@@ -1,6 +1,7 @@
 package com.fall.robok.mapper;
 
 import com.fall.robok.po.Book;
+import com.fall.robok.po.Cart;
 import com.fall.robok.po.MallSwiper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -28,4 +29,6 @@ public interface MallMapper {
     List<Book> searchGoodsByPrice(String input);
 
     Book getGoodById(String bookId);
+
+    Integer addCart(Cart cart);
 }

@@ -2,6 +2,7 @@ package com.fall.robok.service;
 
 import com.fall.robok.mapper.MallMapper;
 import com.fall.robok.po.Book;
+import com.fall.robok.po.Cart;
 import com.fall.robok.po.MallSwiper;
 
 import java.util.List;
@@ -31,4 +32,6 @@ public interface IMallService {
     List<Book> searchBooksByPrice(String input);
 
     Book getGoodById(String bookId);
+
+    Integer addCart(Cart cart);
 }
