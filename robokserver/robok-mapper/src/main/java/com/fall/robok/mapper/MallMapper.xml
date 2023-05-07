@@ -11,31 +11,32 @@
 
     <!--List<Book> getGoods();-->
     <select id="getGoods" resultType="com.fall.robok.po.Book">
-        select * from t_book
+        select * from t_book where audit = 1
     </select>
 
     <!--List<Book> searchGoods(String input);-->
     <select id="searchGoods" resultType="com.fall.robok.po.Book">
-        select * from t_book where book_name like '%${input}%'
+        select * from t_book where book_name like '%${input}%' AND audit = 1
     </select>
 
     <!--List<Book> searchGoodsByHow(String input);-->
     <select id="searchGoodsByHow" resultType="com.fall.robok.po.Book">
-        select * from t_book where book_name like '%${input}%' ORDER BY status
+        select * from t_book where book_name like '%${input}%' AND audit = 1 ORDER BY status
     </select>
 
     <!--List<Book> searchGoodsByPrice(String input);-->
     <select id="searchGoodsByPrice" resultType="com.fall.robok.po.Book">
-        select * from t_book where book_name like '%${input}%' ORDER BY price
+        select * from t_book where book_name like '%${input}%' AND audit = 1 ORDER BY price
     </select>
 
     <!--Book getGoodById(String bookId);-->
     <select id="getGoodById" resultType="com.fall.robok.po.Book">
-        select * from t_book where book_id = #{bookId}
+        select * from t_book where book_id = #{bookId} AND audit = 1
     </select>
 
-    <!--Integer addCart(Cart cart);-->
+    <!--void addCart(Cart cart);-->
     <insert id="addCart">
         insert ignore into t_cart (book_id,sell_id,book_name,price,url1,description,user_id,checked) values (#{bookId},#{sellId},#{bookName},#{price},#{url1},#{description},#{userId},#{checked})
     </insert>
+
 </mapper>

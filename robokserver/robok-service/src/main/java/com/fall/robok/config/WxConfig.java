@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.security.SecureRandom;
+
 /**
  * @author FAll
  * @date 2022/9/23 13:47
@@ -18,5 +20,9 @@ public class WxConfig {
     private String appSecret;
 
     private String appID;
+
+    private String mckKey;
+
+    private String mchId;
 
 }
