@@ -17,7 +17,7 @@ import java.util.List;
 public interface SysUserMapper {
 
     @Select("""
-            select * from t_admin_menu_sub_item;
+            select * from t_admin_menu_sub_item
             """)
     List<MenuSubItem> getSubItems();
 

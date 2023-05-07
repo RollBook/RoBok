@@ -19,7 +19,7 @@ public interface SysAdminManagerMapper {
 
     @Select("""
                 select * from `t_admin`
-                    where `name` = #{name};
+                    where `name` = #{name}
             """)
     SysUser getSysUserByName(@Param("name") String name);
 

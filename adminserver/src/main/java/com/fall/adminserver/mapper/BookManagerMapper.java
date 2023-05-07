@@ -15,6 +15,6 @@ import java.util.List;
 @Repository
 public interface BookManagerMapper {
 
-    List<Book> getBookList();
+    List<Book> getBookList(String bookName,String order, String orderProp);
 
 }

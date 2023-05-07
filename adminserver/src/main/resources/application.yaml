@@ -41,7 +41,7 @@ spring:
 # mybatis配置
 mybatis:
   configuration:
-    map-underscore-to-camel-case: true
+      map-underscore-to-camel-case: true
 
 # 微信小程序相关配置
 wx-app:

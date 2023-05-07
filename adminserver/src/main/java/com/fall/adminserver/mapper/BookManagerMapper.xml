@@ -8,6 +8,15 @@
     <!-- TODO: 根据地区改变查询范围 -->
     <select id="getBookList" resultType="com.fall.adminserver.model.Book">
         select * from t_book
+        <if test="bookName != null">
+            where book_name like #{bookName}
+        </if>
+        <if test="orderProp == 'price' or orderProp == 'timestamp'">
+            order by ${orderProp}
+        </if>
+        <if test="order == 'asc' or order == 'desc'">
+            ${order}
+        </if>
     </select>
 
 </mapper>
