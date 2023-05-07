@@ -54,7 +54,7 @@ public class SysUserController {
         // 系统用户登录
         return Optional.ofNullable(sysUserService.login(admin))
                 .map(ResponseRecord::success)
-                .orElse(ResponseRecord.fail(HttpServletResponse.SC_UNAUTHORIZED));
+                .orElse(ResponseRecord.fail(HttpServletResponse.SC_FORBIDDEN));
     }
 
     /**

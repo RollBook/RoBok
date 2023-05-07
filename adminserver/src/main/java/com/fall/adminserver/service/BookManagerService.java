@@ -11,5 +11,7 @@ import java.util.List;
  * 书本管理service
  */
 public interface BookManagerService {
-    PageInfo<Book> getBookList(Integer pageNum, Integer pageSize);
+    PageInfo<Book> getBookList(Integer pageNum, Integer pageSize, String order, String orderProp);
+
+    PageInfo<Book> getBookByName(String bookName,Integer pageNum, Integer pageSize, String order, String orderProp);
 }
