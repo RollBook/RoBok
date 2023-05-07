@@ -133,4 +133,46 @@
         where open_id = #{openId} and timestamp = #{timestamp}
     </update>
 
+    <!--delBook(@Param("bookId") String bookId);-->
+    <delete id="delBook">
+        delete from t_book where book_id = #{bookId}
+    </delete>
+
+    <!--Integer updateBookAudit(@Param("audit")Integer audit,@Param("bookId")String bookId);-->
+    <update id="updateBookAudit">
+        update t_book set audit = #{audit} where book_id = #{bookId}
+    </update>
+
+    <!--List<Book> getSaveBook(@Param("openid")String openid);-->
+    <select id="getSaveBook" resultType="com.fall.robok.po.Book">
+        select * from t_book where open_id = #{openid} AND audit = 2
+    </select>
+
+    <resultMap id="bookAndOrder" type="com.fall.robok.po.Book">
+        <id property="bookId" column="book_id"/>
+        <result property="openId" column="open_id"/>
+        <result property="bookName" column="book_name"/>
+        <result property="price" column="price"/>
+        <result property="pressId" column="press_id"/>
+        <result property="status" column="status"/>
+        <result property="audit" column="audit"/>
+        <result property="tagId" column="tag_id"/>
+        <result property="url1" column="url1"/>
+        <result property="url2" column="url2"/>
+        <result property="url3" column="url3"/>
+        <result property="description" column="description"/>
+        <result property="timestamp" column="timestamp"/>
+        <association property="order" javaType="com.fall.robok.po.Order">
+            <id property="orderId" column="order_id"/>
+            <result property="createdTime" column="created_time"/>
+            <result property="buyerId" column="buyer_id"/>
+            <result property="sellerId" column="seller_id"/>
+            <result property="audit" column="audit"/>
+        </association>
+    </resultMap>
+    <!--Integer saveBook(@Param("bookId") String bookId);-->
+    <update id="saveBook">
+        update t_book left join t_order on t_book.book_id = t_order.book_id set t_book.audit = 3,t_order.audit = 1 where t_book.book_id = #{bookId}
+    </update>
+
 </mapper>

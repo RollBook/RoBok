@@ -75,7 +75,9 @@ mybatis:
 # 微信小程序相关配置
 wx-app: {
   app-secret: f259a9d4f7fbf17f4ac96a058e8d0de7,
-  appID: wx5260f83aed33c580
+  appID: wx5260f83aed33c580,
+  mckKey: a2f17db6ea5cdf9127149782cfdf5910,
+  mchId: 1621751822
 }
 
 # 上传文件夹路径

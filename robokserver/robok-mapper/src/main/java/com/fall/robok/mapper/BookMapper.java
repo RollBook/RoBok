@@ -2,7 +2,10 @@ package com.fall.robok.mapper;
 
 import com.fall.robok.po.Book;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 
 /**
@@ -31,6 +34,16 @@ public interface BookMapper {
      * @date 2022/9/29 20:11
      */
     Integer updateBook(Book book);
+
+
+    Integer delBook(@Param("bookId") String bookId);
+
+
+    Integer updateBookAudit(@Param("audit")Integer audit,@Param("bookId")String bookId);
+
+    List<Book> getSaveBook(@Param("openid")String openid);
+
+    Integer saveBook(@Param("bookId") String bookId);
 
 
 }

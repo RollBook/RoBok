@@ -41,6 +41,8 @@ public class Book {
 
     private String timestamp;
 
+    private Order order;
+
     public Book(Builder builder) {
         this.bookId = builder.bookId;
         this.openId = builder.openId;

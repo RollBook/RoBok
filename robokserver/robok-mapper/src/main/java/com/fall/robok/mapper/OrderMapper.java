@@ -35,4 +35,10 @@ public interface OrderMapper {
      * @date  15:27
      */
     List<Book> getSellBook(@Param("openid") String openid);
+
+    Integer addOrder(Order order);
+
+    List<Order> getPickOrder(@Param("openid") String openid);
+
+    Integer pickBook(@Param("orderId") String orderId);
 }
