@@ -14,4 +14,19 @@ public interface BookManagerService {
     PageInfo<Book> getBookList(Integer pageNum, Integer pageSize, String order, String orderProp);
 
     PageInfo<Book> getBookByName(String bookName,Integer pageNum, Integer pageSize, String order, String orderProp);
+
+    PageInfo<Book> getAuditBookList(Integer pageNum, Integer pageSize, String order, String orderProp);
+
+    PageInfo<Book> getAuditBookByName(String bookName,Integer pageNum, Integer pageSize, String order, String orderProp);
+
+    Integer passAudit(String bookId);
+
+    Integer noPassAudit(String bookId);
+
+    PageInfo<Book> getRecycleAuditBookList(Integer pageNum, Integer pageSize, String order, String orderProp);
+
+    PageInfo<Book> getRecycleAuditBookByName(String bookName,Integer pageNum, Integer pageSize, String order, String orderProp);
+
+    Integer recycleAudit(String bookId);
+
 }

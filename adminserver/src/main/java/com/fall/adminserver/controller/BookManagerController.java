@@ -6,11 +6,11 @@ import com.fall.adminserver.service.BookManagerService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Nullable;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.constraints.NotEmpty;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -51,5 +51,83 @@ public class BookManagerController {
 
         return ResponseRecord
                 .success(bookManagerService.getBookByName(bookName,pageNum,pageSize,order,orderProp));
+    }
+
+
+    @Operation(summary = "获取待审核书本列表")
+    @GetMapping("/get_audit_book_list")
+    @PreAuthorize("@ss.hasAuth('CUSTOMER_SERVICE')")
+    public ResponseRecord<PageInfo<Book>> getAuditBookList(@RequestParam("pageNum")Integer pageNum,
+                                                      @RequestParam("pageSize")Integer pageSize,
+                                                      @Nullable @RequestParam("order")String order,
+                                                      @Nullable @RequestParam("order_prop")String orderProp) {
+
+        return ResponseRecord.success(bookManagerService.getAuditBookList(pageNum,pageSize,order,orderProp));
+    }
+
+    @Operation(summary = "根据名称获取待审核书本")
+    @GetMapping("/get_audit_book_by_name")
+    @PreAuthorize("@ss.hasAuth('CUSTOMER_SERVICE')")
+    public ResponseRecord<PageInfo<Book>> getAuditBookByName(@RequestParam("bookName")String bookName,
+                                                        @RequestParam("pageNum")Integer pageNum,
+                                                        @RequestParam("pageSize")Integer pageSize,
+                                                        @Nullable @RequestParam("order")String order,
+                                                        @Nullable @RequestParam("order_prop")String orderProp) {
+
+        return ResponseRecord
+                .success(bookManagerService.getAuditBookByName(bookName,pageNum,pageSize,order,orderProp));
+    }
+
+
+    @Operation(summary = "审核通过书本")
+    @PostMapping("/pass_audit")
+    @PreAuthorize("@ss.hasAuth('CUSTOMER_SERVICE')")
+    ResponseRecord<Integer> passAudit(@RequestParam("bookId") String bookId){
+        return Optional.ofNullable(bookManagerService.passAudit(bookId))
+                .map(e->(ResponseRecord.success("审核通过",e)))
+                .orElse(ResponseRecord.fail(HttpServletResponse.SC_FORBIDDEN));
+    }
+
+    @Operation(summary = "审核退回书本")
+    @PostMapping("/no_pass_audit")
+    @PreAuthorize("@ss.hasAuth('CUSTOMER_SERVICE')")
+    ResponseRecord<Integer> noPassAudit(@RequestParam("bookId") String bookId){
+        return Optional.ofNullable(bookManagerService.noPassAudit(bookId))
+                .map(e->(ResponseRecord.success("退回通过",e)))
+                .orElse(ResponseRecord.fail(HttpServletResponse.SC_FORBIDDEN));
+    }
+
+    @Operation(summary = "获取书本回收站书本列表")
+    @GetMapping("/get_recycle_audit_book_list")
+    @PreAuthorize("@ss.hasAuth('CUSTOMER_SERVICE')")
+    public ResponseRecord<PageInfo<Book>> getRecycleAuditBookList(@RequestParam("pageNum")Integer pageNum,
+                                                           @RequestParam("pageSize")Integer pageSize,
+                                                           @Nullable @RequestParam("order")String order,
+                                                           @Nullable @RequestParam("order_prop")String orderProp) {
+
+        return ResponseRecord.success(bookManagerService.getRecycleAuditBookList(pageNum,pageSize,order,orderProp));
+    }
+
+    @Operation(summary = "根据名称获取书本回收站书本")
+    @GetMapping("/get_recycle_audit_book_by_name")
+    @PreAuthorize("@ss.hasAuth('CUSTOMER_SERVICE')")
+    public ResponseRecord<PageInfo<Book>> getRecycleAuditBookByName(@RequestParam("bookName")String bookName,
+                                                             @RequestParam("pageNum")Integer pageNum,
+                                                             @RequestParam("pageSize")Integer pageSize,
+                                                             @Nullable @RequestParam("order")String order,
+                                                             @Nullable @RequestParam("order_prop")String orderProp) {
+
+        return ResponseRecord
+                .success(bookManagerService.getRecycleAuditBookByName(bookName,pageNum,pageSize,order,orderProp));
+    }
+
+
+    @Operation(summary = "回收书本")
+    @PostMapping("/recycle_audit")
+    @PreAuthorize("@ss.hasAuth('CUSTOMER_SERVICE')")
+    ResponseRecord<Integer> recycleAudit(@RequestParam("bookId") String bookId){
+        return Optional.ofNullable(bookManagerService.recycleAudit(bookId))
+                .map(e->(ResponseRecord.success("回收成功",e)))
+                .orElse(ResponseRecord.fail(HttpServletResponse.SC_FORBIDDEN));
     }
 }

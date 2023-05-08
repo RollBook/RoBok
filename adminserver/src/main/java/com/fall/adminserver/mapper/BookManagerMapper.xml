@@ -19,4 +19,18 @@
         </if>
     </select>
 
+    <!--Integer passAudit(@Param("bookId") String bookId);-->
+    <update id="passAudit">
+        update t_book set audit = 1 where book_id = #{bookId}
+    </update>
+
+    <!--Integer noPassAudit(@Param("bookId") String bookId);-->
+    <update id="noPassAudit">
+        update t_book set audit = 9 where book_id = #{bookId}
+    </update>
+
+    <!--Integer recycleAudit(@Param("bookId") String bookId);-->
+    <update id="recycleAudit">
+        update t_book set audit = 0 where book_id = #{bookId}
+    </update>
 </mapper>
