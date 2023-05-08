@@ -51,5 +51,6 @@ public class UserManagerController {
 
         return ResponseRecord
                 .success(userManagerService.getUserByName(nickName,pageNum,pageSize,order,orderProp));
+
     }
 }
