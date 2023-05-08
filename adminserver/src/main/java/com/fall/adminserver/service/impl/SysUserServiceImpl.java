@@ -156,6 +156,21 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
+    public String logout() {
+        UsernamePasswordAuthenticationToken authentication
+                = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof SecurityLoginUser securityLoginUser){
+            String id = securityLoginUser.getSysUser().getId();
+            redisTemplate.delete("login:"+id);
+            return "ok";
+        }else {
+            throw new RuntimeException("登录过期");
+        }
+
+    }
+
+    @Override
     public Object getMenuList() {
         // 获取当前用户权限等级
         Authentication authentication = SecurityContextHolder

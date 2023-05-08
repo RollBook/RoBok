@@ -57,6 +57,22 @@ public class SysUserController {
                 .orElse(ResponseRecord.fail(HttpServletResponse.SC_FORBIDDEN));
     }
 
+
+    /**
+     * @author Tan
+     * @description 系统用户退出登录
+     * @param
+     * @return: com.fall.adminserver.model.vo.ResponseRecord<java.lang.String>
+     * @date  4:12
+     */
+    @Operation(summary = "系统用户退出登录")
+    @RequestMapping("/logout")
+    ResponseRecord<String> sysUserLogout(){
+        return Optional.ofNullable(sysUserService.logout())
+                .map(e->(ResponseRecord.success("退出成功",e)))
+                .orElse(ResponseRecord.fail(HttpServletResponse.SC_FORBIDDEN));
+    }
+
     /**
      * @author FAll
      * @description 系统用户获取菜单列表

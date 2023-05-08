@@ -1,5 +1,7 @@
 package com.fall.adminserver.service;
 
+import com.fall.adminserver.model.Book;
+import com.fall.adminserver.model.User;
 import com.github.pagehelper.PageInfo;
 
 /**
@@ -9,5 +11,7 @@ import com.github.pagehelper.PageInfo;
  */
 public interface UserManagerService {
 
-    PageInfo getUserList();
+    PageInfo<User> getUserList(Integer pageNum, Integer pageSize, String order, String orderProp);
+
+    PageInfo<User> getUserByName(String nickName, Integer pageNum, Integer pageSize, String order, String orderProp);
 }
