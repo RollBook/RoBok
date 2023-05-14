@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class School {
 
-    private Integer schoolId;
+    private String schoolId;
 
     private String schoolName;
 }
