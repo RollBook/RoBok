@@ -149,7 +149,7 @@ public class OrderServiceImpl implements IOrderService {
         transactionTemplate.execute(status -> {
             try {
                 orderMapper.addOrder(order);
-                bookMapper.updateBookAudit(3,orderOfPay.getBookId());
+                bookMapper.updateBookAudit(2,orderOfPay.getBookId());
             } catch (Exception e) {
                 status.setRollbackOnly();
                 throw new RuntimeException(e);

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fall.adminserver.mapper.AnnouncementMapper">
+
+    <!--List<Announcement> getAnnouncement(String location);-->
+    <select id="getAnnouncement" resultType="com.fall.adminserver.model.Announcement">
+        select * from t_announcement
+        <if test="location != null">
+            where location like #{location}
+        </if>
+    </select>
+
+    <!--Integer updateAnnouncement(Announcement announcement);-->
+    <update id="updateAnnouncement">
+        update t_announcement set value = #{value} where location = #{location}
+    </update>
+
+    <!--List<Event> getEvent();-->
+    <select id="getEvent" resultType="com.fall.adminserver.model.Event">
+        select * from t_mall_swiper
+    </select>
+</mapper>
