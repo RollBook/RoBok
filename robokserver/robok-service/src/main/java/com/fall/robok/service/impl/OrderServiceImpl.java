@@ -88,7 +88,6 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public Map doUnifiedOrder(OrderOfPay orderOfPay) throws Exception {
-        //先写死1， 1就是1分钱，100=1元
         Integer price = orderOfPay.getPrice();
         //商户订单号(随机字符串),这个回调的时候会给回
         String orderSn = payUtil.generateNonceStr();
@@ -115,7 +114,7 @@ public class OrderServiceImpl implements IOrderService {
                 payUtil.getSerialNumber(),
                 null,
                 // 私钥
-                privateKeyPath,
+                payUtil.getPrivateKeyPath(),
                 // 请求参数
                 JSONUtil.toJsonStr(data)
         );
@@ -127,14 +126,14 @@ public class OrderServiceImpl implements IOrderService {
             // 根据证书序列号查询对应的证书来验证签名结果
             String platformCertPath = "D:\\360极速浏览器下载\\WXCertUtil\\cert\\1621751822_20230422_cert\\cert.pem";
             //平台证书
-            boolean verifySignature = WxPayKit.verifySignature(response,platformCertPath);
+            boolean verifySignature = WxPayKit.verifySignature(response,payUtil.getCertPath());
             log.info("verifySignature: {}", verifySignature);
             if (verifySignature) {
                 String body = response.getBody();
                 JSONObject jsonObject = JSONUtil.parseObj(body);
                 String prepayId = jsonObject.getStr("prepay_id");
                 // 私钥
-                map = WxPayKit.jsApiCreateSign(appid, prepayId,privateKeyPath);
+                map = WxPayKit.jsApiCreateSign(appid, prepayId,payUtil.getPrivateKeyPath());
                 log.info("唤起支付参数:{}", map);
             }
         }
@@ -149,7 +148,7 @@ public class OrderServiceImpl implements IOrderService {
         transactionTemplate.execute(status -> {
             try {
                 orderMapper.addOrder(order);
-                bookMapper.updateBookAudit(2,orderOfPay.getBookId());
+                bookMapper.updateBookAudit(3,orderOfPay.getBookId());
             } catch (Exception e) {
                 status.setRollbackOnly();
                 throw new RuntimeException(e);
@@ -177,7 +176,7 @@ public class OrderServiceImpl implements IOrderService {
                     mchId,
                     payUtil.getSerialNumber(),
                     null,
-                    privateKeyPath,
+                    payUtil.getPrivateKeyPath(),
                     ""
             );
 
@@ -206,11 +205,11 @@ public class OrderServiceImpl implements IOrderService {
                 String nonce = encryptCertificate.getStr("nonce");
                 String serialNo = encryptObject.getStr("serial_no");
                 //生成第四个证书文件
-                final String platSerialNo = payUtil.savePlatformCert(associatedData,mckKey, nonce, cipherText, platformCertPath);
+                final String platSerialNo = payUtil.savePlatformCert(associatedData,mckKey, nonce, cipherText, payUtil.getCertPath());
                 log.info("平台证书序列号: {} serialNo: {}", platSerialNo, serialNo);
             }
             // 根据证书序列号查询对应的证书来验证签名结果
-            boolean verifySignature = WxPayKit.verifySignature(response, platformCertPath);
+            boolean verifySignature = WxPayKit.verifySignature(response, payUtil.getCertPath());
             log.info("verifySignature:{}" + verifySignature);
             return body;
         } catch (Exception e) {
@@ -236,9 +235,8 @@ public class OrderServiceImpl implements IOrderService {
             String platformCertPath = "D:\\360极速浏览器下载\\WXCertUtil\\cert\\1621751822_20230422_cert\\cert.pem";
             //这个商户号对应的那个V3秘钥
             String mckKey= wxConfig.getMckKey();
-            System.out.println(mckKey);
             //需要通过证书序列号查找对应的证书，verifyNotify 中有验证证书的序列号
-            String plainText = WxPayKit.verifyNotify(serialNo, result, signature, nonce, timestamp,mckKey, platformCertPath);
+            String plainText = WxPayKit.verifyNotify(serialNo, result, signature, nonce, timestamp,mckKey, payUtil.getCertPath());
             log.info("支付通知明文 {}", plainText);
             //这个就是具体的业务情况
             payUtil.savePayPlainText(plainText);
@@ -290,7 +288,7 @@ public class OrderServiceImpl implements IOrderService {
                 payUtil.getSerialNumber(),
                 null,
                 // 私钥
-                privateKeyPath,
+                payUtil.getPrivateKeyPath(),
                 // 请求参数
                 JSONUtil.toJsonStr(data)
         );
@@ -302,7 +300,7 @@ public class OrderServiceImpl implements IOrderService {
             // 根据证书序列号查询对应的证书来验证签名结果
             String platformCertPath = "D:\\360极速浏览器下载\\WXCertUtil\\cert\\1621751822_20230422_cert\\cert.pem";
             //平台证书
-            boolean verifySignature = WxPayKit.verifySignature(response,platformCertPath);
+            boolean verifySignature = WxPayKit.verifySignature(response,payUtil.getCertPath());
             log.info("verifySignature: {}", verifySignature);
             if (verifySignature) {
                 String body = response.getBody();

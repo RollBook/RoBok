@@ -4,14 +4,17 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.fall.robok.config.ServerConfig;
 import com.ijpay.core.kit.AesUtil;
 import com.ijpay.core.kit.PayKit;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import java.io.ByteArrayInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import javax.annotation.PostConstruct;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.security.cert.X509Certificate;
 import java.util.HashMap;
@@ -25,7 +28,24 @@ import java.util.Map;
 
 @Slf4j
 @Component
+@Getter
 public class PayUtil {
+
+    private final ServerConfig serverConfig;
+
+    public PayUtil(ServerConfig serverConfig){
+        this.serverConfig = serverConfig;
+    }
+
+    @Value("${certificate-path.certPath}")
+    private String certPath;
+
+    @Value("${certificate-path.privateKeyPath}")
+    private String privateKeyPath;
+
+    @Value("${certificate-path.privateCertPath}")
+    private String privateCertPath;
+
 
     /**
      * 保存订单的支付通知明文
@@ -45,7 +65,6 @@ public class PayUtil {
     /**
      * 直连支付组装参数
      *
-     * @return
      */
     public Map<String, Object> requestWxPayParam(String mchId, String orderSn, String openid, Integer price, String appid, String timeExpire) {
 
@@ -65,7 +84,8 @@ public class PayUtil {
         data.put("amount", fee);
         data.put("time_expire", timeExpire);
         //通知地址，用户支付成功之后，微信访问的接口
-        data.put("notify_url", "http://127.0.0.1:8899/api/order/payNotify");
+        data.put("notify_url", "http://"+serverConfig.getIp()+":"
+                +serverConfig.getPort()+"/api/order/payNotify");
         data.put("payer", user);
         return data;
     }
@@ -73,16 +93,17 @@ public class PayUtil {
     /**
      * 获取证书序列号
      *
-     * @return
      */
     public String getSerialNumber() throws IOException {
         //这个是证书文件，先写死，后续调整成读取证书文件的服务器存放地址
-        String certPath = "D:\\360极速浏览器下载\\WXCertUtil\\cert\\1621751822_20230422_cert\\apiclient_cert.pem";
+        String certPath = this.privateCertPath;
         log.info("path:{}", certPath);
         // 获取证书序列号
-        X509Certificate certificate = PayKit.getCertificate(FileUtil.getInputStream(certPath));
+        FileInputStream fileInputStream = new FileInputStream(certPath);
+        X509Certificate certificate = PayKit.getCertificate(fileInputStream);
         String serialNo = certificate.getSerialNumber().toString(16).toUpperCase();
         log.info("获取证书序列号：{},", serialNo);
+        fileInputStream.close();
         return serialNo;
     }
 
