@@ -33,4 +33,14 @@
     <update id="recycleAudit">
         update t_book set audit = 0 where book_id = #{bookId}
     </update>
+
+    <!--Integer updateBook(Book book);-->
+    <update id="updateBook">
+        update t_book set book_name = #{bookName},price = #{price},status = #{status},audit = #{audit},url1 = #{url1},url2 = #{url2},url3 = #{url3},description = #{description} where book_id = #{bookId}
+    </update>
+
+    <!--Integer delBook(String bookId);-->
+    <delete id="delBook">
+        delete from t_book where book_id = #{openId}
+    </delete>
 </mapper>

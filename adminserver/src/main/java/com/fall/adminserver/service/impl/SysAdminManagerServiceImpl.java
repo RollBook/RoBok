@@ -1,13 +1,20 @@
 package com.fall.adminserver.service.impl;
 
 import com.fall.adminserver.mapper.SysAdminManagerMapper;
+import com.fall.adminserver.model.Book;
+import com.fall.adminserver.model.Order;
 import com.fall.adminserver.model.SysUser;
 import com.fall.adminserver.model.vo.SysUserRegisterVo;
 import com.fall.adminserver.service.SysAdminManagerService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.google.common.base.CaseFormat;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -44,6 +51,51 @@ public class SysAdminManagerServiceImpl implements SysAdminManagerService {
                 adminVo.getAuthority().getAuth()));
 
         return ret == 1;
+    }
+
+    @Override
+    public PageInfo<SysUser> getServiceAdmin(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+
+        List<SysUser> adminList = adminManagerMapper.getAdmin(null);
+
+        List<SysUser> toRemove = new ArrayList<>();
+        for(SysUser s : adminList) {
+            if(s.getAuthority() != 2) {
+                toRemove.add(s);
+            }
+        }
+        adminList.removeAll(toRemove);
+        return new PageInfo<>(adminList,5);
+    }
+
+    @Override
+    public PageInfo<SysUser> getServiceAdminByName(String name, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+
+        List<SysUser> adminList = adminManagerMapper.getAdmin(name);
+
+        List<SysUser> toRemove = new ArrayList<>();
+        for(SysUser s : adminList) {
+            if(s.getAuthority() != 2) {
+                toRemove.add(s);
+            }
+        }
+        adminList.removeAll(toRemove);
+        return new PageInfo<>(adminList,5);
+    }
+
+    @Override
+    public Integer updateServiceAdmin(SysUser sysUser) {
+        return adminManagerMapper.updateServiceAdmin(new SysUser(sysUser.getId(),
+                sysUser.getName(),
+                passwordEncoder.encode(sysUser.getPassword()),
+                sysUser.getAuthority()));
+    }
+
+    @Override
+    public Integer delServiceAdmin(String id) {
+        return adminManagerMapper.delServiceAdmin(id);
     }
 
 }

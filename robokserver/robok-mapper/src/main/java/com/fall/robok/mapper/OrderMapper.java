@@ -41,4 +41,6 @@ public interface OrderMapper {
     List<Order> getPickOrder(@Param("openid") String openid);
 
     Integer pickBook(@Param("orderId") String orderId);
+
+    String getBookIdByOrderId(@Param("orderId") String orderId);
 }

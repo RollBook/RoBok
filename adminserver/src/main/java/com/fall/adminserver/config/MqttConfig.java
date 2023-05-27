@@ -1,4 +1,4 @@
-package com.fall.robok.config;
+package com.fall.adminserver.config;
 
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
@@ -13,9 +13,6 @@ import org.springframework.integration.mqtt.core.DefaultMqttPahoClientFactory;
 import org.springframework.integration.mqtt.core.MqttPahoClientFactory;
 import org.springframework.integration.mqtt.outbound.MqttPahoMessageHandler;
 import org.springframework.messaging.MessageChannel;
-
-import javax.annotation.PostConstruct;
-import java.util.List;
 
 /**
  * @author FAll

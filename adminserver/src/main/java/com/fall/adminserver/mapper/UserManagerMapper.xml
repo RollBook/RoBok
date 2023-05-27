@@ -17,4 +17,16 @@
             ${order}
         </if>
     </select>
+
+    <!--Integer delUser(String openId);-->
+    <delete id="delUser">
+        delete from t_user where open_id = #{openId}
+    </delete>
+
+    <!--Integer updateUsr(User user);-->
+    <update id="updateUsr">
+        update t_user set nick_name = #{nickName},school = #{school},phone = #{phone},email = #{email},address = #{address} where open_id = #{openId}
+    </update>
+
+
 </mapper>

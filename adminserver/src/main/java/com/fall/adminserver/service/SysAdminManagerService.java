@@ -1,7 +1,12 @@
 package com.fall.adminserver.service;
 
+import com.fall.adminserver.model.Book;
+import com.fall.adminserver.model.SysUser;
 import com.fall.adminserver.model.vo.SysUserLoginVo;
 import com.fall.adminserver.model.vo.SysUserRegisterVo;
+import com.github.pagehelper.PageInfo;
+
+import java.util.List;
 
 /**
  * @author FAll
@@ -11,5 +16,13 @@ import com.fall.adminserver.model.vo.SysUserRegisterVo;
 public interface SysAdminManagerService {
 
     Boolean register(SysUserRegisterVo sysUserRegisterVo);
+
+    PageInfo<SysUser> getServiceAdmin(Integer pageNum, Integer pageSize);
+
+    PageInfo<SysUser> getServiceAdminByName(String name,Integer pageNum, Integer pageSize);
+
+    Integer updateServiceAdmin(SysUser sysUser);
+
+    Integer delServiceAdmin(String id);
 
 }

@@ -144,4 +144,14 @@ public class BookManagerServiceImpl implements BookManagerService {
     public Integer recycleAudit(String bookId) {
         return bookManagerMapper.recycleAudit(bookId);
     }
+
+    @Override
+    public Integer updateBook(Book book) {
+        return bookManagerMapper.updateBook(book);
+    }
+
+    @Override
+    public Integer delBook(String bookId) {
+        return bookManagerMapper.delBook(bookId);
+    }
 }

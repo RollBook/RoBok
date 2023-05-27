@@ -54,7 +54,7 @@ spring:
     password: 123RollBook
     url: tcp://120.25.144.59:1883
     client:
-      id: mqttx_b11a7a81
+      id: mqttx_b11a7a83
     default:
       topic: RoServe/usr/roll
 

@@ -18,4 +18,8 @@ import java.util.List;
 public interface UserManagerMapper {
 
     List<User> getUserList(String nickName, String order, String orderProp);
+
+    Integer delUser(String openId);
+
+    Integer updateUsr(User user);
 }

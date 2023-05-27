@@ -38,4 +38,22 @@
         </trim>
     </insert>
 
+    <!--List<SysUser> getAdmin(String name);-->
+    <select id="getAdmin" resultType="com.fall.adminserver.model.SysUser">
+        select * from t_admin
+        <if test="name != null">
+            where name like #{name}
+        </if>
+    </select>
+
+    <!--Integer updateServiceAdmin(SysUser sysUser);-->
+    <update id="updateServiceAdmin">
+        update t_admin set name = #{name},password = #{password} where id = #{id}
+    </update>
+
+    <!--Integer delServiceAdmin(String id);-->
+    <delete id="delServiceAdmin">
+        delete from t_admin where id = #{id}
+    </delete>
+
 </mapper>

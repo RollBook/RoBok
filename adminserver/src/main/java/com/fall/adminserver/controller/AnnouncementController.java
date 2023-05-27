@@ -52,7 +52,6 @@ public class AnnouncementController {
     @PostMapping("/update_announcement")
     @PreAuthorize("@ss.hasAuth('CUSTOMER_SERVICE')")
     ResponseRecord<Integer> updateAnnouncement(@Valid @RequestBody Announcement announcement){
-        System.out.println(announcement);
         return Optional.ofNullable(announcementService.updateAnnouncement(announcement))
                 .map(e->(ResponseRecord.success("修改成功",e)))
                 .orElse(ResponseRecord.fail(HttpServletResponse.SC_FORBIDDEN));

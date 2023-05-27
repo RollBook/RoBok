@@ -183,8 +183,8 @@ public class SysUserServiceImpl implements SysUserService {
             // 0:root 1:管理 2：客服
             return switch (auth) {
                 case 0 -> (List<?>)redisValueOperations.get("menu:root");
-                case 1 -> (List<?>)redisValueOperations.get("menu:customerService");
-                case 2 -> (List<?>)redisValueOperations.get("menu:admin");
+                case 1 -> (List<?>)redisValueOperations.get("menu:admin");
+                case 2 -> (List<?>)redisValueOperations.get("menu:customerService");
                 default -> throw new IllegalStateException("Unexpected value: " + auth);
             };
         }

@@ -47,16 +47,16 @@ public class RollBookController {
     }
 
 
-    @GetMapping("/roll")
-    public ResBean roll() {
-        if(pos){
-            gateway.sendToMqtt("1","RoServe/usr/roll");
-        } else {
-            gateway.sendToMqtt("2","RoServe/usr/roll");
-        }
-        pos = !pos;
-        return ResBean.ok("ok");
-    }
+//    @GetMapping("/roll")
+//    public ResBean roll() {
+//        if(pos){
+//            gateway.sendToMqtt("1","RoServe/usr/roll");
+//        } else {
+//            gateway.sendToMqtt("2","RoServe/usr/roll");
+//        }
+//        pos = !pos;
+//        return ResBean.ok("ok");
+//    }
 
     @ApiOperation("获取待存入书本")
     @GetMapping("get_save_book")

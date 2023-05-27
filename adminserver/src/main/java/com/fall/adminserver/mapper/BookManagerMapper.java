@@ -24,5 +24,9 @@ public interface BookManagerMapper {
 
     Integer recycleAudit(@Param("bookId") String bookId);
 
+    Integer updateBook(Book book);
+
+    Integer delBook(String bookId);
+
 
 }
