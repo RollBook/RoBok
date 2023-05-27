@@ -80,6 +80,11 @@ wx-app: {
   mchId: 1621751822
 }
 
+certificate-path:
+  certPath: cert/cert.pem
+  privateCertPath: cert/apiclient_cert.pem
+  privateKeyPath: cert/apiclient_key.pem
+
 # 上传文件夹路径
 my-path: img/
 
