@@ -3,6 +3,8 @@ package com.fall.robok.task;
 import com.fall.robok.config.WxConfig;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -28,7 +30,7 @@ public class WXTask {
     private final ObjectMapper mapper;
 
     @Autowired
-    public WXTask(WxConfig wxConfig,ObjectMapper mapper){
+    public WXTask(WxConfig wxConfig,ObjectMapper mapper,MqttClient mqttClient){
         this.wxConfig = wxConfig;
         this.mapper=mapper;
     }
@@ -42,7 +44,8 @@ public class WXTask {
      */
     @PostConstruct
     @Scheduled(cron = "0 0 0/2 * * ?")
-    public void getAcessToken() {
+    public void getAcessToken() throws MqttException {
+
         String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=" +
                 "client_credential&appid=" + wxConfig.getAppID() +
                 "&secret=" + wxConfig.getAppSecret();

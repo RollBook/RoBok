@@ -9,8 +9,7 @@ import com.github.pagehelper.PageInfo;
 import com.google.common.base.CaseFormat;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author FAll
@@ -51,5 +50,38 @@ public class UserManagerServiceImpl implements UserManagerService {
         }
         List<User> userList = userManagerMapper.getUserList('%'+nickName+'%', order, orderProp);
         return new PageInfo<>(userList,5);
+    }
+
+    @Override
+    public Integer delUser(String openId) {
+        return userManagerMapper.delUser(openId);
+    }
+
+    @Override
+    public Integer updateUser(User user) {
+        return userManagerMapper.updateUsr(user);
+    }
+
+    @Override
+    public Map<String, List<User>> getUserListSys() {
+        List<User> userList = userManagerMapper.getUserList(null, null, null);
+        List<String> schoolList = new ArrayList<>();
+        for(User user : userList) {
+            schoolList.add(user.getSchool());
+        }
+        List<String> strings = new ArrayList<>(new TreeSet<>(schoolList));
+
+        Map<String, List<User>> stringListMap = new HashMap<>();
+
+        for(String s : strings) {
+            List<User> list = new ArrayList<>();
+            for(User user : userList) {
+                if (s.equals(user.getSchool())){
+                    list.add(user);
+                }
+            }
+            stringListMap.put(s,list);
+        }
+        return stringListMap;
     }
 }

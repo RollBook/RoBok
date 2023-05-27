@@ -1,10 +1,13 @@
 package com.fall.adminserver.mapper;
 
+import com.fall.adminserver.model.Book;
 import com.fall.adminserver.model.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author FAll
@@ -23,4 +26,9 @@ public interface SysAdminManagerMapper {
             """)
     SysUser getSysUserByName(@Param("name") String name);
 
+    List<SysUser> getAdmin(String name);
+
+    Integer updateServiceAdmin(SysUser sysUser);
+
+    Integer delServiceAdmin(String id);
 }

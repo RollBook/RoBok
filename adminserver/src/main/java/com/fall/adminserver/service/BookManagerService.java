@@ -29,4 +29,8 @@ public interface BookManagerService {
 
     Integer recycleAudit(String bookId);
 
+    Integer updateBook(Book book);
+
+    Integer delBook(String bookId);
+
 }

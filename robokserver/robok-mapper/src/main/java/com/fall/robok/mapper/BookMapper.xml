@@ -175,4 +175,29 @@
         update t_book left join t_order on t_book.book_id = t_order.book_id set t_book.audit = 3,t_order.audit = 1 where t_book.book_id = #{bookId}
     </update>
 
+    <!--List<Integer> getNotPress();-->
+    <select id="getNotPress" resultType="java.lang.Integer">
+        select press_id from t_press where press_name = 'Robok'
+    </select>
+
+    <!--Integer savePress(String bookId,Integer pressId);-->
+    <update id="savePress">
+        update t_press set press_name = #{bookId} where press_id = #{pressId}
+    </update>
+
+    <!--Integer updateBookOfPress(String bookId,Integer pressId);-->
+    <update id="updateBookOfPress">
+        update t_book set press_id = #{pressId} where book_id = #{bookId}
+    </update>
+
+    <!--Integer pickPress(@Param("bookId") String bookId);-->
+    <update id="pickPress">
+        update t_press set press_name = 'Robok' where press_name = #{bookId}
+    </update>
+
+    <!--Integer getPressId(@Param("bookId") String bookId);-->
+    <select id="getPressId" resultType="java.lang.Integer">
+        select press_id from t_press where press_name = #{bookId}
+    </select>
+
 </mapper>

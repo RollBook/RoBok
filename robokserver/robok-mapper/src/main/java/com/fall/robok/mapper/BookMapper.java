@@ -45,5 +45,13 @@ public interface BookMapper {
 
     Integer saveBook(@Param("bookId") String bookId);
 
+    List<Integer> getNotPress();
 
+    Integer savePress(@Param("bookId") String bookId,@Param("pressId") Integer pressId);
+
+    Integer updateBookOfPress(@Param("bookId") String bookId,@Param("pressId") Integer pressId);
+
+    Integer pickPress(@Param("bookId") String bookId);
+
+    Integer getPressId(@Param("bookId") String bookId);
 }

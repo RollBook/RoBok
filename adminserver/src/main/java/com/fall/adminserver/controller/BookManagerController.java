@@ -1,6 +1,7 @@
 package com.fall.adminserver.controller;
 
 import com.fall.adminserver.model.Book;
+import com.fall.adminserver.model.User;
 import com.fall.adminserver.model.vo.ResponseRecord;
 import com.fall.adminserver.service.BookManagerService;
 import com.github.pagehelper.PageInfo;
@@ -128,6 +129,24 @@ public class BookManagerController {
     ResponseRecord<Integer> recycleAudit(@RequestParam("bookId") String bookId){
         return Optional.ofNullable(bookManagerService.recycleAudit(bookId))
                 .map(e->(ResponseRecord.success("回收成功",e)))
+                .orElse(ResponseRecord.fail(HttpServletResponse.SC_FORBIDDEN));
+    }
+
+    @Operation(summary = "修改书本")
+    @PostMapping("/update_book")
+    @PreAuthorize("@ss.hasAuth('CUSTOMER_SERVICE')")
+    ResponseRecord<Integer> updateBook(@RequestBody Book book){
+        return Optional.ofNullable(bookManagerService.updateBook(book))
+                .map(e->(ResponseRecord.success("修改成功",e)))
+                .orElse(ResponseRecord.fail(HttpServletResponse.SC_FORBIDDEN));
+    }
+
+    @Operation(summary = "删除书本")
+    @PostMapping("/del_book")
+    @PreAuthorize("@ss.hasAuth('CUSTOMER_SERVICE')")
+    ResponseRecord<Integer> delUser(@RequestParam String bookId){
+        return Optional.ofNullable(bookManagerService.delBook(bookId))
+                .map(e->(ResponseRecord.success("删除成功",e)))
                 .orElse(ResponseRecord.fail(HttpServletResponse.SC_FORBIDDEN));
     }
 }
